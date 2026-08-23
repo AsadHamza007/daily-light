@@ -3836,8 +3836,10 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
 
   q('#ptSetBtn').addEventListener('click', function () {
     var p = q('#ptSet');
-    p.hidden = !p.hidden;
-    this.setAttribute('aria-expanded', String(!p.hidden));
+    var show = p.hidden || p.style.display === 'none';
+    p.hidden = !show;
+    p.style.display = show ? 'grid' : 'none';
+    this.setAttribute('aria-expanded', String(show));
   });
   q('#ptCity').addEventListener('change', function () {
     if (this.value === '') return;
@@ -3891,9 +3893,11 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
 
   if ('serviceWorker' in navigator) {
     var refreshing = false;
+    var bootT = Date.now();
     navigator.serviceWorker.addEventListener('controllerchange', function () {
       if (refreshing) return;
       refreshing = true;
+      if (Date.now() - bootT < 10000) { location.reload(); return; }
       if (!tEl) return;
       tEl.textContent = 'Nayi update aa gayi \u2014 refresh ke liye tap karein';
       tEl.classList.add('is-visible');
@@ -3914,6 +3918,7 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
   renderList();
   if (!hasLoc()) {
     q('#ptSet').hidden = false;
+    q('#ptSet').style.display = 'grid';
     q('#ptSetBtn').setAttribute('aria-expanded', 'true');
   }
   catchUp();

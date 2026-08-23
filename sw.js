@@ -1,4 +1,4 @@
-const CACHE = 'daily-light-v3';
+const CACHE = 'daily-light-v4';
 const ASSETS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (e) => {
@@ -13,9 +13,28 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-// Stale-while-revalidate: serve from cache instantly, refresh in background
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
+  const isDoc = e.request.mode === 'navigate' || e.request.destination === 'document';
+
+  if (isDoc) {
+    // Network-first for the app itself: every open gets the latest version,
+    // falls back to cache when offline.
+    e.respondWith(
+      fetch(e.request)
+        .then((res) => {
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => { c.put('./index.html', copy); });
+          }
+          return res;
+        })
+        .catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+
+  // Everything else: cache-first with background refresh
   e.respondWith(
     caches.match(e.request).then((cached) => {
       const network = fetch(e.request)
