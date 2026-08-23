@@ -1,0 +1,16 @@
+{
+  "name": "Daily Light",
+  "short_name": "Daily Light",
+  "description": "Track your five prayers, daily amanah, self-accounting, notes and money in one quiet dashboard.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#03081C",
+  "theme_color": "#03081C",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
