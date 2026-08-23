@@ -735,6 +735,34 @@
   .ilm-topics .btn{justify-content:center;font-family:var(--font-urdu);font-size:15px;padding:13px 10px;line-height:1.8}
   .ilm-back{margin-bottom:12px}
   html[data-theme="noor"] .ilm-today{background:linear-gradient(135deg,rgba(184,144,47,.12),transparent)}
+  body::before{animation:dlGlow 16s ease-in-out infinite alternate}
+  @keyframes dlGlow{from{opacity:.7}to{opacity:1}}
+  .card{transition:transform .28s var(--ease),border-color .28s,box-shadow .28s}
+  .card:hover{transform:translateY(-2px)}
+  .tile{transition:transform .22s var(--ease),border-color .22s}
+  .tile:hover{transform:translateY(-2px);border-color:rgba(216,182,108,.45)}
+  .q-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.09) 46%,transparent 60%);transform:translateX(-100%);animation:heroShine 6s ease-in-out infinite}
+  @keyframes heroShine{0%,55%{transform:translateX(-100%)}88%,100%{transform:translateX(100%)}}
+  .pt-soon{color:var(--gold-2)!important;animation:ptPulse 1.6s ease-in-out infinite}
+  @keyframes ptPulse{0%,100%{opacity:1}50%{opacity:.45}}
+  .modal__box::-webkit-scrollbar{width:4px}
+  .modal__box::-webkit-scrollbar-thumb{background:rgba(216,182,108,.45);border-radius:4px}
+  .ilm-item{position:relative}
+  .ilm-share{position:absolute;left:9px;top:9px;width:30px;height:30px;border-radius:50%;border:1px solid var(--line-2);background:rgba(255,255,255,.04);font-size:13px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:border-color .2s,transform .2s}
+  .ilm-share:hover{border-color:var(--gold);transform:scale(1.06)}
+  .ilm-daily{position:relative;overflow:hidden;margin:2px 0 14px;padding:14px 15px 11px;border:1px solid rgba(216,182,108,.45);border-radius:16px;background:radial-gradient(130% 160% at 50% 0%,rgba(216,182,108,.14),rgba(216,182,108,.03) 60%,transparent)}
+  .ilm-daily[hidden]{display:none!important}
+  .ilm-daily__tag{display:inline-block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:7px}
+  .ilm-daily .ilm-ur{font-size:15.5px;line-height:2.1}
+  .ilm-daily__foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
+  .ilm-daily__foot .ilm-src{margin-top:0}
+  .asma-grid{display:grid;gap:8px;margin-top:4px}
+  .asma{display:grid;grid-template-columns:30px 1fr auto;grid-template-areas:"n ar ar" "n mid ur";align-items:center;column-gap:10px;row-gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.03)}
+  .asma__n{grid-area:n;display:grid;place-items:center;width:26px;height:26px;border:1px solid rgba(216,182,108,.5);border-radius:50%;color:var(--gold);font-size:10.5px;font-weight:700}
+  .asma__ar{grid-area:ar;font-family:var(--font-quran);font-size:21px;line-height:1.7;color:var(--gold-2);direction:rtl;text-align:right}
+  .asma__mid{grid-area:mid;font-size:11px;color:var(--ink-3);letter-spacing:.04em}
+  .asma__ur{grid-area:ur;font-family:var(--font-urdu);direction:rtl;font-size:13px;color:var(--ink-2);line-height:1.9}
+  .ilm-ar{font-family:var(--font-quran);font-size:20px;line-height:2;display:block;color:var(--gold-2);margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -806,6 +834,11 @@
       <div class="ilm-today" id="ilmToday" hidden>
         <div><b id="ilmHijri"></b><small id="ilmEvent" style="display:none;margin-top:3px"></small></div>
         <div class="ilm-adj" title="Chand ki tareekh adjust karein"><button class="btn btn--text" type="button" data-adj="-1">-1</button><button class="btn btn--text" type="button" data-adj="0">0</button><button class="btn btn--text" type="button" data-adj="1">+1</button></div>
+      </div>
+      <div class="ilm-daily" id="ilmDaily" hidden>
+        <span class="ilm-daily__tag">📖 Aaj ki Hadees</span>
+        <p class="ilm-ur" id="ilmDailyTxt"></p>
+        <div class="ilm-daily__foot"><small class="ilm-src" id="ilmDailySrc"></small><button class="btn btn--text" type="button" id="ilmDailyShare">📤 Share</button></div>
       </div>
       <div class="tiles" id="ilmTiles"></div>
     </section>
@@ -3954,7 +3987,7 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
     if (document.hidden || !hasLoc()) return;
     var np = nextPrayer();
     var el = q('#ptNextIn');
-    if (el) el.textContent = dur(np.time - new Date());
+    if (el) { var msLeft = np.time - new Date(); el.textContent = dur(msLeft); el.classList.toggle('pt-soon', msLeft > 0 && msLeft < 900000); }
     if (dkey() + ':' + np.id !== lastRenderKey) renderList();
   }, 1000);
   setInterval(checkAlarms, 20000);
@@ -4139,12 +4172,14 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
   };
 
   var TILES = [
-    ['hadees', 'Hadees', 'احادیثِ مبارکہ', 'Mauzu-war, hawalon ke saath'],
-    ['seerat', 'Seerat ﷺ', 'سیرت النبی ﷺ', 'Qissay aur waqiat'],
-    ['sahaba', 'Aqwal e Sahaba', 'اقوالِ صحابہؓ', 'Khulafa o Sahaba ki baatein'],
-    ['ali', 'Aqwal e Ali ؓ', 'اقوالِ حضرت علیؓ', 'Hikmat ke moti'],
-    ['months', 'Islami Mahinay', 'اسلامی مہینے', 'Ahmiyat aur fazail'],
-    ['dates', 'Aham Tareekhein', 'اہم اسلامی تواریخ', 'Kis din kya hua']
+    ['hadees', '📖 Hadees', 'احادیثِ مبارکہ', 'Mauzu-war, hawalon ke saath'],
+    ['seerat', '🕌 Seerat ﷺ', 'سیرت النبی ﷺ', 'Qissay aur waqiat'],
+    ['asma', '✨ Asma ul Husna', 'اسماءِ حسنیٰ', 'Allah ke 99 naam'],
+    ['duain', '🤲 Masnoon Duain', 'مسنون دعائیں', 'Rozana ki zaroori duain'],
+    ['sahaba', '💬 Aqwal e Sahaba', 'اقوالِ صحابہ کرامؓ', 'Khulafa o Sahaba ki baatein'],
+    ['ali', '🌟 Aqwal e Ali', 'اقوالِ حضرت علیؓ', 'Hikmat ke moti'],
+    ['months', '🌙 Islami Mahinay', 'اسلامی مہینے', 'Ahmiyat aur fazail'],
+    ['dates', '📅 Aham Tareekhein', 'اہم اسلامی تواریخ', 'Kis din kya hua']
   ];
 
   q('#ilmTiles').innerHTML = TILES.map(function (t) {
@@ -4166,9 +4201,22 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
     if (e.target === modal || e.target.closest('[data-ilm-close]')) closeIlm();
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeIlm(); });
+  modal.addEventListener('click', function (e) {
+    var sb = e.target.closest('[data-si]');
+    if (sb) shareText(SHARE_POOL[+sb.dataset.si]);
+  });
 
-  function item(ur, src, name) {
-    return '<div class="ilm-item">' + (name ? '<span class="ilm-name">' + name + '</span>' : '') +
+  var SHARE_POOL = [];
+  var APP_LINK = 'https://asadhamza007.github.io/daily-light/';
+  function shareText(t) {
+    var msg = t + '\n\n— Daily Light app se\n' + APP_LINK;
+    if (navigator.share) { navigator.share({ text: msg }).catch(function () {}); return; }
+    try { navigator.clipboard.writeText(msg).then(function () { toast('Copy ho gaya — WhatsApp par paste karein'); }); } catch (e) {}
+  }
+  function item(ur, src, name, share) {
+    var sb = '';
+    if (share) { SHARE_POOL.push(share); sb = '<button class="ilm-share" type="button" data-si="' + (SHARE_POOL.length - 1) + '" aria-label="Share">📤</button>'; }
+    return '<div class="ilm-item">' + sb + (name ? '<span class="ilm-name">' + name + '</span>' : '') +
       '<p class="ilm-ur">' + ur + '</p>' + (src ? '<small class="ilm-src">' + src + '</small>' : '') + '</div>';
   }
 
@@ -4184,19 +4232,19 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
   function showHadeesTopic(i) {
     var t = HADEES[i];
     var html = '<button class="btn btn--text ilm-back" type="button" data-back>\u2190 Tamam mauzuat</button>' +
-      t[1].map(function (h) { return item('\u00AB' + h[0] + '\u00BB', h[1]); }).join('');
+      t[1].map(function (h) { return item('\u00AB' + h[0] + '\u00BB', h[1], null, '«' + h[0] + '»\n(' + h[1] + ')'); }).join('');
     openIlm('Hadees', t[0], html);
     modal.querySelector('[data-back]').onclick = showHadeesTopics;
   }
 
   function showSeerat() {
-    openIlm('Seerat un Nabi \uFDFA', 'سیرت النبی ﷺ', SEERAT.map(function (s) { return item(s[1], s[2], s[0]); }).join(''));
+    openIlm('Seerat un Nabi \uFDFA', 'سیرت النبی ﷺ', SEERAT.map(function (s) { return item(s[1], s[2], s[0], s[0] + '\n' + s[1] + '\n(' + s[2] + ')'); }).join(''));
   }
   function showSahaba() {
-    openIlm('Aqwal e Sahaba', 'اقوالِ صحابہ کرامؓ', SAHABA.map(function (s) { return item('\u00AB' + s[1] + '\u00BB', s[2], s[0]); }).join(''));
+    openIlm('Aqwal e Sahaba', 'اقوالِ صحابہ کرامؓ', SAHABA.map(function (s) { return item('\u00AB' + s[1] + '\u00BB', s[2], s[0], s[0] + ': «' + s[1] + '»\n(' + s[2] + ')'); }).join(''));
   }
   function showAli() {
-    openIlm('Aqwal e Ali', 'اقوالِ حضرت علیؓ', ALI.map(function (a) { return item('\u00AB' + a[0] + '\u00BB', a[1]); }).join(''));
+    openIlm('Aqwal e Ali', 'اقوالِ حضرت علیؓ', ALI.map(function (a) { return item('\u00AB' + a[0] + '\u00BB', a[1], null, 'Hazrat Ali (RA): «' + a[0] + '»\n(' + a[1] + ')'); }).join(''));
   }
   function showMonths() {
     openIlm('Islami Mahinay', 'اسلامی مہینے', MONTHS.map(function (m) {
@@ -4215,6 +4263,55 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
     }).join(''));
   }
 
+
+  var ASMA = [['الرحمن','Ar-Rahman','بہت مہربان'],['الرحيم','Ar-Raheem','نہایت رحم والا'],['الملك','Al-Malik','بادشاہ'],['القدوس','Al-Quddus','نہایت پاک'],['السلام','As-Salam','سلامتی والا'],['المؤمن','Al-Mumin','امن دینے والا'],['المهيمن','Al-Muhaymin','نگہبان'],['العزيز','Al-Aziz','سب پر غالب'],['الجبار','Al-Jabbar','زبردست'],['المتكبر','Al-Mutakabbir','بڑائی والا'],['الخالق','Al-Khaliq','پیدا کرنے والا'],['البارئ','Al-Bari','وجود بخشنے والا'],['المصور','Al-Musawwir','صورتیں بنانے والا'],['الغفار','Al-Ghaffar','بہت بخشنے والا'],['القهار','Al-Qahhar','سب کو زیر کرنے والا'],['الوهاب','Al-Wahhab','بہت عطا کرنے والا'],['الرزاق','Ar-Razzaq','رزق دینے والا'],['الفتاح','Al-Fattah','کھولنے اور فیصلہ کرنے والا'],['العليم','Al-Aleem','سب کچھ جاننے والا'],['القابض','Al-Qabid','تنگی کرنے والا'],['الباسط','Al-Basit','کشادگی دینے والا'],['الخافض','Al-Khafid','پست کرنے والا'],['الرافع','Ar-Rafi','بلند کرنے والا'],['المعز','Al-Muizz','عزت دینے والا'],['المذل','Al-Mudhill','ذلت دینے والا'],['السميع','As-Samee','سب کچھ سننے والا'],['البصير','Al-Baseer','سب کچھ دیکھنے والا'],['الحكم','Al-Hakam','فیصلہ کرنے والا'],['العدل','Al-Adl','انصاف کرنے والا'],['اللطيف','Al-Lateef','باریک بین، مہربان'],['الخبير','Al-Khabeer','ہر بات سے باخبر'],['الحليم','Al-Haleem','بردبار'],['العظيم','Al-Azeem','عظمت والا'],['الغفور','Al-Ghafoor','بخشنے والا'],['الشكور','Ash-Shakoor','قدر دان'],['العلي','Al-Aliyy','سب سے بلند'],['الكبير','Al-Kabeer','سب سے بڑا'],['الحفيظ','Al-Hafeez','حفاظت کرنے والا'],['المقيت','Al-Muqeet','روزی پہنچانے والا'],['الحسيب','Al-Haseeb','حساب لینے والا، کافی'],['الجليل','Al-Jaleel','بزرگی والا'],['الكريم','Al-Kareem','کرم کرنے والا'],['الرقيب','Ar-Raqeeb','نگرانی کرنے والا'],['المجيب','Al-Mujeeb','دعائیں قبول کرنے والا'],['الواسع','Al-Wasi','وسعت والا'],['الحكيم','Al-Hakeem','حکمت والا'],['الودود','Al-Wadood','محبت کرنے والا'],['المجيد','Al-Majeed','بزرگی والا'],['الباعث','Al-Baith','دوبارہ اٹھانے والا'],['الشهيد','Ash-Shaheed','ہر جگہ حاضر و ناظر'],['الحق','Al-Haqq','برحق'],['الوكيل','Al-Wakeel','کارساز'],['القوي','Al-Qawiyy','قوت والا'],['المتين','Al-Mateen','مضبوط'],['الولي','Al-Waliyy','مددگار دوست'],['الحميد','Al-Hameed','تعریف کے لائق'],['المحصي','Al-Muhsi','شمار کرنے والا'],['المبدئ','Al-Mubdi','پہلی بار پیدا کرنے والا'],['المعيد','Al-Mueed','دوبارہ پیدا کرنے والا'],['المحيي','Al-Muhyi','زندگی دینے والا'],['المميت','Al-Mumeet','موت دینے والا'],['الحي','Al-Hayy','ہمیشہ زندہ'],['القيوم','Al-Qayyoom','سب کو قائم رکھنے والا'],['الواجد','Al-Wajid','ہر چیز پانے والا'],['الماجد','Al-Majid','بزرگ'],['الواحد','Al-Wahid','یکتا'],['الأحد','Al-Ahad','اکیلا'],['الصمد','As-Samad','بے نیاز'],['القادر','Al-Qadir','قدرت والا'],['المقتدر','Al-Muqtadir','پوری قدرت والا'],['المقدم','Al-Muqaddim','آگے کرنے والا'],['المؤخر','Al-Muakhkhir','پیچھے کرنے والا'],['الأول','Al-Awwal','سب سے پہلا'],['الآخر','Al-Aakhir','سب سے آخر'],['الظاهر','Az-Zahir','ظاہر'],['الباطن','Al-Batin','پوشیدہ'],['الوالي','Al-Wali','حاکم'],['المتعالي','Al-Mutaali','سب سے برتر'],['البر','Al-Barr','احسان کرنے والا'],['التواب','At-Tawwab','توبہ قبول کرنے والا'],['المنتقم','Al-Muntaqim','بدلہ لینے والا'],['العفو','Al-Afuww','بہت معاف کرنے والا'],['الرؤوف','Ar-Raoof','نہایت شفیق'],['مالك الملك','Malik-ul-Mulk','بادشاہی کا مالک'],['ذو الجلال والإكرام','Dhul-Jalali-wal-Ikram','جلال اور اکرام والا'],['المقسط','Al-Muqsit','انصاف قائم کرنے والا'],['الجامع','Al-Jami','جمع کرنے والا'],['الغني','Al-Ghaniyy','بے نیاز'],['المغني','Al-Mughni','غنی کر دینے والا'],['المانع','Al-Mani','روکنے والا'],['الضار','Ad-Darr','نقصان کا مالک'],['النافع','An-Nafi','نفع دینے والا'],['النور','An-Noor','روشنی'],['الهادي','Al-Hadi','ہدایت دینے والا'],['البديع','Al-Badee','بے مثال بنانے والا'],['الباقي','Al-Baqi','ہمیشہ باقی رہنے والا'],['الوارث','Al-Warith','سب کا وارث'],['الرشيد','Ar-Rasheed','راہ دکھانے والا'],['الصبور','As-Saboor','بہت صبر والا']];
+
+  var DUAIN = [
+    ['نیند سے جاگنے کی دعا','الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ','تمام تعریفیں اللہ کے لیے جس نے ہمیں موت (نیند) کے بعد زندگی دی اور اسی کی طرف اٹھ کر جانا ہے۔','صحیح بخاری: 6312'],
+    ['سونے کی دعا','بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا','اے اللہ! تیرے ہی نام کے ساتھ مرتا اور جیتا ہوں۔','صحیح بخاری: 6324'],
+    ['کھانے سے پہلے','بِسْمِ اللَّهِ — بھول جائیں تو: بِسْمِ اللَّهِ فِي أَوَّلِهِ وَآخِرِهِ','اللہ کے نام سے شروع کرتا ہوں۔','سنن ترمذی: 1858'],
+    ['کھانے کے بعد','الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ','شکر اُس اللہ کا جس نے ہمیں کھلایا، پلایا اور مسلمان بنایا۔','سنن ترمذی: 3457'],
+    ['گھر سے نکلتے وقت','بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ','اللہ کے نام سے، اللہ پر بھروسہ کیا؛ گناہ سے بچنے اور نیکی کی طاقت اللہ ہی سے ہے۔','سنن ترمذی: 3426'],
+    ['مسجد میں داخل ہوتے وقت','اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ','اے اللہ! میرے لیے اپنی رحمت کے دروازے کھول دے۔','صحیح مسلم: 713'],
+    ['مسجد سے نکلتے وقت','اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ','اے اللہ! میں تجھ سے تیرا فضل مانگتا ہوں۔','صحیح مسلم: 713'],
+    ['بیت الخلا جاتے وقت','اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ','اے اللہ! میں ناپاک جنوں سے تیری پناہ مانگتا ہوں۔','صحیح بخاری: 142'],
+    ['وضو کے بعد','أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ','گواہی — پڑھنے والے کے لیے جنت کے آٹھوں دروازے کھول دیے جاتے ہیں۔','صحیح مسلم: 234'],
+    ['پریشانی و غم میں (دعائے یونسؑ)','لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ','تیرے سوا کوئی معبود نہیں، تُو پاک ہے، بے شک میں ہی قصوروار ہوں۔','سنن ترمذی: 3505'],
+    ['صبح و شام کی دعا','اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ','اے اللہ! تیرے ہی فضل سے ہم نے صبح کی اور شام کی، تیرے ہی سہارے جیتے اور مرتے ہیں اور تیری ہی طرف لوٹنا ہے۔','سنن ترمذی: 3391'],
+    ['سفر کی دعا','سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ','پاک ہے وہ ذات جس نے اسے ہمارے قابو میں دیا؛ ہم اپنے رب ہی کی طرف لوٹنے والے ہیں۔','صحیح مسلم: 1342'],
+    ['والدین کے لیے دعا','رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا','اے میرے رب! ان دونوں پر رحم فرما جیسے انہوں نے بچپن میں میری پرورش کی۔','بنی اسرائیل: 24'],
+    ['سید الاستغفار','اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي، فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ','استغفار کی افضل ترین دعا — جو دن میں یقین سے پڑھے اور شام سے پہلے وفات پا جائے تو جنتی ہے۔','صحیح بخاری: 6306'],
+    ['علم میں اضافے کی دعا','رَبِّ زِدْنِي عِلْمًا','اے میرے رب! میرے علم میں اضافہ فرما۔','طٰہٰ: 114'],
+    ['دنیا و آخرت کی بھلائی','رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ','اے ہمارے رب! ہمیں دنیا میں بھلائی دے اور آخرت میں بھی بھلائی، اور ہمیں آگ کے عذاب سے بچا۔','البقرہ: 201']
+  ];
+
+  function showAsma() {
+    var intro = item('نبی کریم ﷺ نے فرمایا: اللہ کے ننانوے نام ہیں؛ جو انہیں (ایمان کے ساتھ) شمار کرے گا وہ جنت میں داخل ہو گا۔', 'صحیح بخاری: 2736');
+    var rows = ASMA.map(function (a, i) {
+      return '<div class="asma"><span class="asma__n">' + (i + 1) + '</span><span class="asma__ar">' + a[0] + '</span><span class="asma__mid">' + a[1] + '</span><span class="asma__ur">' + a[2] + '</span></div>';
+    }).join('');
+    openIlm('Asma ul Husna', 'اسماءِ حسنیٰ', intro + '<div class="asma-grid">' + rows + '</div>');
+  }
+  function showDuain() {
+    openIlm('Masnoon Duain', 'مسنون دعائیں', DUAIN.map(function (d) {
+      return item('<span class="ilm-ar">' + d[1] + '</span>' + d[2], d[3], d[0], d[0] + '\n' + d[1] + '\n' + d[2] + '\n(' + d[3] + ')');
+    }).join(''));
+  }
+
+  (function initDaily() {
+    var box = q('#ilmDaily');
+    if (!box) return;
+    var all = [];
+    HADEES.forEach(function (t) { t[1].forEach(function (h) { all.push(h); }); });
+    var now = new Date();
+    var doy = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+    var h = all[doy % all.length];
+    box.hidden = false;
+    q('#ilmDailyTxt').innerHTML = '«' + h[0] + '»';
+    q('#ilmDailySrc').textContent = h[1];
+    q('#ilmDailyShare').onclick = function () { shareText('📖 Aaj ki Hadees\n«' + h[0] + '»\n(' + h[1] + ')'); };
+  })();
+
   q('#ilmTiles').addEventListener('click', function (e) {
     var b = e.target.closest('[data-ilm]');
     if (!b) return;
@@ -4223,6 +4320,8 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
     else if (id === 'seerat') showSeerat();
     else if (id === 'sahaba') showSahaba();
     else if (id === 'ali') showAli();
+    else if (id === 'asma') showAsma();
+    else if (id === 'duain') showDuain();
     else if (id === 'months') showMonths();
     else if (id === 'dates') showDates();
   });
