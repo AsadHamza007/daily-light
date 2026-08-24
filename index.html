@@ -894,6 +894,109 @@
     .hk-jump{order:3;flex:1 1 100%}
   }
 </style>
+<style id="zkStyle">
+  /* ---------- Zakat + Hajj cards: full-width rows straight after the Ibādāt guide ---------- */
+  .card--zakat,.card--hajj{order:-1;grid-column:1/-1}
+
+  /* ---------- Zakat card ---------- */
+  .zk-hero{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px 22px;align-items:center;margin-top:16px;padding:18px 20px;border:1px solid rgba(216,182,108,.42);border-radius:16px;background:radial-gradient(120% 160% at 0% 0%,rgba(216,182,108,.16),rgba(216,182,108,.04) 55%,transparent),linear-gradient(180deg,rgba(255,255,255,.04),transparent)}
+  .zk-scale{width:88px;height:62px;fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+  .zk-scale circle{fill:var(--gold);stroke:none}
+  .zk-hero__body{min-width:0}
+  .zk-hero--ur .zk-hero__body{text-align:right}
+  .zk-hero__amt{font-family:var(--font-display);font-weight:500;font-size:28px;line-height:1.1;margin-top:6px;color:var(--gold-2)}
+  .zk-hero__amt.is-free{font-size:20px;color:var(--ink)}
+  .zk-hero__amt.is-weights{font-size:19px}
+  .zk-hero__amt.is-weights.ur{font-family:var(--font-urdu);font-size:17px;line-height:1.9;direction:rtl;text-align:right;unicode-bidi:plaintext}
+  .zk-hero--ur .eyebrow{display:block;direction:rtl;text-align:right;font-family:var(--font-urdu);letter-spacing:0;text-transform:none;font-size:12px}
+  .zk-hero__line{margin:8px 0 0;font-size:13px;color:var(--ink-2);line-height:1.55}
+  .zk-hero__date{margin:6px 0 0;font-size:12px;color:var(--ink-3)}
+  .zk-hero__date b{color:var(--ink);font-weight:600}
+  .zk-hero__btn{margin-top:14px;font-size:13px;padding:11px 18px}
+  .zk-hero--ur .zk-hero__line.ur,.zk-hero--ur .zk-hero__date.ur{font-family:var(--font-urdu);direction:rtl;text-align:right;line-height:2;unicode-bidi:plaintext;font-size:14px}
+  .zk-alt{unicode-bidi:isolate}
+  .zk-alt--ur{font-family:var(--font-urdu);letter-spacing:0;text-transform:none;font-weight:400;font-size:.95em;line-height:1.6;color:var(--gold-2)}
+  .zk-alt--en{font-family:var(--font-body);letter-spacing:.1em;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--ink-3)}
+  .zk-hero__btn .zk-alt--ur{font-size:14px;color:inherit}
+  .zk-hero__btn .zk-alt--en{color:inherit;opacity:.75}
+
+  /* ---------- Zakat calculator (modal) ---------- */
+  .zk{gap:22px}
+  .zk-sec h4{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-bottom:10px}
+  .zk--ur .zk-sec h4,.zk--ur .virtues+section h4{font-family:var(--font-urdu);font-size:16px;letter-spacing:0;text-transform:none;color:var(--gold-2);direction:rtl;justify-content:flex-start;line-height:1.8}
+  .zk--ur .zk-sec h4 .zk-alt--en{direction:ltr}
+  .zk-grid{display:grid;gap:12px}
+  .zk-grid--2{grid-template-columns:1fr 1fr}
+  .zk .field label{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;line-height:1.5}
+  .zk .field--ur label{font-family:var(--font-urdu);text-transform:none;letter-spacing:0;font-size:14px;line-height:1.9;direction:rtl;text-align:right;color:var(--ink-2)}
+  .zk .field--ur label .zk-alt--en{direction:ltr}
+  .zk .field label .zk-alt--ur{font-size:13px}
+  .zk-in{font:inherit;font-size:15px;color:var(--ink);background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:12px;padding:11px 13px;width:100%;min-width:0;direction:ltr;text-align:left;font-variant-numeric:tabular-nums;transition:border-color .2s}
+  .zk-in::placeholder{color:var(--ink-3)}
+  .zk-in:focus{outline:none;border-color:rgba(216,182,108,.7);box-shadow:0 0 0 3px rgba(216,182,108,.14)}
+  .zk .select{width:100%;padding:11px 34px 11px 12px;font-size:14px}
+  .zk-unitname{color:var(--gold);text-transform:none;letter-spacing:0;font-weight:700}
+  .zk-note{display:block;font-size:12px;line-height:1.55;color:var(--ink-3);margin-top:4px}
+  .zk-note.ur{font-family:var(--font-urdu);font-size:13px;line-height:1.9;direction:rtl;text-align:right;unicode-bidi:plaintext}
+  .zk-ratebar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .zk-ratestatus{font-size:12px;color:var(--ink-2);min-width:0}
+  .zk-ratestatus.ur{font-family:var(--font-urdu);font-size:13px;direction:rtl;unicode-bidi:plaintext}
+  .zk-ratestatus.is-err{color:var(--danger)}
+  .zk-gold{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(88px,auto) auto;gap:8px;align-items:center;margin-top:8px}
+  .zk-gold--one{grid-template-columns:minmax(0,1fr) auto;margin-top:0}
+  .zk-unit{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:700;white-space:nowrap}
+  .zk--ur .zk-unit{font-family:var(--font-urdu);letter-spacing:0;text-transform:none;font-size:13px}
+  .zk-karat{padding:11px 30px 11px 12px !important}
+  .zk-x{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-2);background:transparent;display:grid;place-items:center;cursor:pointer;color:var(--ink-3)}
+  .zk-x:hover{border-color:var(--danger);color:var(--danger)}
+  .zk-x svg{width:12px;height:12px}
+  .zk-add{margin-top:8px;padding-left:0;color:var(--gold)}
+  .zk--ur .zk-add{display:flex;width:max-content;margin-left:auto;padding:6px 0 6px 8px;font-family:var(--font-urdu);font-size:14px;letter-spacing:0;text-transform:none}
+  .zk-hero__line b,.zk-hero__date b{unicode-bidi:isolate}
+  .zk-sec--liab .zk-in{border-color:rgba(232,154,154,.35)}
+  .zk-result{display:grid;gap:8px;padding:16px;border:1px solid rgba(216,182,108,.42);border-radius:16px;background:linear-gradient(180deg,rgba(216,182,108,.09),rgba(216,182,108,.02))}
+  .zk-status{font-family:var(--font-display);font-size:20px;line-height:1.2;color:var(--ink);padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .zk-status.is-due{color:var(--gold-2)}
+  .zk-status.is-free{color:var(--ink-2)}
+  .zk-status.is-warn{color:var(--danger);font-family:var(--font-body);font-size:14px;font-weight:600}
+  .zk--ur .zk-status{font-family:var(--font-urdu);font-size:18px;line-height:1.9;direction:rtl;text-align:right;unicode-bidi:plaintext}
+  .zk-line{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13.5px;color:var(--ink-2)}
+  .zk-line span{min-width:0}
+  .zk-line span small{display:block;font-size:11px;color:var(--ink-3);margin-top:1px}
+  .zk-line b{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink);font-weight:600;direction:ltr;unicode-bidi:isolate}
+  .zk-line--strong{color:var(--ink)}
+  .zk-line--strong b{font-size:15px}
+  .zk-line--zakat{margin-top:6px;padding-top:10px;border-top:1px solid var(--line);color:var(--ink)}
+  .zk-line--zakat b{font-family:var(--font-display);font-size:24px;color:var(--gold-2);font-weight:500}
+  .zk-line--muted b{color:var(--ink-2);font-weight:500}
+  .zk--ur .zk-line{direction:rtl}
+  .zk--ur .zk-line span,.zk--ur .zk-line span small{font-family:var(--font-urdu);line-height:1.8;font-size:14px;text-align:right}
+  .zk--ur .zk-line span small{font-size:12px}
+  .zk-break{display:grid;gap:6px;margin-top:8px;padding-top:10px;border-top:1px dashed var(--line-2)}
+  .zk-break .zk-line{font-size:12.5px}
+  .zk-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .zk-hawlline{margin:8px 0 0;font-size:13px;color:var(--gold)}
+  .zk-hawlline.ur{font-family:var(--font-urdu);direction:rtl;text-align:right;font-size:14px;line-height:1.9;unicode-bidi:plaintext}
+  .zk-sticky{position:sticky;bottom:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px -22px -22px;padding:12px 22px;background:var(--card-glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line-2)}
+  .zk-sticky__k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+  .zk--ur ~ .zk-sticky .zk-sticky__k,.zk-sticky .zk-sticky__k.ur{font-family:var(--font-urdu);letter-spacing:0;text-transform:none;font-size:13px}
+  .zk-sticky__v{font-family:var(--font-display);font-size:20px;font-weight:500;color:var(--gold-2);white-space:nowrap;direction:ltr}
+  .zk-sticky__v.is-free{font-family:var(--font-body);font-size:13px;color:var(--ink-2);font-weight:600;white-space:normal;text-align:right}
+  .zk-sticky__v.is-warn{font-size:16px;color:var(--ink-2)}
+  html[data-theme="noor"] .zk-hero{background:radial-gradient(120% 160% at 0% 0%,rgba(184,144,47,.16),rgba(184,144,47,.04) 55%,transparent)}
+  html[data-theme="noor"] .zk-result{background:linear-gradient(180deg,rgba(184,144,47,.12),rgba(184,144,47,.03))}
+  html[data-theme="noor"] .zk-in{background:rgba(110,80,20,.05)}
+  @media (max-width:720px){
+    .zk-hero{grid-template-columns:1fr;gap:10px}
+    .zk-scale{width:64px;height:46px}
+    .zk-hero__btn{width:100%;justify-content:center}
+    .zk-grid--2{grid-template-columns:1fr}
+    .zk-gold{grid-template-columns:minmax(0,1fr) auto minmax(80px,auto) auto}
+    .zk-sticky{padding:10px 22px}
+    .zk-actions .btn--gold{flex:1 1 100%;justify-content:center}
+  }
+  @media (max-width:1120px) and (min-width:721px){ .card--zakat .zk-hero{grid-template-columns:auto minmax(0,1fr)} }
+</style>
 </head>
 <body>
 
@@ -1172,6 +1275,24 @@
         <div class="counter"><span class="bar__label">Method, du‘ās and rulings for every prayer</span></div>
       </header>
       <div class="tiles" id="ibadatTiles"></div>
+    </section>
+
+    <!-- Zakat -->
+    <section class="card card--zakat" style="--i:9" aria-labelledby="h-zakat">
+      <header class="card__head">
+        <div><span class="eyebrow">Zakāt · Hanafi</span><h2 id="h-zakat">Zakat calculator · <bdi class="title-ur" style="margin:0">زکوٰۃ کیلکولیٹر</bdi></h2></div>
+        <div class="counter"><span class="bar__label">Nisāb check and the 2.5%, on today’s rates</span></div>
+      </header>
+      <div id="zakatCard"></div>
+    </section>
+
+    <!-- Hajj o Umrah -->
+    <section class="card card--hajj" style="--i:10" aria-labelledby="h-hajj">
+      <header class="card__head">
+        <div><span class="eyebrow">Ḥajj o ‘Umrah · Hanafi</span><h2 id="h-hajj">Ḥajj and ‘Umrah · <bdi class="title-ur" style="margin:0">حج و عمرہ کا طریقہ</bdi></h2></div>
+        <div class="counter"><span class="bar__label">Step by step, with the du‘ās and rulings</span></div>
+      </header>
+      <div class="tiles" id="hajjTiles"></div>
     </section>
 
   </main>
@@ -2706,6 +2827,804 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
       </button></li>`; }).join('');
   }
 
+  /* ================= Hajj o ‘Umrah guide (Hanafi) ================= */
+  Object.assign(REC, {
+    talbiyah: { title:'Talbiyah', ur:'تلبیہ', ar:'لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ', tr:'Labbayk Allāhumma labbayk, labbayka lā sharīka laka labbayk, innal-ḥamda wan-ni‘mata laka wal-mulk, lā sharīka lak', urdu:'حاضر ہوں اے اللہ میں حاضر ہوں، حاضر ہوں، تیرا کوئی شریک نہیں، حاضر ہوں۔ بے شک تمام تعریف اور نعمت تیری ہی ہے اور بادشاہی بھی، تیرا کوئی شریک نہیں۔', src:'Bukhārī 1549 · Muslim 1184', note:'Men say it aloud, women quietly. Repeat it often until the first pebble is thrown at Jamrah al-‘Aqabah (or, in ‘Umrah, until ṭawāf begins).' },
+    umrahNiyyat: { title:'Niyyat of ‘Umrah', ur:'عمرہ کی نیت', ar:'اللَّهُمَّ إِنِّي أُرِيدُ الْعُمْرَةَ فَيَسِّرْهَا لِي وَتَقَبَّلْهَا مِنِّي', tr:'Allāhumma innī urīdul-‘umrata fa-yassirhā lī wa taqabbalhā minnī', urdu:'اے اللہ! میں عمرے کا ارادہ رکھتا ہوں، اسے میرے لیے آسان فرما اور مجھ سے قبول فرما۔', note:'The intention in the heart is what counts; these words are the wording taught in Hanafi manuals. Say the talbiyah once immediately after it: from then on the iḥrām has begun.' },
+    hajjNiyyat: { title:'Niyyat of Ḥajj', ur:'حج کی نیت', ar:'اللَّهُمَّ إِنِّي أُرِيدُ الْحَجَّ فَيَسِّرْهُ لِي وَتَقَبَّلْهُ مِنِّي', tr:'Allāhumma innī urīdul-ḥajja fa-yassirhu lī wa taqabbalhu minnī', urdu:'اے اللہ! میں حج کا ارادہ رکھتا ہوں، اسے میرے لیے آسان فرما اور مجھ سے قبول فرما۔', note:'For Ḥajj Tamattu‘ this is said on 8 Dhul-Ḥijjah from your residence in Makkah, followed by the talbiyah.' },
+    kaabaDua: { title:'On first seeing the Ka‘bah', ur:'کعبہ پر پہلی نظر', ar:'اللَّهُمَّ زِدْ هَذَا الْبَيْتَ تَشْرِيفًا وَتَعْظِيمًا وَتَكْرِيمًا وَمَهَابَةً، وَزِدْ مَنْ شَرَّفَهُ وَكَرَّمَهُ مِمَّنْ حَجَّهُ أَوِ اعْتَمَرَهُ تَشْرِيفًا وَتَكْرِيمًا وَتَعْظِيمًا وَبِرًّا', tr:'Allāhumma zid hādhal-bayta tashrīfan wa ta‘ẓīman wa takrīman wa mahābah, wa zid man sharrafahū wa karramahū mimman ḥajjahū awi‘tamarahū tashrīfan wa takrīman wa ta‘ẓīman wa birrā', urdu:'اے اللہ! اس گھر کی شرافت، عظمت، عزت اور ہیبت میں اضافہ فرما، اور جو اس کی تعظیم و تکریم کرے، حج یا عمرہ کرے، اس کی شرافت، عزت، عظمت اور نیکی میں اضافہ فرما۔', src:'Bayhaqī (mursal, weak chain) · widely taught in manāsik books', note:'The moment of first seeing the Ka‘bah is a time of accepted du‘ā: ask for whatever you need, in any language, after or instead of these words.' },
+    tawafStart: { title:'Beginning each round of ṭawāf', ur:'طواف کی ابتدا', ar:'بِسْمِ اللهِ، اللهُ أَكْبَرُ، وَلِلهِ الْحَمْدُ', tr:'Bismillāh, Allāhu akbar, wa lillāhil-ḥamd', urdu:'اللہ کے نام سے، اللہ سب سے بڑا ہے، اور تمام تعریف اللہ کے لیے ہے۔', src:'Ibn ‘Umar · Bayhaqī', note:'Face the Black Stone, raise both hands as in prayer, say this, then kiss the Stone or touch it or point towards it with the palms and kiss the palms. Then begin walking.' },
+    rabbana: { title:'Between the Yamānī corner and the Black Stone', ur:'رکنِ یمانی اور حجرِ اسود کے درمیان', quran:{ s:2, a:201 }, src:'Abū Dāwūd 1892', note:'The Prophet ﷺ recited this āyah between the two corners in every round.' },
+    safaAyah: { title:'On reaching Ṣafā the first time', ur:'صفا پر پہلی بار', quran:{ s:2, a:158 }, src:'Muslim 1218', note:'The Prophet ﷺ recited this āyah and said: “I begin with what Allah began with.” It is read once, at the start of sa‘ī.' },
+    safaDhikr: { title:'On Ṣafā and on Marwah', ur:'صفا اور مروہ پر', times:'×3', ar:'اللهُ أَكْبَرُ، اللهُ أَكْبَرُ، اللهُ أَكْبَرُ، لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ، أَنْجَزَ وَعْدَهُ، وَنَصَرَ عَبْدَهُ، وَهَزَمَ الْأَحْزَابَ وَحْدَهُ', tr:'Allāhu akbar (×3), lā ilāha illallāhu waḥdahū lā sharīka lah, lahul-mulku wa lahul-ḥamdu wa huwa ‘alā kulli shay’in qadīr, lā ilāha illallāhu waḥdah, anjaza wa‘dah, wa naṣara ‘abdah, wa hazamal-aḥzāba waḥdah', urdu:'اللہ سب سے بڑا ہے (تین بار)۔ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس کا کوئی شریک نہیں، اسی کی بادشاہی ہے اور اسی کی تعریف ہے اور وہ ہر چیز پر قادر ہے۔ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس نے اپنا وعدہ پورا کیا، اپنے بندے کی مدد کی اور تنہا لشکروں کو شکست دی۔', src:'Muslim 1218', note:'Face the Ka‘bah with hands raised as in du‘ā, say this, then make your own du‘ā; repeat all of it three times. Do this on Ṣafā and again on Marwah in every length.' },
+    saiDua: { title:'Between the green lights', ur:'سبز نشانوں کے درمیان', ar:'رَبِّ اغْفِرْ وَارْحَمْ، وَتَجَاوَزْ عَمَّا تَعْلَمُ، إِنَّكَ أَنْتَ الْأَعَزُّ الْأَكْرَمُ', tr:'Rabbighfir warḥam, wa tajāwaz ‘ammā ta‘lam, innaka antal-a‘azzul-akram', urdu:'اے میرے رب! بخش دے اور رحم فرما، اور جو تو جانتا ہے اس سے درگزر فرما، بے شک تو ہی سب سے زیادہ غالب اور کرم والا ہے۔', src:'Ibn Mas‘ūd and Ibn ‘Umar · Muṣannaf Ibn Abī Shaybah', note:'Men walk briskly between the two green markers; women walk normally.' },
+    arafahDua: { title:'The best du‘ā of ‘Arafah', ur:'عرفہ کی سب سے بہتر دعا', ar:'لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ', tr:'Lā ilāha illallāhu waḥdahū lā sharīka lah, lahul-mulku wa lahul-ḥamdu wa huwa ‘alā kulli shay’in qadīr', urdu:'اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس کا کوئی شریک نہیں، اسی کی بادشاہی ہے اور اسی کی تعریف ہے اور وہ ہر چیز پر قادر ہے۔', src:'Tirmidhī 3585', note:'The Prophet ﷺ said: “The best du‘ā is the du‘ā of the day of ‘Arafah, and the best thing I and the prophets before me have said is” these words.' },
+    masharDhikr: { title:'At Muzdalifah (Mash‘ar al-Ḥarām)', ur:'مزدلفہ میں', quran:{ s:2, a:198 }, note:'After Fajr on the 10th, stand facing the qiblah in dhikr, talbiyah and du‘ā until the sky is bright, then leave before sunrise.' },
+    ramiTakbir: { title:'With every pebble', ur:'ہر کنکری کے ساتھ', ar:'اللهُ أَكْبَرُ', tr:'Allāhu akbar', urdu:'اللہ سب سے بڑا ہے۔', src:'Bukhārī 1750 · Muslim 1296', note:'Throw the seven pebbles one at a time, saying the takbīr with each. The longer wording taught in some manuals (“Bismillāh, Allāhu akbar, raghman lish-shayṭān…”) is optional. The talbiyah stops with the first pebble on the 10th.' },
+    zamzamDua: { title:'When drinking Zamzam', ur:'زمزم پیتے وقت', ar:'اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ', tr:'Allāhumma innī as’aluka ‘ilman nāfi‘an wa rizqan wāsi‘an wa shifā’an min kulli dā’', urdu:'اے اللہ! میں تجھ سے نفع دینے والا علم، کشادہ رزق اور ہر بیماری سے شفا مانگتا ہوں۔', src:'Ibn ‘Abbās · Ḥākim, Dāraquṭnī (weak chain)', note:'Zamzam is for whatever it is drunk for (Ibn Mājah 3062): face the qiblah, drink in three breaths, and make any du‘ā you wish.' },
+    salamNabi: { title:'Salām at the Prophet’s ﷺ grave', ur:'روضۂ رسول ﷺ پر سلام', ar:'اَلصَّلَاةُ وَالسَّلَامُ عَلَيْكَ يَا رَسُولَ اللهِ، اَلصَّلَاةُ وَالسَّلَامُ عَلَيْكَ يَا نَبِيَّ اللهِ، اَلصَّلَاةُ وَالسَّلَامُ عَلَيْكَ يَا حَبِيبَ اللهِ', tr:'Aṣ-ṣalātu was-salāmu ‘alayka yā Rasūlallāh, aṣ-ṣalātu was-salāmu ‘alayka yā Nabiyyallāh, aṣ-ṣalātu was-salāmu ‘alayka yā Ḥabīballāh', urdu:'اے اللہ کے رسول! آپ پر درود و سلام ہو۔ اے اللہ کے نبی! آپ پر درود و سلام ہو۔ اے اللہ کے محبوب! آپ پر درود و سلام ہو۔', note:'Stand with humility, back to the qiblah, facing the grave, and say this quietly. Then step to the right and greet Abū Bakr, then ‘Umar (may Allah be pleased with them). Make your own du‘ā afterwards facing the qiblah.' }
+  });
+  Object.assign(REC_NOTE_UR, {
+    talbiyah:'مرد بلند آواز سے پڑھیں، خواتین آہستہ۔ اسے کثرت سے پڑھتے رہیں یہاں تک کہ جمرۂ عقبہ پر پہلی کنکری ماری جائے (عمرے میں طواف شروع کرنے تک)۔',
+    umrahNiyyat:'اصل نیت دل کی ہے؛ یہ الفاظ حنفی کتابوں میں سکھائے گئے ہیں۔ اس کے فوراً بعد ایک بار تلبیہ کہیں: اسی وقت سے احرام شروع ہو جاتا ہے۔',
+    hajjNiyyat:'حجِ تمتع میں یہ نیت ۸ ذوالحجہ کو مکہ میں اپنی رہائش گاہ سے کی جاتی ہے، پھر تلبیہ پڑھا جاتا ہے۔',
+    kaabaDua:'کعبہ پر پہلی نظر قبولیتِ دعا کا وقت ہے: ان الفاظ کے بعد یا ان کی جگہ اپنی ہر حاجت کسی بھی زبان میں مانگیں۔',
+    tawafStart:'حجرِ اسود کی طرف رخ کریں، دونوں ہاتھ نماز کی طرح اٹھائیں، یہ کلمات کہیں، پھر حجرِ اسود کو بوسہ دیں یا چھوئیں یا ہتھیلیوں سے اشارہ کر کے ہتھیلیوں کو چوم لیں۔ پھر چلنا شروع کریں۔',
+    rabbana:'نبی ﷺ ہر چکر میں دونوں کونوں کے درمیان یہ آیت پڑھتے تھے۔',
+    safaAyah:'نبی ﷺ نے یہ آیت پڑھ کر فرمایا: "میں اسی سے شروع کرتا ہوں جس سے اللہ نے شروع کیا۔" یہ سعی کے شروع میں صرف ایک بار پڑھی جاتی ہے۔',
+    safaDhikr:'کعبہ کی طرف رخ کر کے دعا کی طرح ہاتھ اٹھائیں، یہ کلمات کہیں، پھر اپنی دعا مانگیں؛ یہ سب تین بار دہرائیں۔ صفا پر بھی اور مروہ پر بھی، ہر چکر میں۔',
+    saiDua:'مرد دو سبز نشانوں کے درمیان تیز چلیں؛ خواتین عام رفتار سے چلیں۔',
+    arafahDua:'نبی ﷺ نے فرمایا: "سب سے بہتر دعا عرفہ کے دن کی دعا ہے، اور سب سے بہتر بات جو میں نے اور مجھ سے پہلے انبیا نے کہی" یہی کلمات ہیں۔',
+    masharDhikr:'۱۰ ذوالحجہ کی فجر کے بعد قبلہ رخ کھڑے ہو کر ذکر، تلبیہ اور دعا میں مشغول رہیں یہاں تک کہ خوب روشنی ہو جائے، پھر سورج نکلنے سے پہلے روانہ ہوں۔',
+    ramiTakbir:'ساتوں کنکریاں ایک ایک کر کے، ہر ایک کے ساتھ تکبیر کہتے ہوئے ماریں۔ بعض کتابوں کے لمبے الفاظ ("بسم اللہ اللہ اکبر رغماً للشیطان…") اختیاری ہیں۔ ۱۰ ذوالحجہ کو پہلی کنکری کے ساتھ تلبیہ بند ہو جاتا ہے۔',
+    zamzamDua:'زمزم جس نیت سے پیا جائے اسی کے لیے ہے (ابن ماجہ 3062): قبلہ رخ ہو کر تین سانسوں میں پیئیں اور جو چاہیں دعا مانگیں۔',
+    salamNabi:'عاجزی کے ساتھ قبلے کی طرف پیٹھ اور روضے کی طرف رخ کر کے آہستہ آواز میں کہیں۔ پھر ایک قدم دائیں ہٹ کر حضرت ابوبکر پھر حضرت عمر رضی اللہ عنہما کو سلام کہیں۔ اس کے بعد قبلہ رخ ہو کر اپنی دعا مانگیں۔'
+  });
+
+  const HAJJ = [
+    { id:'umrah', name:'‘Umrah step by step', ur:'عمرہ کا طریقہ', tag:'Iḥrām · Ṭawāf · Sa‘ī · Ḥalq', facts:[['Farḍ','Iḥrām · Ṭawāf'],['Wājib','Sa‘ī · Ḥalq or qaṣr'],['Time','Any day except 9 to 13 Dhul-Ḥijjah']],
+      intro:'‘Umrah has four parts done in order: iḥrām from the mīqāt, ṭawāf of the Ka‘bah, sa‘ī between Ṣafā and Marwah, and shaving or trimming the hair. It usually takes two to three hours. The steps below follow the Hanafi method.',
+      steps:[
+        { t:'Get ready before the mīqāt', d:'Clip the nails, remove unwanted hair, bathe, and (men) apply perfume before the intention. Men wear two unstitched white sheets: the lower one wrapped, the upper one over the shoulders, with sandals that leave the middle of the foot uncovered. Women wear their normal modest clothes with the head covered.' },
+        { t:'Two rak‘ahs, then the intention', d:'Pray two rak‘ahs nafl with the head covered (men uncover it afterwards). Then make the intention of ‘Umrah and say the talbiyah once, aloud for men and quietly for women. From this moment the iḥrām has begun and its restrictions apply. Do all of this before crossing the mīqāt: on a flight to Jeddah, make the intention at the airport or in the plane well before the announcement.', rec:['umrahNiyyat','talbiyah'] },
+        { t:'Keep saying the talbiyah', d:'Repeat the talbiyah often on the way: after prayers, when climbing or descending, when meeting people. Avoid arguments, and keep the tongue busy with dhikr.' },
+        { t:'Enter the Ḥaram', d:'Enter Masjid al-Ḥarām with the right foot and the du‘ā for entering a mosque. When the Ka‘bah first comes into view, stop, say Allāhu akbar and lā ilāha illallāh, and make du‘ā: it is a moment of acceptance. Stop the talbiyah as you begin the ṭawāf.', rec:['kaabaDua'] },
+        { t:'Iḍṭibā‘ and the starting line', d:'Men uncover the right shoulder by passing the upper sheet under the right arm and over the left shoulder (iḍṭibā‘); this stays for the whole ṭawāf. Stand at the line facing the Black Stone.' },
+        { t:'Ṭawāf: seven rounds', d:'Raise the hands, say “Bismillāh, Allāhu akbar, wa lillāhil-ḥamd”, kiss or touch the Black Stone or point to it with the palms and kiss them, then walk with the Ka‘bah on your left. Go around the outside of the Ḥijr (the semicircle wall). In the first three rounds men walk briskly with the chest out (ramal); the last four at a normal pace. Touch the Yamānī corner with the right hand if you can (no kissing), and between it and the Black Stone recite “Rabbanā ātinā…”. Point to the Black Stone at the start of every round; the round ends when you return to the line. Any dhikr, du‘ā or Qur’ān is fine during the ṭawāf; there are no fixed words for each round.', rec:['tawafStart','rabbana'] },
+        { t:'Two rak‘ahs behind Maqām Ibrāhīm', d:'After the seventh round point to the Stone once more, cover the shoulder, and pray two rak‘ahs (wājib) behind Maqām Ibrāhīm if there is room, otherwise anywhere in the mosque: Al-Kāfirūn in the first, Al-Ikhlāṣ in the second. In a makrūh time (after Fajr until sunrise, after ‘Aṣr until sunset) delay them.' },
+        { t:'Zamzam and the Stone once more', d:'Drink Zamzam facing the qiblah, in three breaths, with du‘ā. Then go back and point to the Black Stone one more time before sa‘ī (sunnah).', rec:['zamzamDua'] },
+        { t:'Sa‘ī: seven lengths', d:'Walk to Ṣafā reciting the āyah “Innaṣ-Ṣafā wal-Marwah…”. Climb a little, face the Ka‘bah, raise the hands as in du‘ā, say the takbīr and the dhikr and make du‘ā, three times. Walk to Marwah: that is one length. Men walk briskly between the two green markers; women walk normally. On Marwah repeat the dhikr and du‘ā. Seven lengths end on Marwah. Wuḍū is preferred but not a condition.', rec:['safaAyah','safaDhikr','saiDua'] },
+        { t:'Ḥalq or qaṣr', d:'Men shave the whole head (the better choice, starting from the right) or trim at least a fingertip length (about 2.5 cm) from all the hair, at least a quarter of the head. Women gather the hair and cut about a fingertip length from the ends; women never shave. Two rak‘ahs nafl after sa‘ī are mustaḥab. With the hair cut, the ‘Umrah is complete and the iḥrām ends.' }
+      ],
+      lists:[
+        { title:'Farḍ and wājib of ‘Umrah · فرائض و واجبات', items:['Farḍ: iḥrām with intention and talbiyah, and the ṭawāf (four rounds are farḍ, three are wājib).','Wājib: the sa‘ī, and shaving or trimming the hair.','Ṭawāf must be done inside Masjid al-Ḥarām with wuḍū, the ‘awrah covered, the Ka‘bah on the left, and the Ḥijr outside the path.'] },
+        { title:'If something goes wrong · اگر غلطی ہو جائے', items:['Crossed the mīqāt without iḥrām: go back to a mīqāt and enter iḥrām there; otherwise a dam (a sheep or goat sacrificed in the Ḥaram) is due.','Doubt in the count of rounds: take the smaller number and complete.','Wuḍū broke during ṭawāf: renew it and continue from where you stopped.','Cut hair or nails, used perfume or wore stitched clothes before the ḥalq: see “Mistakes and dam”.'] }
+      ] },
+
+    { id:'hajj', name:'Ḥajj day by day', ur:'حج کا طریقہ', tag:'Tamattu‘ · 8 to 13 Dhul-Ḥijjah', facts:[['Farḍ','Iḥrām · ‘Arafāt · Ṭawāf az-Ziyārah'],['Days','8 to 12 (13) Dhul-Ḥijjah'],['Type','Tamattu‘ (most pilgrims)']],
+      intro:'Most pilgrims from Pakistan perform Ḥajj Tamattu‘: ‘Umrah first in the months of Ḥajj, then a fresh iḥrām for Ḥajj on 8 Dhul-Ḥijjah. The five days follow a fixed order. Each station is explained in more detail in its own card.',
+      steps:[
+        { t:'Before the 8th', d:'Complete the ‘Umrah and come out of iḥrām. Stay in Makkah: pray in the Ḥaram, do nafl ṭawāf, and rest. Keep halāl food, sleep and water in mind; the coming days are long.' },
+        { t:'8 Dhul-Ḥijjah · Yawm at-Tarwiyah · Minā', d:'Bathe, wear the iḥrām sheets, pray two rak‘ahs, and make the intention of Ḥajj with the talbiyah from your residence in Makkah. Go to Minā, preferably before Ẓuhr. Pray Ẓuhr, ‘Aṣr, Maghrib, ‘Ishā and the next Fajr in Minā (sunnah) and spend the night there. Nothing else is required today except talbiyah and dhikr.', rec:['hajjNiyyat','talbiyah'] },
+        { t:'9 Dhul-Ḥijjah · ‘Arafāt', d:'After sunrise go to ‘Arafāt and make sure you are inside its boundary signs. The standing (wuqūf) is farḍ: be present at any moment between zawāl and the dawn of the 10th. Spend the afternoon standing or sitting facing the qiblah, hands raised, in du‘ā, talbiyah, istighfār and dhikr; this is the heart of Ḥajj. Pray Ẓuhr and ‘Aṣr each at its own time in your tent (they are combined only behind the imām in Masjid Namirah). Do not leave before sunset, and do not pray Maghrib in ‘Arafāt.', rec:['arafahDua'] },
+        { t:'Night of the 10th · Muzdalifah', d:'Leave after sunset for Muzdalifah, calmly, with talbiyah. Pray Maghrib and ‘Ishā together at ‘Ishā time with one adhān and one iqāmah, then the sunnahs and witr. Sleep in the open. Collect about 49 pebbles (70 if you plan to stay for the 13th), the size of a chickpea, from anywhere.' },
+        { t:'10 Dhul-Ḥijjah · Fajr at Muzdalifah', d:'Pray Fajr at its first time, then stand facing the qiblah in dhikr and du‘ā (the wuqūf of Muzdalifah, wājib: any moment between dawn and sunrise). Leave for Minā before the sun rises. The weak, the sick and women with a companion may leave after midnight.', rec:['masharDhikr'] },
+        { t:'10 Dhul-Ḥijjah · Ramī, qurbānī, ḥalq', d:'In Minā stone only the large pillar (Jamrah al-‘Aqabah): seven pebbles, one by one, with the takbīr, and stop the talbiyah with the first pebble. Then the sacrifice (wājib for Tamattu‘, usually through the bank coupon), then shave or trim. Keep this order: ramī, sacrifice, ḥalq. After the ḥalq everything becomes lawful except relations with the spouse; change into normal clothes.', rec:['ramiTakbir'] },
+        { t:'10 Dhul-Ḥijjah · Ṭawāf az-Ziyārah and sa‘ī', d:'Go to Makkah and perform ṭawāf az-ziyārah (farḍ) in normal clothes: seven rounds, no ramal, then two rak‘ahs, then the sa‘ī of Ḥajj (wājib). It must be done between the 10th and sunset of the 12th. After it the iḥrām ends completely. Return to Minā for the night (sunnah).' },
+        { t:'11 and 12 Dhul-Ḥijjah · The three pillars', d:'Each day after zawāl stone the small, then the middle, then the large pillar: seven pebbles each with the takbīr. Make du‘ā facing the qiblah after the small and the middle pillar, not after the large one. Spend the nights in Minā. Leave Minā on the 12th after ramī, preferably before sunset; leaving after sunset is disliked but allowed. If dawn of the 13th finds you still in Minā, the ramī of the 13th becomes wājib.' },
+        { t:'13 Dhul-Ḥijjah (optional)', d:'If you stayed, stone the three pillars again after zawāl, then leave Minā.' },
+        { t:'Ṭawāf al-Wadā‘ before leaving Makkah', d:'The farewell ṭawāf is wājib on every pilgrim from outside Makkah: seven rounds in normal clothes, two rak‘ahs, Zamzam and du‘ā; no sa‘ī. It should be the last act before travelling home. A woman in her menses is excused from it.' }
+      ],
+      lists:[
+        { title:'What you must not miss · فرائض', items:['Iḥrām with intention and talbiyah from the mīqāt or from Makkah for Tamattu‘.','Wuqūf at ‘Arafāt between zawāl of the 9th and dawn of the 10th: without it there is no Ḥajj.','Ṭawāf az-ziyārah: at least four rounds are farḍ; do it within the days of naḥr.'] },
+        { title:'Wājib acts (a dam if left) · واجبات', items:['Staying at ‘Arafāt until sunset if you were there in the day.','Wuqūf at Muzdalifah between dawn and sunrise of the 10th.','Ramī on the 10th, 11th and 12th.','The sacrifice for Tamattu‘ and Qirān.','Shaving or trimming within the Ḥaram in the days of naḥr.','Sa‘ī of Ḥajj after a ṭawāf.','Ṭawāf al-wadā‘ for pilgrims from outside Makkah.','Keeping the order on the 10th: ramī, then sacrifice, then ḥalq.'] }
+      ] },
+
+    { id:'ihram', name:'Iḥrām and the mīqāt', ur:'احرام اور میقات', tag:'Niyyat · Talbiyah · Restrictions', facts:[['Sunnah before','Ghusl · two sheets · two rak‘ahs'],['Begins with','Intention + talbiyah'],['Ends with','Ḥalq or qaṣr']],
+      intro:'Iḥrām is not the two sheets; it is the state you enter by making the intention and saying the talbiyah. The clothes and the du‘ās are its sunnah, the restrictions are its rules. It must begin before crossing the mīqāt.',
+      steps:[
+        { t:'Preparation (sunnah)', d:'Trim the nails and moustache, remove the hair of the armpits and below the navel, and bathe or at least make wuḍū. Men may apply perfume to the body before the intention, not to the sheets.' },
+        { t:'Clothing', d:'Men: a lower sheet (izār) tied around the waist and an upper sheet (ridā’) over the shoulders, both unstitched; no underwear, no socks; sandals that leave the raised middle of the foot uncovered. A belt or money pouch is fine. Women: ordinary modest clothes of any colour, head covered, hands uncovered, face uncovered with no cloth touching it.' },
+        { t:'Two rak‘ahs', d:'Pray two rak‘ahs nafl with the head covered (men), reciting Al-Kāfirūn and Al-Ikhlāṣ, unless it is a makrūh time.' },
+        { t:'Intention and talbiyah', d:'Make the intention in the heart (‘Umrah, Ḥajj, or both for Qirān), say the words, then say the talbiyah once. Now you are a muḥrim. Men uncover the head at this point.', rec:['umrahNiyyat','talbiyah'] },
+        { t:'Keep the talbiyah alive', d:'Say it often, especially after every prayer, at dawn, when climbing or descending, when meeting people. It ends with the first pebble on the 10th (Ḥajj) or the start of ṭawāf (‘Umrah).' }
+      ],
+      lists:[
+        { title:'The mīqāt points · میقات', items:['Dhul-Ḥulayfah (Abyār ‘Alī) for those coming from Madīnah: about 9 km from Masjid Nabawī.','Juḥfah (near Rābigh) for Syria, Egypt and the north.','Qarn al-Manāzil (As-Sayl al-Kabīr) for Najd and Ṭā’if.','Yalamlam (As-Sa‘diyyah) for Yemen; flights from Pakistan and India usually cross this line.','Dhāt ‘Irq for Iraq.','Flying to Jeddah: Jeddah is inside the mīqāt, so enter iḥrām before landing. Safest is to make the intention at the airport in Pakistan or in the plane before the announcement; earlier is allowed, later is not.','Flying to Madīnah first: travel in normal clothes and enter iḥrām at Dhul-Ḥulayfah on the way to Makkah.','People living inside the mīqāt (including Jeddah) enter iḥrām from where they are; residents of Makkah go out to the Ḥill (Tan‘īm or Ji‘rānah) for ‘Umrah.'] },
+        { title:'Not allowed in iḥrām · ممنوعات', items:['Men: any stitched garment (shirt, trousers, underwear, socks) and covering the head or face.','Women: gloves, and a veil that touches the face; cover the face with a cloth held away from it if needed.','Perfume and scented soap, wipes or creams, on the body or the clothes.','Cutting or plucking any hair, and clipping the nails.','Sexual relations and everything that leads to them, including talk of them.','Hunting or helping to hunt land animals, and cutting the plants of the Ḥaram.','Arguing, quarrelling and every sin: “no obscenity, no wickedness, no quarrelling during Ḥajj” (2:197).'] },
+        { title:'Allowed in iḥrām · جائز', items:['Bathing and washing the sheets, and changing them.','An umbrella, the shade of a tent or bus, and a blanket over the body as long as the head and face stay open.','A belt, a watch, spectacles, a ring, unscented soap, and a sewn bag.','Killing harmful creatures: mosquito, fly, snake, scorpion.','Sleeping, eating and normal work. Talking is fine; useless talk is discouraged.'] }
+      ] },
+
+    { id:'hajjArkan', name:'Types of Ḥajj · farḍ and wājib', ur:'حج کی اقسام اور ارکان', tag:'Tamattu‘ · Qirān · Ifrād', facts:[['Farḍ of Ḥajj','3'],['Farḍ of ‘Umrah','2'],['Sacrifice','Wājib in Tamattu‘ and Qirān']],
+      intro:'Ḥajj becomes farḍ once in a lifetime on every adult, sane Muslim who owns the means for the journey and for the family left behind, and can travel safely. Knowing which acts are farḍ, wājib and sunnah tells you what invalidates the Ḥajj, what needs a dam, and what only reduces the reward.',
+      lists:[
+        { title:'The three types · حج کی تین قسمیں', items:['Tamattu‘: iḥrām for ‘Umrah only, complete it and come out of iḥrām, then a fresh iḥrām for Ḥajj on the 8th from Makkah. The sacrifice is wājib. This is what most pilgrims from Pakistan do.','Qirān: one iḥrām for both ‘Umrah and Ḥajj from the mīqāt; ‘Umrah is done on arrival and the iḥrām stays until the 10th. The sacrifice is wājib. In Hanafi fiqh this is the most rewarding.','Ifrād: iḥrām for Ḥajj alone; ṭawāf al-qudūm on arrival (sunnah), no ‘Umrah, no obligatory sacrifice.'] },
+        { title:'Farḍ of Ḥajj · فرائضِ حج', items:['Iḥrām: intention with talbiyah, before the mīqāt. It is the condition of the whole act.','Wuqūf at ‘Arafāt: presence within its boundary at any moment from zawāl of the 9th to dawn of the 10th. Missed means the Ḥajj is missed.','Ṭawāf az-ziyārah: at least four of its seven rounds, after the wuqūf. The Ḥajj is not complete until it is done, even if one has travelled home.','Also required: being Muslim, the intention, and doing these in their order.'] },
+        { title:'Wājib of Ḥajj · واجباتِ حج', items:['Sa‘ī between Ṣafā and Marwah after a ṭawāf.','Staying at ‘Arafāt until sunset.','Wuqūf at Muzdalifah between dawn and sunrise of the 10th.','Ramī of the pillars on the 10th, 11th and 12th.','Shaving or trimming, in the Ḥaram, in the days of naḥr, and after the ramī.','The sacrifice for Tamattu‘ and Qirān, in the Ḥaram, on the 10th to 12th.','Ṭawāf az-ziyārah within the days of naḥr, and its last three rounds.','Ṭawāf al-wadā‘ for those from outside Makkah.','Iḥrām from the mīqāt, wuḍū and covered ‘awrah in ṭawāf, walking in ṭawāf and sa‘ī if able.','Leaving a wājib does not invalidate the Ḥajj but requires a dam; leaving it with a valid excuse (illness, menses) has its own rulings.'] },
+        { title:'Sunnah acts · سنن', items:['Ṭawāf al-qudūm for Qirān and Ifrād, with ramal and iḍṭibā‘.','The five prayers in Minā on the 8th and the night there.','Leaving for ‘Arafāt after sunrise, bathing before the wuqūf, and the imām’s khuṭbahs.','The nights of the 10th, 11th and 12th in Minā.','Zamzam, du‘ā at the multazam, and plenty of nafl ṭawāf while in Makkah.'] },
+        { title:'‘Umrah · عمرہ', items:['Farḍ: iḥrām, and ṭawāf (four rounds).','Wājib: sa‘ī, ḥalq or qaṣr, and the last three rounds of ṭawāf.','‘Umrah is a sunnah mu’akkadah once in a lifetime; more is rewarded. It is makrūh taḥrīmī on 9 to 13 Dhul-Ḥijjah.'] },
+        { title:'When is Ḥajj farḍ on a woman? · خواتین', items:['The same conditions, plus a maḥram or husband for the journey in Hanafi fiqh; if none is available, the obligation waits and she leaves a will for it.','A woman does not need her husband’s permission for the farḍ Ḥajj, but does for a nafl one.'] }
+      ] },
+
+    { id:'tawaf', name:'Ṭawāf', ur:'طواف', tag:'Seven rounds · Ramal · Rulings', facts:[['Rounds','7 (4 farḍ · 3 wājib)'],['Condition','Wuḍū · inside the mosque'],['After it','2 rak‘ahs (wājib)']],
+      intro:'Ṭawāf is seven rounds of the Ka‘bah beginning and ending at the Black Stone, with the Ka‘bah on the left. It is the second farḍ of ‘Umrah and of Ḥajj, and the most beloved worship for a visitor to Makkah at any time.',
+      steps:[
+        { t:'Conditions before you start', d:'Wuḍū (a ṭawāf without it must be repeated; otherwise a dam), the ‘awrah covered, the intention, and starting at the Black Stone. The whole ṭawāf must be inside the mosque, around the outside of the Ḥijr, on any floor.' },
+        { t:'Iḍṭibā‘ (men)', d:'Only in a ṭawāf that will be followed by sa‘ī: pass the upper sheet under the right arm and over the left shoulder. Cover the shoulder again before the two rak‘ahs.' },
+        { t:'Istilām at the Stone', d:'Face the Black Stone, raise the hands, say the takbīr, then kiss it, or touch it and kiss the hand, or point to it with the palms and kiss the palms. Do not push or hurt anyone to reach it; pointing is enough and fully valid.', rec:['tawafStart'] },
+        { t:'Walk with the Ka‘bah on the left', d:'Walk anticlockwise. Ramal (men, brisk walk with the chest out) is sunnah in the first three rounds of a ṭawāf followed by sa‘ī; then walk normally. Do not walk through the Ḥijr and do not walk along the Shādharwān (the sloping base of the wall).' },
+        { t:'The Yamānī corner', d:'Touch it with the right hand or both hands if you can, without kissing; if you cannot reach it, pass without any gesture. Between it and the Black Stone say “Rabbanā ātinā…”.', rec:['rabbana'] },
+        { t:'Count the rounds', d:'A round is complete when you are back at the Stone line. Point to the Stone at the start of each round: eight times in all, the last one after the seventh round. If in doubt about the number, take the lesser count.' },
+        { t:'Two rak‘ahs, then Zamzam', d:'Pray two rak‘ahs (wājib after every ṭawāf) behind Maqām Ibrāhīm if possible, otherwise anywhere in the mosque, avoiding the makrūh times. Recite Al-Kāfirūn and Al-Ikhlāṣ. Then du‘ā at the multazam if reachable, and Zamzam.', rec:['zamzamDua'] }
+      ],
+      lists:[
+        { title:'Kinds of ṭawāf · طواف کی اقسام', items:['Ṭawāf al-‘Umrah: farḍ, in iḥrām, with ramal and iḍṭibā‘, followed by sa‘ī.','Ṭawāf al-qudūm: sunnah for Qirān and Ifrād on arriving in Makkah.','Ṭawāf az-ziyārah (ifāḍah): farḍ of Ḥajj, on the 10th to 12th, in normal clothes; ramal only if the sa‘ī of Ḥajj follows it.','Ṭawāf al-wadā‘: wājib on leaving Makkah, no sa‘ī.','Nafl ṭawāf: any time, day or night, as much as you wish; for visitors it is better than nafl prayer.'] },
+        { title:'Rulings · مسائل', items:['If wuḍū breaks in the middle, renew it and continue from where you stopped; if a prayer is called, join it and then continue.','Talking is allowed but reduce it; no fixed du‘ā is required for each round: recite whatever Qur’ān, dhikr or du‘ā you like, quietly.','Women do not do ramal or iḍṭibā‘, and a woman in her menses does not perform ṭawāf until she is pure.','Carrying a child or being pushed in a wheelchair is valid; an able person should walk.','Doing ṭawāf az-ziyārah in a state of major impurity requires a camel or cow; repeat it if you are still in Makkah.'] }
+      ] },
+
+    { id:'sai', name:'Sa‘ī', ur:'سعی', tag:'Ṣafā to Marwah · Seven lengths', facts:[['Ruling','Wājib'],['Lengths','7, ending on Marwah'],['Wuḍū','Sunnah, not a condition']],
+      intro:'Sa‘ī is walking seven times between Ṣafā and Marwah in memory of Hājar’s search for water for Ismā‘īl. It is done after a ṭawāf, never on its own, and it is a wājib of both ‘Umrah and Ḥajj.',
+      steps:[
+        { t:'Istilām, then Ṣafā', d:'After the two rak‘ahs of ṭawāf and Zamzam, point once more to the Black Stone and walk out towards Ṣafā reciting the āyah of Ṣafā and Marwah.', rec:['safaAyah'] },
+        { t:'On Ṣafā', d:'Climb until you can see the Ka‘bah (a little, not to the top). Face it, raise both hands as in du‘ā, say the takbīr and the dhikr, then make your own du‘ā; repeat this three times.', rec:['safaDhikr'] },
+        { t:'Walk to Marwah', d:'Walk at a normal pace with dhikr and du‘ā. Between the two green markers men walk briskly (women normally) and say “Rabbighfir warḥam…”. Reaching Marwah completes the first length.', rec:['saiDua'] },
+        { t:'On Marwah', d:'Turn to face the Ka‘bah, raise the hands, and repeat the dhikr and du‘ā as on Ṣafā. Walk back to Ṣafā: the second length.' },
+        { t:'Count to seven', d:'Ṣafā to Marwah is one, Marwah to Ṣafā is two. The seventh length ends on Marwah. If in doubt, take the smaller number.' },
+        { t:'Two rak‘ahs (mustaḥab)', d:'Pray two rak‘ahs nafl in the mosque after sa‘ī, avoiding the makrūh times. In ‘Umrah, the ḥalq or qaṣr now follows; in Ḥajj you are already out of iḥrām.' }
+      ],
+      lists:[
+        { title:'Rulings · مسائل', items:['Sa‘ī is valid only after a valid ṭawāf, and the sa‘ī of ‘Umrah must be done in iḥrām.','In Ḥajj Tamattu‘ the sa‘ī of Ḥajj follows ṭawāf az-ziyārah; in Qirān and Ifrād it may be done after ṭawāf al-qudūm in the iḥrām of Ḥajj.','Wuḍū and purity are sunnah for sa‘ī, not a condition: a woman who begins her menses after the ṭawāf may complete the sa‘ī.','Walking is wājib for those who can; riding or a wheelchair is fine for the weak, the sick and the elderly.','Breaks for prayer, rest or drinking water do not spoil it; continue from where you were.','No ramal, no brisk walking and no climbing high for women.'] }
+      ] },
+
+    { id:'arafat', name:'‘Arafāt and Muzdalifah', ur:'عرفات اور مزدلفہ', tag:'9 Dhul-Ḥijjah · The heart of Ḥajj', facts:[['Wuqūf ‘Arafāt','Farḍ'],['Time','Zawāl of 9th to dawn of 10th'],['Muzdalifah','Wājib · dawn to sunrise']],
+      intro:'“Ḥajj is ‘Arafah” (Tirmidhī 889). The whole journey turns on one afternoon of standing before Allah in the plain of ‘Arafāt, followed by a night under the sky at Muzdalifah. Nothing is difficult here; what is needed is presence, humility and du‘ā.',
+      steps:[
+        { t:'Morning of the 9th', d:'Pray Fajr in Minā, then leave for ‘Arafāt after sunrise with talbiyah and dhikr. Bathing before the wuqūf is sunnah. Check that your tent is inside the boundary signs; Wādī ‘Uranah and the front part of Masjid Namirah are outside ‘Arafāt.' },
+        { t:'Ẓuhr and ‘Aṣr', d:'Listening to the khuṭbah and praying Ẓuhr and ‘Aṣr together behind the imām in Masjid Namirah is the sunnah. Anywhere else, pray each at its own time, shortened as a traveller if you are one and praying alone; behind a resident imām, pray in full.' },
+        { t:'The standing', d:'From zawāl until sunset stand or sit facing the qiblah, hands raised, like a beggar at a door. Say the talbiyah, the best du‘ā of ‘Arafah, istighfār, ṣalāt on the Prophet ﷺ, and ask for everything for yourself, your family, the living and the dead. Fasting on this day is not for the pilgrim. Rest a little if you must, but do not waste the last hours before sunset: that is the time the Prophet ﷺ spent entirely in du‘ā.', rec:['arafahDua'] },
+        { t:'Leave after sunset', d:'Do not pray Maghrib in ‘Arafāt. Move calmly towards Muzdalifah with talbiyah. Leaving before sunset without a valid excuse requires a dam.' },
+        { t:'Muzdalifah: Maghrib and ‘Ishā together', d:'On arriving, pray Maghrib and ‘Ishā together at the time of ‘Ishā with one adhān and one iqāmah, then the sunnah of Maghrib, the sunnah of ‘Ishā and witr. If you reach Muzdalifah very late, pray as soon as you arrive. Then sleep: no long nafl prayers tonight.' },
+        { t:'Pebbles', d:'Collect the pebbles here or anywhere else, the size of a chickpea: 49 for three days (7 + 21 + 21), 70 if you will stay for the 13th. Wash them if you wish; it is not required.' },
+        { t:'Fajr and the wuqūf of Muzdalifah', d:'Pray Fajr at its very first time, then stand facing the qiblah in dhikr, talbiyah and du‘ā until the sky is bright. The wuqūf of Muzdalifah is wājib: presence at any moment between dawn and sunrise. Leave for Minā before sunrise. Women, the elderly and the sick may leave after midnight with a companion, without a dam.', rec:['masharDhikr'] }
+      ],
+      lists:[
+        { title:'Rulings · مسائل', items:['If you reach ‘Arafāt only in the night before dawn of the 10th, even for a moment, the farḍ is met and no dam is due for the sunset.','The area of Muzdalifah excludes Wādī Muḥassir; stopping there does not count.','Leaving Muzdalifah before dawn without excuse requires a dam; with a valid excuse (weakness, illness, women in crowds) there is none.','Bathing, sleeping and eating are all fine in both places; keep the iḥrām rules: no perfume, no covering the head (men).'] }
+      ] },
+
+    { id:'mina', name:'Minā: ramī, qurbānī, ḥalq', ur:'منیٰ: رمی، قربانی، حلق', tag:'10 to 13 Dhul-Ḥijjah', facts:[['Ramī','7 pebbles per pillar'],['Sacrifice','Wājib for Tamattu‘ and Qirān'],['Order on 10th','Ramī → sacrifice → ḥalq']],
+      intro:'The days of Minā are the days of the sacrifice and of stoning the pillars in memory of Ibrāhīm rejecting Shayṭān. The acts are simple; the rulings are about time, order and count.',
+      steps:[
+        { t:'10th: Jamrah al-‘Aqabah only', d:'Stone only the large pillar: seven pebbles, one by one, each with “Bismillāh, Allāhu akbar”, aimed so that it lands inside the basin. The best time is from sunrise to zawāl; it is valid from dawn until sunset, and until the next dawn for the weak and for women. Stop the talbiyah with the first pebble. Do not stop to make du‘ā after this pillar.', rec:['ramiTakbir'] },
+        { t:'10th: the sacrifice', d:'Wājib for Tamattu‘ and Qirān as thanks; nafl for Ifrād. It must be done inside the Ḥaram (Minā and Makkah both are) on the 10th, 11th or 12th. The bank coupon is the safest way; keep its receipt. Do not shave before you know it is done, if you can wait; if the coupon time is unknown, follow your group’s instructions.' },
+        { t:'10th: ḥalq or qaṣr', d:'After the sacrifice, men shave the whole head (better) or trim a fingertip length from all the hair; women cut about a fingertip length from the ends. It must be in the Ḥaram and within the days of naḥr. Now everything becomes lawful except relations with the spouse: wear normal clothes and perfume.' },
+        { t:'10th: to Makkah for ṭawāf az-ziyārah', d:'Go to Makkah for ṭawāf az-ziyārah and the sa‘ī of Ḥajj, then return to Minā for the night. After this ṭawāf and sa‘ī, relations with the spouse also become lawful.' },
+        { t:'11th and 12th: the three pillars', d:'After zawāl each day: the small pillar (nearest Masjid al-Khayf), the middle, then the large. Seven pebbles each with the takbīr. Step aside and make du‘ā facing the qiblah after the small and the middle pillar; none after the large one. Ramī before zawāl on these days is not valid.' },
+        { t:'Leaving Minā', d:'Leave on the 12th after ramī, preferably before sunset; leaving after sunset is disliked but allowed. If dawn of the 13th finds you still in Minā, stay and do the ramī of the 13th after zawāl, then leave. The nights in Minā are sunnah; spending them elsewhere reduces the reward but needs no dam.' }
+      ],
+      lists:[
+        { title:'Rulings of ramī · رمی کے مسائل', items:['Throw one pebble at a time with the hand; several together count as one. Aim for the basin; a pebble that clearly falls outside is thrown again.','Pebbles from anywhere are fine; not from the basin itself, and never shoes or large stones.','Missed a day: make it up before sunset of the 13th with a dam if it was without excuse; after that only the dam remains.','Someone who truly cannot walk or stand in the crowd (bedridden, very old, unconscious) may appoint another to throw for them, after that person has thrown their own. Women should throw themselves if they can.','Keep the order small, middle, large on the 11th and 12th; if reversed, repeat.','Ramī at night for those with an excuse is allowed; for others it is valid but disliked.'] },
+        { title:'Ḥalq and qaṣr · حلق و قصر', items:['Shaving is better for men, and is required if the hair is too short to trim a fingertip length.','Trim from at least a quarter of the head; trimming a few hairs is not enough.','Ḥalq outside the Ḥaram or after the days of naḥr requires a dam.','Before ramī on the 10th the hair and nails stay untouched.'] }
+      ] },
+
+    { id:'duas', name:'Du‘ās of the journey', ur:'حج و عمرہ کی دعائیں', tag:'Talbiyah · Ṭawāf · Sa‘ī · ‘Arafah', facts:[['Fixed words','Talbiyah · takbīr'],['Everything else','Your own du‘ā'],['Language','Any']],
+      intro:'Apart from the talbiyah and the takbīr, no specific words are fixed for each round of ṭawāf or each length of sa‘ī. What is reported from the Prophet ﷺ is short and is given below; the rest of the time is for your own du‘ā in your own words, and for Qur’ān and dhikr.',
+      recs:['talbiyah','umrahNiyyat','hajjNiyyat','kaabaDua','tawafStart','rabbana','zamzamDua','safaAyah','safaDhikr','saiDua','arafahDua','masharDhikr','ramiTakbir','salamNabi'],
+      lists:[
+        { title:'Times of accepted du‘ā on this journey · قبولیت کے مواقع', items:['On first seeing the Ka‘bah.','During ṭawāf and at the multazam (the wall between the Black Stone and the door).','While drinking Zamzam.','On Ṣafā and Marwah.','The afternoon of ‘Arafah, especially the last hour.','At Muzdalifah after Fajr.','After the small and the middle pillar on the 11th and 12th.','Inside the Ḥijr, which is part of the Ka‘bah, in nafl prayer and du‘ā.'] },
+        { title:'A du‘ā list · دعاؤں کی فہرست', items:['Write your needs before travelling: forgiveness, steadfastness, a good end, parents, children, health, halāl provision, the Ummah.','Ask for the people who asked you to pray for them, by name.','Keep it short in crowded places and long in ‘Arafāt.'] }
+      ] },
+
+    { id:'women', name:'Rulings for women', ur:'خواتین کے مسائل', tag:'Iḥrām · Hair · Menses', facts:[['Iḥrām','Normal clothes'],['Face','Uncovered, no cloth touching'],['Hair','Trim only, never shave']],
+      intro:'A woman performs every act of Ḥajj and ‘Umrah like a man with a few differences of dress, voice and pace, and the special rulings of menses. Nothing in her monthly cycle stops her from completing Ḥajj.',
+      lists:[
+        { title:'Dress and manner · لباس اور طریقہ', items:['Iḥrām is her ordinary modest clothing of any colour; stitched clothes, socks and shoes are all fine. The head stays covered.','The face stays uncovered and no cloth may touch it. In front of non-maḥram men she may hang a cloth away from the face using a cap or visor.','No gloves in iḥrām; no perfume.','Talbiyah quietly, so that only she and those beside her hear it.','No ramal in ṭawāf, no iḍṭibā‘, no brisk walking between the green markers, and no climbing high on Ṣafā and Marwah. Walk at the edge of the crowd, with the maḥram.','For the ḥalq stage she gathers her hair and cuts about a fingertip length (2.5 cm) from all its ends; shaving is forbidden for her.'] },
+        { title:'Menses and post-natal bleeding · حیض و نفاس', items:['Iḥrām is valid in menses: bathe, make the intention and say the talbiyah; then do everything except ṭawāf and the two rak‘ahs.','Wuqūf at ‘Arafāt and Muzdalifah, ramī, the sacrifice and cutting the hair are all done as normal.','Ṭawāf az-ziyārah waits until she is pure; if that pushes it past the 12th, there is no dam because the excuse is valid.','Ṭawāf al-wadā‘ is waived if she leaves Makkah while still in menses.','Sa‘ī does not need purity: if the bleeding starts after ṭawāf, she may complete the sa‘ī.','Tamattu‘ and menses before the ‘Umrah ṭawāf: if she cannot complete the ‘Umrah before the 9th, she should tell her group’s ‘ālim at once. The usual Hanafi ruling is to make the intention of Ḥajj, perform the Ḥajj, and make up the ‘Umrah after it with a dam.','Medicine to delay the period is allowed if a doctor confirms it is not harmful; the ṭawāf done in that state is valid.'] },
+        { title:'The maḥram · محرم', items:['In Hanafi fiqh a woman travels for Ḥajj with her husband or a maḥram (a man she can never marry: father, son, brother, uncle, nephew, father-in-law, son-in-law); the obligation of Ḥajj waits until one is available.','Government rules about companions change; the fiqh ruling does not, so ask a trusted ‘ālim before booking.','Riyāḍ al-Jannah in Madīnah has separate timings and permits for women; plan the visit through the Nusuk app.'] }
+      ] },
+
+    { id:'madinah', name:'Visiting Madīnah', ur:'زیارتِ مدینہ', tag:'Masjid Nabawī · Salām · Adab', facts:[['Ruling','Mustaḥab, not part of Ḥajj'],['Prayer here','1000 × elsewhere'],['Mīqāt after','Dhul-Ḥulayfah']],
+      intro:'The visit to Madīnah is not one of the acts of Ḥajj, but the Prophet ﷺ said: “Whoever visits my grave, my intercession becomes due for him” (Dāraquṭnī; a weak chain, accepted for practice by the scholars). Go with love and manners: no raised voices, no touching the grille, and du‘ā to Allah alone.',
+      steps:[
+        { t:'On the way', d:'Send ṣalāt on the Prophet ﷺ abundantly. Bathe or make wuḍū and wear clean clothes before entering the city. No iḥrām is needed for Madīnah.' },
+        { t:'Enter Masjid Nabawī', d:'Enter with the right foot and the du‘ā for entering a mosque, preferably through Bāb Jibrīl or Bāb as-Salām. Pray two rak‘ahs taḥiyyat al-masjid, in Riyāḍ al-Jannah if the permit allows, otherwise anywhere.' },
+        { t:'Salām at the grave', d:'Stand facing the grave with your back to the qiblah, about a metre or two away, with humility and a lowered voice. Say the ṣalāt and salām. Then move about a step to the right and greet Abū Bakr, then another step and greet ‘Umar (may Allah be pleased with them). Convey the salām of those who asked you to.', rec:['salamNabi'] },
+        { t:'Du‘ā', d:'Turn to face the qiblah and make du‘ā to Allah. Do not face the grave in du‘ā, do not raise the hands towards it, and do not ask the Prophet ﷺ for needs; ask Allah, and ask Him to grant you the Prophet’s ﷺ intercession.' },
+        { t:'Pray every prayer here', d:'One prayer in Masjid Nabawī is better than a thousand elsewhere except Masjid al-Ḥarām (Bukhārī 1190). Spend your days in prayer, Qur’ān and ṣalāt on the Prophet ﷺ. The “forty prayers” narration is weak; there is no fixed number.' },
+        { t:'Places to visit', d:'Masjid Qubā: make wuḍū at your residence and pray two rak‘ahs there for the reward of an ‘Umrah (Tirmidhī 324); Saturdays were the Prophet’s ﷺ habit. Al-Baqī‘ for salām to the Companions, the martyrs of Uḥud including Ḥamzah, Masjid al-Qiblatayn, and the seven mosques of the Trench.' },
+        { t:'Leaving for Makkah', d:'Bathe and put on the iḥrām sheets at your hotel or at the mīqāt, pray two rak‘ahs at Masjid Dhul-Ḥulayfah (Abyār ‘Alī), make the intention and the talbiyah there, then travel to Makkah.', rec:['umrahNiyyat','talbiyah'] }
+      ],
+      lists:[
+        { title:'Adab · آداب', items:['Silence and stillness in front of the grave: “do not raise your voices above the voice of the Prophet” (49:2) applies after his passing too.','No touching, kissing or circling the grille, no bowing, no photographs in the Rawḍah.','Give charity, feed people and visit the sick if you can: Madīnah is a place of good deeds.','Leaving Madīnah with a final salām at the grave is the manner of the pious.'] }
+      ] },
+
+    { id:'mistakes', name:'Mistakes, dam and preparation', ur:'عام غلطیاں، دم اور تیاری', tag:'What to avoid · Penalties · Checklist', facts:[['Dam','A sheep or goat in the Ḥaram'],['Ṣadaqah','About 1.75 kg wheat or its value'],['Badanah','A camel or cow']],
+      intro:'Most errors come from not knowing, and most are repaired by a dam: a sheep or goat slaughtered inside the Ḥaram and given to the poor there, arranged through the same bank counters as the sacrifice. Learn the list before you travel and the journey becomes easy.',
+      lists:[
+        { title:'Before you travel · سفر سے پہلے', items:['Sincere tawbah; ask forgiveness from those you wronged; settle debts or arrange for them; write a will.','Use only halāl money for the journey.','Learn the manāsik and practise: watch, read, and rehearse ṭawāf and sa‘ī counts with your family.','Learn the prayer of a traveller (qaṣr) and the rules of combining at ‘Arafāt and Muzdalifah.','Pack: two or three sets of iḥrām sheets, an iḥrām belt, sandals, unscented soap, a small bag for pebbles, a pocket copy of the du‘ās, medicines, and your group leader’s number.','Write your du‘ā list and the names of those who asked you to pray for them.'] },
+        { title:'Common mistakes · عام غلطیاں', items:['Crossing the mīqāt without iḥrām: return to a mīqāt, or a dam.','Men covering the head while sleeping, or the face with a mask pressed against it; wearing socks or shoes that cover the middle of the foot.','Using scented soap, shampoo, wet wipes or perfume in iḥrām.','Cutting nails, plucking hair, or shaving before the ramī on the 10th.','Making the intention without a single talbiyah: in Hanafi fiqh the iḥrām is not valid without it.','Ṭawāf without wuḍū, passing through the Ḥijr, or counting wrongly.','Pushing and hurting people to kiss the Black Stone; pointing is enough.','Leaving ‘Arafāt before sunset, praying Maghrib there, or leaving Muzdalifah before dawn without an excuse.','Stoning before zawāl on the 11th and 12th, throwing all pebbles at once, or throwing shoes.','Shaving before the sacrifice in Tamattu‘ or Qirān, or shaving outside the Ḥaram.','Delaying ṭawāf az-ziyārah past sunset of the 12th.','Leaving Makkah without ṭawāf al-wadā‘, or doing shopping and a long stay after it.','Loud talk, selfies and phones in ṭawāf; arguing with staff and fellow pilgrims; smoking.','Fasting on the day of ‘Arafah while performing Ḥajj.'] },
+        { title:'Penalties · جنایات', items:['Dam (a sheep or goat): leaving any wājib; a full day or night in stitched clothes or with the head covered (men); perfume on a whole limb; shaving or cutting a quarter of the head or more; clipping the nails of a whole hand or foot; ṭawāf az-ziyārah or the ṭawāf of ‘Umrah done without wuḍū and not repeated; leaving up to three rounds of ṭawāf az-ziyārah.','Ṣadaqah (half a ṣā‘ of wheat, about 1.75 kg, or its value, per item): less than a day in stitched clothes; perfume on part of a limb; a few hairs; one nail; ṭawāf al-wadā‘ or al-qudūm without wuḍū; leaving a round of ṭawāf al-wadā‘.','Badanah (camel or cow): ṭawāf az-ziyārah in major impurity that is not repeated; relations with the spouse after ‘Arafāt but before the ḥalq.','Ḥajj invalid: relations before the wuqūf at ‘Arafāt. Complete the Ḥajj, sacrifice a sheep, and repeat the Ḥajj next year. ‘Umrah invalid: relations before four rounds of its ṭawāf; complete it, repeat it, and a dam.','Excuse: an act done out of necessity (illness, heat, injury) still needs the penalty, but you may choose between a dam, feeding six poor people or fasting three days.','A dam must be slaughtered inside the Ḥaram and given to its poor; it may be done on your behalf by your group or the bank.','In every doubtful case ask the mu‘allim or a mufti in the Ḥaram before leaving Makkah.'] }
+      ] }
+  ];
+
+  const HAJJ_UR = {
+    umrah: { facts:[['فرض','احرام · طواف'],['واجب','سعی · حلق یا قصر'],['وقت','۹ تا ۱۳ ذوالحجہ کے سوا کسی بھی دن']],
+      intro:'عمرے کے چار کام ترتیب سے ہیں: میقات سے احرام، کعبے کا طواف، صفا اور مروہ کی سعی، اور سر کے بال منڈانا یا کٹوانا۔ عام طور پر دو تین گھنٹے لگتے ہیں۔ نیچے حنفی طریقہ لکھا ہے۔',
+      steps:[
+        ['میقات سے پہلے تیاری','ناخن تراشیں، غیر ضروری بال صاف کریں، غسل کریں اور (مرد) نیت سے پہلے خوشبو لگا لیں۔ مرد دو بغیر سلی سفید چادریں پہنیں: نیچے والی تہبند کی طرح، اوپر والی کندھوں پر؛ ایسی چپل جس سے پاؤں کا درمیانی ابھرا حصہ کھلا رہے۔ خواتین اپنے عام باپردہ کپڑے پہنیں اور سر ڈھانپیں۔'],
+        ['دو رکعت، پھر نیت','سر ڈھانپ کر دو رکعت نفل پڑھیں (مرد بعد میں سر کھول لیں)۔ پھر عمرے کی نیت کریں اور ایک بار تلبیہ کہیں: مرد بلند آواز سے، خواتین آہستہ۔ اسی لمحے سے احرام شروع ہو گیا اور اس کی پابندیاں لاگو ہو گئیں۔ یہ سب میقات سے پہلے کر لیں: جدہ کی فلائٹ میں ایئرپورٹ پر یا جہاز میں اعلان سے پہلے ہی نیت کر لیں۔'],
+        ['تلبیہ جاری رکھیں','راستے میں کثرت سے تلبیہ پڑھیں: نمازوں کے بعد، چڑھتے اترتے، لوگوں سے ملتے وقت۔ جھگڑے سے بچیں اور زبان کو ذکر میں مشغول رکھیں۔'],
+        ['حرم میں داخلہ','مسجدِ حرام میں دایاں پاؤں پہلے رکھ کر مسجد میں داخلے کی دعا پڑھتے ہوئے داخل ہوں۔ جب کعبہ پہلی بار نظر آئے تو رک جائیں، اللہ اکبر اور لا الہ الا اللہ کہیں اور دعا مانگیں: یہ قبولیت کا وقت ہے۔ طواف شروع کرتے ہی تلبیہ بند کر دیں۔'],
+        ['اضطباع اور شروع کی لکیر','مرد اوپر والی چادر دائیں بغل کے نیچے سے نکال کر بائیں کندھے پر ڈال لیں تاکہ دایاں کندھا کھلا رہے (اضطباع)؛ یہ پورے طواف میں رہے گا۔ حجرِ اسود کے سامنے لکیر پر کھڑے ہوں۔'],
+        ['طواف: سات چکر','ہاتھ اٹھا کر "بسم اللہ، اللہ اکبر، وللہ الحمد" کہیں، حجرِ اسود کو بوسہ دیں یا چھوئیں یا ہتھیلیوں سے اشارہ کر کے ہتھیلیاں چوم لیں، پھر کعبے کو بائیں طرف رکھ کر چلیں۔ حطیم (نصف دائرے والی دیوار) کے باہر سے گزریں۔ پہلے تین چکروں میں مرد سینہ نکال کر ذرا تیز اکڑ کر چلیں (رمل)؛ باقی چار عام رفتار سے۔ رکنِ یمانی کو ہو سکے تو دائیں ہاتھ سے چھوئیں (بوسہ نہیں)، اور اس کے اور حجرِ اسود کے درمیان "ربنا آتنا…" پڑھیں۔ ہر چکر کے شروع میں حجرِ اسود کی طرف اشارہ کریں؛ لکیر پر واپس پہنچنے پر چکر مکمل ہوتا ہے۔ طواف میں کوئی بھی ذکر، دعا یا قرآن پڑھ سکتے ہیں؛ ہر چکر کے لیے مخصوص الفاظ نہیں ہیں۔'],
+        ['مقامِ ابراہیم کے پیچھے دو رکعت','ساتویں چکر کے بعد ایک بار پھر حجرِ اسود کی طرف اشارہ کریں، کندھا ڈھانپ لیں اور دو رکعت (واجب) مقامِ ابراہیم کے پیچھے جگہ ملے تو وہاں ورنہ مسجد میں کہیں بھی پڑھیں: پہلی میں سورۃ الکافرون، دوسری میں سورۃ الاخلاص۔ مکروہ وقت (فجر کے بعد طلوع تک، عصر کے بعد غروب تک) میں یہ رکعتیں مؤخر کر دیں۔'],
+        ['زمزم اور پھر حجرِ اسود','قبلہ رخ ہو کر تین سانسوں میں زمزم پیئیں اور دعا مانگیں۔ پھر سعی سے پہلے ایک بار اور حجرِ اسود کی طرف اشارہ کریں (سنت)۔'],
+        ['سعی: سات چکر','"ان الصفا والمروۃ…" پڑھتے ہوئے صفا کی طرف چلیں۔ تھوڑا اوپر چڑھ کر کعبے کی طرف رخ کریں، دعا کی طرح ہاتھ اٹھائیں، تکبیر اور ذکر کہیں اور دعا مانگیں، تین بار۔ مروہ تک چلیں: یہ ایک چکر ہوا۔ دو سبز نشانوں کے درمیان مرد تیز چلیں، خواتین عام رفتار سے۔ مروہ پر پھر ذکر اور دعا کریں۔ ساتواں چکر مروہ پر ختم ہوتا ہے۔ سعی میں وضو بہتر ہے، شرط نہیں۔'],
+        ['حلق یا قصر','مرد پورا سر منڈائیں (بہتر، دائیں طرف سے شروع) یا سب بالوں سے کم از کم ایک پور (تقریباً ڈھائی سینٹی میٹر) کٹوائیں، کم از کم چوتھائی سر سے۔ خواتین بال اکٹھے کر کے سروں سے تقریباً ایک پور کاٹ لیں؛ خواتین کبھی سر نہ منڈائیں۔ سعی کے بعد دو رکعت نفل مستحب ہیں۔ بال کٹتے ہی عمرہ مکمل اور احرام ختم۔']
+      ],
+      lists:[
+        ['فرائض و واجباتِ عمرہ',['فرض: نیت اور تلبیہ کے ساتھ احرام، اور طواف (چار چکر فرض، تین واجب)۔','واجب: سعی، اور بال منڈانا یا کٹوانا۔','طواف مسجدِ حرام کے اندر، باوضو، ستر ڈھانپ کر، کعبے کو بائیں طرف رکھ کر اور حطیم کے باہر سے ہونا چاہیے۔']],
+        ['اگر غلطی ہو جائے',['بغیر احرام میقات سے گزر گئے: واپس کسی میقات پر جا کر احرام باندھیں؛ ورنہ دم (حرم میں بکری یا دنبے کی قربانی) لازم ہے۔','چکروں کی گنتی میں شک: کم تعداد مان کر پورا کریں۔','طواف کے دوران وضو ٹوٹ گیا: نیا وضو کر کے وہیں سے جاری رکھیں۔','حلق سے پہلے بال یا ناخن کاٹ لیے، خوشبو لگا لی یا سلا کپڑا پہن لیا: "عام غلطیاں اور دم" دیکھیں۔']]
+      ] },
+
+    hajj: { facts:[['فرض','احرام · عرفات · طوافِ زیارت'],['دن','۸ تا ۱۲ (۱۳) ذوالحجہ'],['قسم','تمتع (اکثر حجاج)']],
+      intro:'پاکستان سے جانے والے اکثر حجاج حجِ تمتع کرتے ہیں: حج کے مہینوں میں پہلے عمرہ، پھر ۸ ذوالحجہ کو حج کا نیا احرام۔ پانچ دنوں کی ترتیب مقرر ہے۔ ہر مقام کی تفصیل اس کے اپنے کارڈ میں ہے۔',
+      steps:[
+        ['۸ ذوالحجہ سے پہلے','عمرہ مکمل کر کے احرام کھول دیں۔ مکہ میں قیام کریں: حرم میں نمازیں، نفلی طواف اور آرام۔ حلال کھانے، نیند اور پانی کا خیال رکھیں؛ آنے والے دن لمبے ہیں۔'],
+        ['۸ ذوالحجہ · یومِ ترویہ · منیٰ','غسل کریں، احرام کی چادریں پہنیں، دو رکعت پڑھیں اور مکہ میں اپنی رہائش گاہ سے حج کی نیت کر کے تلبیہ پڑھیں۔ منیٰ روانہ ہوں، بہتر ہے ظہر سے پہلے۔ ظہر، عصر، مغرب، عشا اور اگلی فجر منیٰ میں پڑھیں (سنت) اور رات وہیں گزاریں۔ آج تلبیہ اور ذکر کے سوا کچھ لازم نہیں۔'],
+        ['۹ ذوالحجہ · عرفات','طلوعِ آفتاب کے بعد عرفات جائیں اور یقین کر لیں کہ آپ اس کی حدود کے نشانات کے اندر ہیں۔ وقوف فرض ہے: زوال سے ۱۰ تاریخ کی صبح صادق تک کسی بھی لمحے حاضر ہونا۔ دوپہر کے بعد قبلہ رخ کھڑے یا بیٹھے، ہاتھ اٹھائے، دعا، تلبیہ، استغفار اور ذکر میں گزاریں؛ یہی حج کا دل ہے۔ ظہر اور عصر اپنے خیمے میں اپنے اپنے وقت پر پڑھیں (جمع صرف مسجدِ نمرہ میں امام کے پیچھے ہوتی ہے)۔ غروب سے پہلے نہ نکلیں اور مغرب عرفات میں نہ پڑھیں۔'],
+        ['۱۰ کی رات · مزدلفہ','غروب کے بعد اطمینان سے تلبیہ پڑھتے ہوئے مزدلفہ روانہ ہوں۔ مغرب اور عشا عشا کے وقت ایک اذان اور ایک اقامت سے ملا کر پڑھیں، پھر سنتیں اور وتر۔ کھلے آسمان تلے سوئیں۔ تقریباً ۴۹ کنکریاں (۱۳ تاریخ رکنا ہو تو ۷۰) چنے کے برابر، کہیں سے بھی جمع کر لیں۔'],
+        ['۱۰ ذوالحجہ · مزدلفہ کی فجر','فجر اول وقت میں پڑھیں، پھر قبلہ رخ کھڑے ہو کر ذکر اور دعا کریں (وقوفِ مزدلفہ، واجب: صبح صادق سے طلوع تک کسی بھی لمحے)۔ سورج نکلنے سے پہلے منیٰ روانہ ہوں۔ کمزور، بیمار اور خواتین ساتھی کے ساتھ آدھی رات کے بعد جا سکتے ہیں۔'],
+        ['۱۰ ذوالحجہ · رمی، قربانی، حلق','منیٰ میں صرف بڑے شیطان (جمرۂ عقبہ) کو کنکریاں ماریں: سات کنکریاں ایک ایک کر کے تکبیر کے ساتھ، اور پہلی کنکری کے ساتھ تلبیہ بند۔ پھر قربانی (تمتع میں واجب، عموماً بینک کی پرچی سے)، پھر حلق یا قصر۔ یہ ترتیب رکھیں: رمی، قربانی، حلق۔ حلق کے بعد بیوی سے تعلق کے سوا سب کچھ حلال؛ عام کپڑے پہن لیں۔'],
+        ['۱۰ ذوالحجہ · طوافِ زیارت اور سعی','مکہ جا کر عام کپڑوں میں طوافِ زیارت (فرض) کریں: سات چکر، رمل نہیں، پھر دو رکعت، پھر حج کی سعی (واجب)۔ یہ ۱۰ سے ۱۲ تاریخ کے غروب تک ہونا چاہیے۔ اس کے بعد احرام پوری طرح ختم۔ رات کے لیے منیٰ واپس آئیں (سنت)۔'],
+        ['۱۱ اور ۱۲ ذوالحجہ · تینوں شیطان','ہر دن زوال کے بعد پہلے چھوٹے، پھر درمیانے، پھر بڑے شیطان کو سات سات کنکریاں تکبیر کے ساتھ ماریں۔ چھوٹے اور درمیانے کے بعد قبلہ رخ ہو کر دعا مانگیں، بڑے کے بعد نہیں۔ راتیں منیٰ میں گزاریں۔ ۱۲ تاریخ کو رمی کے بعد منیٰ سے نکل جائیں، بہتر ہے غروب سے پہلے؛ غروب کے بعد نکلنا مکروہ ہے مگر جائز۔ اگر ۱۳ کی صبح صادق منیٰ ہی میں ہو گئی تو ۱۳ کی رمی واجب ہو جائے گی۔'],
+        ['۱۳ ذوالحجہ (اختیاری)','اگر رک گئے تو زوال کے بعد تینوں شیطانوں کو پھر کنکریاں ماریں، پھر منیٰ سے نکلیں۔'],
+        ['مکہ چھوڑنے سے پہلے طوافِ وداع','مکہ سے باہر کے ہر حاجی پر طوافِ وداع واجب ہے: عام کپڑوں میں سات چکر، دو رکعت، زمزم اور دعا؛ سعی نہیں۔ یہ واپسی سے پہلے آخری کام ہونا چاہیے۔ حیض والی خاتون اس سے معذور ہے۔']
+      ],
+      lists:[
+        ['جو چھوٹ نہیں سکتے: فرائض',['میقات سے، یا تمتع میں مکہ سے، نیت اور تلبیہ کے ساتھ احرام۔','۹ کے زوال سے ۱۰ کی صبح صادق تک وقوفِ عرفات: اس کے بغیر حج نہیں۔','طوافِ زیارت: کم از کم چار چکر فرض؛ ایامِ نحر میں کریں۔']],
+        ['واجبات (چھوٹ جائیں تو دم)',['دن میں عرفات پہنچے ہوں تو غروب تک وہیں رہنا۔','۱۰ کی صبح صادق سے طلوع تک وقوفِ مزدلفہ۔','۱۰، ۱۱ اور ۱۲ کی رمی۔','تمتع اور قران کی قربانی۔','ایامِ نحر میں حرم کے اندر حلق یا قصر۔','طواف کے بعد حج کی سعی۔','مکہ سے باہر کے حجاج کے لیے طوافِ وداع۔','۱۰ تاریخ کی ترتیب: رمی، پھر قربانی، پھر حلق۔']]
+      ] },
+
+    ihram: { facts:[['پہلے سنت','غسل · دو چادریں · دو رکعت'],['شروع','نیت + تلبیہ'],['ختم','حلق یا قصر']],
+      intro:'احرام دو چادروں کا نام نہیں؛ یہ وہ حالت ہے جس میں آپ نیت کر کے تلبیہ کہتے ہی داخل ہو جاتے ہیں۔ کپڑے اور دعائیں اس کی سنت ہیں، پابندیاں اس کے احکام۔ یہ میقات سے گزرنے سے پہلے شروع ہونا چاہیے۔',
+      steps:[
+        ['تیاری (سنت)','ناخن اور مونچھیں تراشیں، بغل اور زیرِ ناف بال صاف کریں، غسل کریں یا کم از کم وضو۔ مرد نیت سے پہلے جسم پر خوشبو لگا سکتے ہیں، چادروں پر نہیں۔'],
+        ['لباس','مرد: کمر پر باندھی ہوئی نیچے کی چادر (ازار) اور کندھوں پر اوپر کی چادر (رداء)، دونوں بغیر سلی؛ نہ بنیان نہ جانگیہ نہ موزے؛ ایسی چپل جس سے پاؤں کا درمیانی ابھرا حصہ کھلا رہے۔ بیلٹ یا پیسوں کی تھیلی ٹھیک ہے۔ خواتین: کسی بھی رنگ کے عام باپردہ کپڑے، سر ڈھکا ہوا، ہاتھ کھلے، چہرہ کھلا اور اس پر کوئی کپڑا نہ لگے۔'],
+        ['دو رکعت','مرد سر ڈھانپ کر دو رکعت نفل پڑھیں، سورۃ الکافرون اور سورۃ الاخلاص کے ساتھ، بشرطیکہ مکروہ وقت نہ ہو۔'],
+        ['نیت اور تلبیہ','دل میں نیت کریں (عمرہ، حج، یا قران کے لیے دونوں)، الفاظ کہیں، پھر ایک بار تلبیہ کہیں۔ اب آپ محرم ہیں۔ مرد اسی وقت سر کھول لیں۔'],
+        ['تلبیہ زندہ رکھیں','کثرت سے پڑھیں، خاص طور پر ہر نماز کے بعد، صبح کے وقت، چڑھتے اترتے، لوگوں سے ملتے وقت۔ حج میں ۱۰ تاریخ کی پہلی کنکری پر اور عمرے میں طواف شروع کرنے پر ختم ہوتا ہے۔']
+      ],
+      lists:[
+        ['میقات',['ذوالحلیفہ (ابیارِ علی): مدینہ سے آنے والوں کے لیے، مسجدِ نبوی سے تقریباً ۹ کلومیٹر۔','جحفہ (رابغ کے قریب): شام، مصر اور شمال کے لیے۔','قرن المنازل (السیل الکبیر): نجد اور طائف کے لیے۔','یلملم (السعدیہ): یمن کے لیے؛ پاکستان اور بھارت کی پروازیں عموماً اسی لکیر سے گزرتی ہیں۔','ذاتِ عرق: عراق کے لیے۔','جدہ کی پرواز: جدہ میقات کے اندر ہے، اس لیے لینڈنگ سے پہلے احرام باندھ لیں۔ سب سے محفوظ یہ ہے کہ پاکستان کے ایئرپورٹ پر یا جہاز میں اعلان سے پہلے نیت کر لیں؛ پہلے کرنا جائز ہے، بعد میں نہیں۔','پہلے مدینہ کی پرواز: عام کپڑوں میں سفر کریں اور مکہ جاتے ہوئے ذوالحلیفہ سے احرام باندھیں۔','میقات کے اندر رہنے والے (جدہ سمیت) اپنی جگہ سے احرام باندھیں؛ مکہ کے رہنے والے عمرے کے لیے حل (تنعیم یا جعرانہ) جائیں۔']],
+        ['احرام میں ممنوع',['مرد: کوئی بھی سلا ہوا کپڑا (قمیص، شلوار، جانگیہ، موزے) اور سر یا چہرہ ڈھانپنا۔','خواتین: دستانے، اور ایسا نقاب جو چہرے سے لگے؛ ضرورت ہو تو کپڑا چہرے سے دور رکھ کر لٹکائیں۔','خوشبو اور خوشبودار صابن، وائپس یا کریم، جسم یا کپڑوں پر۔','کوئی بھی بال کاٹنا یا اکھاڑنا، اور ناخن تراشنا۔','ازدواجی تعلق اور اس کی طرف لے جانے والی ہر بات، ایسی باتیں کرنا بھی۔','خشکی کے جانور کا شکار یا اس میں مدد، اور حرم کے پودے کاٹنا۔','لڑائی جھگڑا اور ہر گناہ: "حج میں نہ فحش بات، نہ گناہ، نہ جھگڑا" (۲:۱۹۷)۔']],
+        ['احرام میں جائز',['نہانا، چادریں دھونا اور بدلنا۔','چھتری، خیمے یا بس کا سایہ، اور جسم پر کمبل بشرطیکہ سر اور چہرہ کھلا رہے۔','بیلٹ، گھڑی، عینک، انگوٹھی، بغیر خوشبو کا صابن اور سلا ہوا بیگ۔','موذی جانور مارنا: مچھر، مکھی، سانپ، بچھو۔','سونا، کھانا اور عام کام۔ بات کرنا ٹھیک ہے؛ فضول باتوں سے بچیں۔']]
+      ] },
+
+    hajjArkan: { facts:[['فرائضِ حج','3'],['فرائضِ عمرہ','2'],['قربانی','تمتع اور قران میں واجب']],
+      intro:'حج زندگی میں ایک بار ہر بالغ، عاقل مسلمان پر فرض ہے جو سفر اور پیچھے رہنے والے گھر والوں کے خرچ کا مالک ہو اور محفوظ سفر کر سکے۔ یہ جاننا کہ کون سا کام فرض، واجب اور سنت ہے، بتاتا ہے کہ کس سے حج باطل ہوتا ہے، کس پر دم آتا ہے اور کس سے صرف ثواب کم ہوتا ہے۔',
+      lists:[
+        ['حج کی تین قسمیں',['تمتع: صرف عمرے کا احرام، عمرہ کر کے احرام کھول دیں، پھر ۸ تاریخ کو مکہ سے حج کا نیا احرام۔ قربانی واجب ہے۔ پاکستان کے اکثر حجاج یہی کرتے ہیں۔','قران: میقات سے عمرے اور حج دونوں کا ایک احرام؛ پہنچتے ہی عمرہ کریں اور احرام ۱۰ تاریخ تک رہے۔ قربانی واجب ہے۔ حنفی فقہ میں یہ سب سے افضل ہے۔','افراد: صرف حج کا احرام؛ پہنچنے پر طوافِ قدوم (سنت)، نہ عمرہ نہ واجب قربانی۔']],
+        ['فرائضِ حج',['احرام: میقات سے پہلے تلبیہ کے ساتھ نیت۔ یہ پورے عمل کی شرط ہے۔','وقوفِ عرفات: ۹ کے زوال سے ۱۰ کی صبح صادق تک کسی بھی لمحے اس کی حدود میں حاضری۔ چھوٹ گیا تو حج چھوٹ گیا۔','طوافِ زیارت: اس کے سات میں سے کم از کم چار چکر، وقوف کے بعد۔ جب تک یہ نہ ہو حج مکمل نہیں، چاہے آدمی گھر لوٹ آیا ہو۔','ساتھ ہی لازم: مسلمان ہونا، نیت، اور ان کاموں کا اپنی ترتیب سے ہونا۔']],
+        ['واجباتِ حج',['طواف کے بعد صفا مروہ کی سعی۔','عرفات میں غروب تک ٹھہرنا۔','۱۰ کی صبح صادق سے طلوع تک وقوفِ مزدلفہ۔','۱۰، ۱۱ اور ۱۲ کو شیطانوں کی رمی۔','حرم میں، ایامِ نحر میں، رمی کے بعد حلق یا قصر۔','تمتع اور قران کی قربانی، حرم میں، ۱۰ تا ۱۲۔','ایامِ نحر میں طوافِ زیارت اور اس کے آخری تین چکر۔','مکہ سے باہر والوں کے لیے طوافِ وداع۔','میقات سے احرام، طواف میں وضو اور ستر، طاقت ہو تو طواف اور سعی میں پیدل چلنا۔','واجب چھوڑنے سے حج باطل نہیں ہوتا لیکن دم لازم آتا ہے؛ صحیح عذر (بیماری، حیض) سے چھوڑنے کے اپنے احکام ہیں۔']],
+        ['سنن',['قران اور افراد میں طوافِ قدوم، رمل اور اضطباع کے ساتھ۔','۸ تاریخ کی پانچ نمازیں منیٰ میں اور رات وہیں۔','طلوع کے بعد عرفات روانگی، وقوف سے پہلے غسل، اور امام کے خطبے۔','۱۰، ۱۱ اور ۱۲ کی راتیں منیٰ میں۔','زمزم، ملتزم پر دعا، اور مکہ میں قیام کے دوران کثرت سے نفلی طواف۔']],
+        ['عمرہ',['فرض: احرام، اور طواف (چار چکر)۔','واجب: سعی، حلق یا قصر، اور طواف کے آخری تین چکر۔','عمرہ زندگی میں ایک بار سنتِ مؤکدہ ہے؛ زیادہ کرنا باعثِ اجر ہے۔ ۹ تا ۱۳ ذوالحجہ عمرہ مکروہِ تحریمی ہے۔']],
+        ['خاتون پر حج کب فرض ہے؟',['وہی شرائط، اور حنفی فقہ میں سفر کے لیے شوہر یا محرم بھی؛ نہ ہو تو فرضیت مؤخر رہتی ہے اور وہ اس کی وصیت کر جاتی ہے۔','فرض حج کے لیے شوہر کی اجازت ضروری نہیں، نفل کے لیے ضروری ہے۔']]
+      ] },
+
+    tawaf: { facts:[['چکر','۷ (۴ فرض · ۳ واجب)'],['شرط','وضو · مسجد کے اندر'],['بعد میں','۲ رکعت (واجب)']],
+      intro:'طواف کعبے کے سات چکر ہیں جو حجرِ اسود سے شروع اور اسی پر ختم ہوتے ہیں، کعبہ بائیں طرف رہتا ہے۔ یہ عمرے اور حج دونوں کا دوسرا فرض ہے اور مکہ آنے والے کے لیے ہر وقت سب سے محبوب عبادت۔',
+      steps:[
+        ['شروع کرنے سے پہلے شرائط','وضو (بغیر وضو طواف دہرانا ہوگا، ورنہ دم)، ستر ڈھکا ہو، نیت، اور حجرِ اسود سے آغاز۔ پورا طواف مسجد کے اندر، حطیم کے باہر سے، کسی بھی منزل پر۔'],
+        ['اضطباع (مرد)','صرف اس طواف میں جس کے بعد سعی ہو: اوپر کی چادر دائیں بغل کے نیچے سے نکال کر بائیں کندھے پر ڈالیں۔ دو رکعت سے پہلے کندھا پھر ڈھانپ لیں۔'],
+        ['حجرِ اسود کا استلام','حجرِ اسود کی طرف رخ کریں، ہاتھ اٹھائیں، تکبیر کہیں، پھر اسے بوسہ دیں، یا چھو کر ہاتھ چوم لیں، یا ہتھیلیوں سے اشارہ کر کے ہتھیلیاں چوم لیں۔ اس تک پہنچنے کے لیے کسی کو دھکا نہ دیں نہ تکلیف پہنچائیں؛ اشارہ کافی اور مکمل طور پر درست ہے۔'],
+        ['کعبہ بائیں طرف رکھ کر چلیں','گھڑی کی مخالف سمت چلیں۔ رمل (مرد، سینہ نکال کر تیز اکڑ کر چلنا) اس طواف کے پہلے تین چکروں میں سنت ہے جس کے بعد سعی ہو؛ پھر عام چال۔ حطیم کے اندر سے نہ گزریں اور شاذروان (دیوار کی ڈھلوان بنیاد) پر نہ چلیں۔'],
+        ['رکنِ یمانی','ہو سکے تو دائیں ہاتھ یا دونوں ہاتھوں سے چھوئیں، بوسہ نہ دیں؛ نہ پہنچ سکیں تو بغیر اشارے کے گزر جائیں۔ اس کے اور حجرِ اسود کے درمیان "ربنا آتنا…" پڑھیں۔'],
+        ['چکر گنیں','جب آپ حجرِ اسود کی لکیر پر واپس آ جائیں تو چکر مکمل ہوا۔ ہر چکر کے شروع میں حجرِ اسود کی طرف اشارہ کریں: کل آٹھ بار، آخری ساتویں چکر کے بعد۔ تعداد میں شک ہو تو کم گنتی لیں۔'],
+        ['دو رکعت، پھر زمزم','دو رکعت (ہر طواف کے بعد واجب) ہو سکے تو مقامِ ابراہیم کے پیچھے ورنہ مسجد میں کہیں بھی، مکروہ اوقات سے بچ کر۔ سورۃ الکافرون اور سورۃ الاخلاص پڑھیں۔ پھر ملتزم تک پہنچ سکیں تو وہاں دعا، اور زمزم۔']
+      ],
+      lists:[
+        ['طواف کی اقسام',['طوافِ عمرہ: فرض، احرام میں، رمل اور اضطباع کے ساتھ، بعد میں سعی۔','طوافِ قدوم: قران اور افراد والوں کے لیے مکہ پہنچنے پر سنت۔','طوافِ زیارت (افاضہ): حج کا فرض، ۱۰ تا ۱۲، عام کپڑوں میں؛ رمل صرف اس صورت میں جب اس کے بعد حج کی سعی ہو۔','طوافِ وداع: مکہ چھوڑتے وقت واجب، سعی نہیں۔','نفلی طواف: دن رات کسی بھی وقت، جتنا چاہیں؛ باہر سے آنے والوں کے لیے نفل نماز سے بہتر ہے۔']],
+        ['مسائل',['درمیان میں وضو ٹوٹ جائے تو نیا کر کے وہیں سے جاری رکھیں؛ جماعت کھڑی ہو جائے تو شامل ہوں پھر جاری رکھیں۔','بات کرنا جائز ہے لیکن کم کریں؛ ہر چکر کے لیے کوئی خاص دعا لازم نہیں: جو قرآن، ذکر یا دعا چاہیں آہستہ پڑھیں۔','خواتین رمل اور اضطباع نہیں کرتیں، اور حیض والی خاتون پاک ہونے تک طواف نہیں کرتی۔','بچے کو اٹھا کر یا وہیل چیئر پر طواف درست ہے؛ طاقت والا پیدل چلے۔','جنابت کی حالت میں طوافِ زیارت پر اونٹ یا گائے لازم ہے؛ مکہ میں ہوں تو دہرا لیں۔']]
+      ] },
+
+    sai: { facts:[['حکم','واجب'],['چکر','۷، مروہ پر ختم'],['وضو','سنت، شرط نہیں']],
+      intro:'سعی حضرت ہاجرہ کی حضرت اسماعیل کے لیے پانی کی تلاش کی یاد میں صفا اور مروہ کے درمیان سات چکر چلنا ہے۔ یہ طواف کے بعد کی جاتی ہے، کبھی اکیلی نہیں، اور عمرے اور حج دونوں کا واجب ہے۔',
+      steps:[
+        ['استلام، پھر صفا','طواف کی دو رکعت اور زمزم کے بعد ایک بار پھر حجرِ اسود کی طرف اشارہ کریں اور صفا مروہ والی آیت پڑھتے ہوئے صفا کی طرف نکلیں۔'],
+        ['صفا پر','اتنا چڑھیں کہ کعبہ نظر آ جائے (تھوڑا سا، اوپر تک نہیں)۔ اس کی طرف رخ کر کے دونوں ہاتھ دعا کی طرح اٹھائیں، تکبیر اور ذکر کہیں، پھر اپنی دعا مانگیں؛ یہ تین بار کریں۔'],
+        ['مروہ تک چلیں','ذکر اور دعا کے ساتھ عام رفتار سے چلیں۔ دو سبز نشانوں کے درمیان مرد تیز چلیں (خواتین عام) اور "رب اغفر وارحم…" کہیں۔ مروہ پہنچنے پر پہلا چکر مکمل۔'],
+        ['مروہ پر','کعبے کی طرف رخ کر کے ہاتھ اٹھائیں اور صفا کی طرح ذکر اور دعا دہرائیں۔ صفا کی طرف واپس چلیں: دوسرا چکر۔'],
+        ['سات تک گنیں','صفا سے مروہ ایک، مروہ سے صفا دو۔ ساتواں چکر مروہ پر ختم ہوتا ہے۔ شک ہو تو کم تعداد لیں۔'],
+        ['دو رکعت (مستحب)','سعی کے بعد مسجد میں دو رکعت نفل پڑھیں، مکروہ اوقات سے بچ کر۔ عمرے میں اب حلق یا قصر ہوگا؛ حج میں آپ پہلے ہی احرام سے باہر ہیں۔']
+      ],
+      lists:[
+        ['مسائل',['سعی صرف درست طواف کے بعد صحیح ہے، اور عمرے کی سعی احرام میں ہونی چاہیے۔','حجِ تمتع میں حج کی سعی طوافِ زیارت کے بعد ہوتی ہے؛ قران اور افراد میں حج کے احرام میں طوافِ قدوم کے بعد بھی کی جا سکتی ہے۔','سعی کے لیے وضو اور طہارت سنت ہے، شرط نہیں: جس خاتون کو طواف کے بعد حیض آ جائے وہ سعی مکمل کر سکتی ہے۔','طاقت والوں پر پیدل چلنا واجب ہے؛ کمزور، بیمار اور بوڑھوں کے لیے سواری یا وہیل چیئر ٹھیک ہے۔','نماز، آرام یا پانی پینے کے لیے رکنے سے سعی خراب نہیں ہوتی؛ وہیں سے جاری رکھیں۔','خواتین کے لیے نہ رمل، نہ تیز چلنا، نہ اونچا چڑھنا۔']]
+      ] },
+
+    arafat: { facts:[['وقوفِ عرفات','فرض'],['وقت','۹ کا زوال تا ۱۰ کی صبح صادق'],['مزدلفہ','واجب · صبح صادق تا طلوع']],
+      intro:'"حج عرفہ ہے" (ترمذی 889)۔ پورا سفر عرفات کے میدان میں اللہ کے سامنے کھڑے ہونے کی ایک دوپہر پر گھومتا ہے، جس کے بعد مزدلفہ میں کھلے آسمان تلے ایک رات ہے۔ یہاں کچھ مشکل نہیں؛ ضرورت حاضری، عاجزی اور دعا کی ہے۔',
+      steps:[
+        ['۹ کی صبح','فجر منیٰ میں پڑھیں، پھر طلوع کے بعد تلبیہ اور ذکر کے ساتھ عرفات روانہ ہوں۔ وقوف سے پہلے غسل سنت ہے۔ دیکھ لیں کہ آپ کا خیمہ حدود کے نشانات کے اندر ہے؛ وادیِ عرنہ اور مسجدِ نمرہ کا اگلا حصہ عرفات سے باہر ہے۔'],
+        ['ظہر اور عصر','مسجدِ نمرہ میں امام کے پیچھے خطبہ سننا اور ظہر و عصر ملا کر پڑھنا سنت ہے۔ کہیں اور ہوں تو ہر نماز اپنے وقت پر پڑھیں، مسافر ہوں اور اکیلے پڑھ رہے ہوں تو قصر؛ مقیم امام کے پیچھے پوری۔'],
+        ['وقوف','زوال سے غروب تک قبلہ رخ کھڑے یا بیٹھے، ہاتھ اٹھائے، دروازے پر کھڑے فقیر کی طرح۔ تلبیہ، عرفہ کی بہترین دعا، استغفار، درود، اور اپنے، گھر والوں، زندوں اور مُردوں سب کے لیے ہر چیز مانگیں۔ اس دن حاجی کے لیے روزہ نہیں۔ ضرورت ہو تو تھوڑا آرام کر لیں، لیکن غروب سے پہلے کی آخری گھڑیاں ضائع نہ کریں: یہی وہ وقت ہے جو نبی ﷺ نے پورا دعا میں گزارا۔'],
+        ['غروب کے بعد روانگی','مغرب عرفات میں نہ پڑھیں۔ تلبیہ پڑھتے ہوئے اطمینان سے مزدلفہ کی طرف چلیں۔ بغیر صحیح عذر غروب سے پہلے نکلنے پر دم لازم ہے۔'],
+        ['مزدلفہ: مغرب اور عشا ایک ساتھ','پہنچتے ہی مغرب اور عشا عشا کے وقت ایک اذان اور ایک اقامت سے ملا کر پڑھیں، پھر مغرب کی سنت، عشا کی سنت اور وتر۔ بہت دیر سے پہنچیں تو پہنچتے ہی پڑھ لیں۔ پھر سو جائیں: آج رات لمبے نوافل نہیں۔'],
+        ['کنکریاں','یہاں یا کہیں سے بھی چنے کے برابر کنکریاں جمع کر لیں: تین دن کے لیے ۴۹ (۷ + ۲۱ + ۲۱)، ۱۳ تاریخ رکنا ہو تو ۷۰۔ چاہیں تو دھو لیں؛ لازم نہیں۔'],
+        ['فجر اور وقوفِ مزدلفہ','فجر بالکل اول وقت میں پڑھیں، پھر قبلہ رخ کھڑے ہو کر ذکر، تلبیہ اور دعا میں رہیں یہاں تک کہ خوب روشنی ہو جائے۔ وقوفِ مزدلفہ واجب ہے: صبح صادق سے طلوع تک کسی بھی لمحے حاضری۔ طلوع سے پہلے منیٰ روانہ ہوں۔ خواتین، بوڑھے اور بیمار ساتھی کے ساتھ آدھی رات کے بعد بغیر دم جا سکتے ہیں۔']
+      ],
+      lists:[
+        ['مسائل',['اگر آپ عرفات صرف ۱۰ کی صبح صادق سے پہلے رات میں ایک لمحے کے لیے بھی پہنچ گئے تو فرض ادا ہو گیا اور غروب کا دم نہیں۔','مزدلفہ کی حدود میں وادیِ محسر شامل نہیں؛ وہاں رکنا شمار نہیں ہوتا۔','بغیر عذر صبح صادق سے پہلے مزدلفہ چھوڑنے پر دم ہے؛ صحیح عذر (کمزوری، بیماری، ہجوم میں خواتین) ہو تو نہیں۔','دونوں جگہ نہانا، سونا اور کھانا سب ٹھیک ہے؛ احرام کے احکام یاد رکھیں: نہ خوشبو، نہ (مرد) سر ڈھانپنا۔']]
+      ] },
+
+    mina: { facts:[['رمی','ہر شیطان کو ۷ کنکریاں'],['قربانی','تمتع اور قران میں واجب'],['۱۰ کی ترتیب','رمی ← قربانی ← حلق']],
+      intro:'منیٰ کے دن قربانی اور شیطانوں کو کنکریاں مارنے کے دن ہیں، حضرت ابراہیم کے شیطان کو دھتکارنے کی یاد میں۔ کام آسان ہیں؛ مسائل وقت، ترتیب اور گنتی کے ہیں۔',
+      steps:[
+        ['۱۰ تاریخ: صرف جمرۂ عقبہ','صرف بڑے شیطان کو کنکریاں ماریں: سات کنکریاں ایک ایک کر کے، ہر ایک کے ساتھ "بسم اللہ، اللہ اکبر"، اس طرح کہ حوض کے اندر گرے۔ بہترین وقت طلوع سے زوال تک؛ صبح صادق سے غروب تک درست، کمزوروں اور خواتین کے لیے اگلی صبح صادق تک۔ پہلی کنکری کے ساتھ تلبیہ بند۔ اس شیطان کے بعد دعا کے لیے نہ رکیں۔'],
+        ['۱۰ تاریخ: قربانی','تمتع اور قران میں شکرانے کے طور پر واجب؛ افراد میں نفل۔ حرم کے اندر (منیٰ اور مکہ دونوں حرم ہیں) ۱۰، ۱۱ یا ۱۲ کو ہونی چاہیے۔ بینک کی پرچی سب سے محفوظ ہے؛ رسید سنبھال رکھیں۔ ہو سکے تو قربانی ہونے کا یقین ہونے سے پہلے حلق نہ کروائیں؛ پرچی کا وقت معلوم نہ ہو تو اپنے گروپ کی ہدایت پر عمل کریں۔'],
+        ['۱۰ تاریخ: حلق یا قصر','قربانی کے بعد مرد پورا سر منڈائیں (بہتر) یا سب بالوں سے ایک پور کٹوائیں؛ خواتین سروں سے تقریباً ایک پور کاٹیں۔ یہ حرم میں اور ایامِ نحر میں ہونا چاہیے۔ اب بیوی سے تعلق کے سوا سب کچھ حلال: عام کپڑے اور خوشبو۔'],
+        ['۱۰ تاریخ: طوافِ زیارت کے لیے مکہ','طوافِ زیارت اور حج کی سعی کے لیے مکہ جائیں، پھر رات کے لیے منیٰ واپس آئیں۔ اس طواف اور سعی کے بعد بیوی سے تعلق بھی حلال ہو جاتا ہے۔'],
+        ['۱۱ اور ۱۲: تینوں شیطان','ہر دن زوال کے بعد: چھوٹا شیطان (مسجدِ خیف کے قریب)، پھر درمیانا، پھر بڑا۔ ہر ایک کو تکبیر کے ساتھ سات کنکریاں۔ چھوٹے اور درمیانے کے بعد ایک طرف ہٹ کر قبلہ رخ دعا مانگیں؛ بڑے کے بعد نہیں۔ ان دنوں زوال سے پہلے رمی درست نہیں۔'],
+        ['منیٰ سے روانگی','۱۲ کو رمی کے بعد نکل جائیں، بہتر ہے غروب سے پہلے؛ غروب کے بعد نکلنا مکروہ ہے مگر جائز۔ اگر ۱۳ کی صبح صادق منیٰ ہی میں ہو گئی تو رک کر ۱۳ کی رمی زوال کے بعد کریں، پھر نکلیں۔ منیٰ کی راتیں سنت ہیں؛ کہیں اور گزارنے سے ثواب کم ہوتا ہے، دم نہیں آتا۔']
+      ],
+      lists:[
+        ['رمی کے مسائل',['ایک وقت میں ایک کنکری ہاتھ سے ماریں؛ کئی اکٹھی ایک شمار ہوں گی۔ حوض کا نشانہ لیں؛ جو کنکری صاف باہر گرے وہ دوبارہ ماریں۔','کنکریاں کہیں سے بھی ٹھیک ہیں؛ حوض کے اندر سے نہیں، اور جوتے یا بڑے پتھر کبھی نہیں۔','ایک دن کی رمی رہ گئی: ۱۳ کے غروب سے پہلے قضا کریں، بغیر عذر ہو تو دم بھی؛ اس کے بعد صرف دم رہ جاتا ہے۔','جو واقعی ہجوم میں چل یا کھڑا نہ ہو سکے (صاحبِ فراش، بہت بوڑھا، بے ہوش) وہ کسی اور کو مقرر کر سکتا ہے، جو پہلے اپنی رمی کر لے۔ خواتین ہو سکے تو خود ماریں۔','۱۱ اور ۱۲ کو چھوٹا، درمیانا، بڑا کی ترتیب رکھیں؛ الٹ ہو جائے تو دہرائیں۔','عذر والوں کے لیے رات میں رمی جائز ہے؛ باقیوں کے لیے درست ہے مگر مکروہ۔']],
+        ['حلق و قصر',['مردوں کے لیے منڈانا بہتر ہے، اور اگر بال اتنے چھوٹے ہوں کہ ایک پور نہ کٹ سکے تو لازم۔','کم از کم چوتھائی سر سے کٹوائیں؛ چند بال کافی نہیں۔','حرم سے باہر یا ایامِ نحر کے بعد حلق پر دم ہے۔','۱۰ کی رمی سے پہلے بال اور ناخن نہ چھیڑیں۔']]
+      ] },
+
+    duas: { facts:[['مقرر الفاظ','تلبیہ · تکبیر'],['باقی سب','اپنی دعا'],['زبان','کوئی بھی']],
+      intro:'تلبیہ اور تکبیر کے سوا طواف کے ہر چکر یا سعی کے ہر پھیرے کے لیے کوئی مخصوص الفاظ مقرر نہیں۔ نبی ﷺ سے جو منقول ہے وہ مختصر ہے اور نیچے دیا گیا ہے؛ باقی وقت اپنے الفاظ میں اپنی دعا، قرآن اور ذکر کے لیے ہے۔',
+      lists:[
+        ['اس سفر میں قبولیت کے مواقع',['کعبہ پر پہلی نظر۔','طواف کے دوران اور ملتزم پر (حجرِ اسود اور دروازے کے درمیان کی دیوار)۔','زمزم پیتے وقت۔','صفا اور مروہ پر۔','عرفہ کی دوپہر، خاص طور پر آخری گھڑی۔','مزدلفہ میں فجر کے بعد۔','۱۱ اور ۱۲ کو چھوٹے اور درمیانے شیطان کے بعد۔','حطیم کے اندر، جو کعبے کا حصہ ہے، نفل اور دعا میں۔']],
+        ['دعاؤں کی فہرست',['سفر سے پہلے اپنی حاجتیں لکھ لیں: مغفرت، استقامت، حسنِ خاتمہ، والدین، اولاد، صحت، حلال رزق، امت۔','جن لوگوں نے دعا کی درخواست کی ان کے لیے نام لے کر مانگیں۔','ہجوم کی جگہ مختصر اور عرفات میں لمبی۔']]
+      ] },
+
+    women: { facts:[['احرام','عام کپڑے'],['چہرہ','کھلا، کپڑا نہ لگے'],['بال','صرف کاٹنا، کبھی منڈانا نہیں']],
+      intro:'خاتون حج اور عمرے کا ہر کام مرد کی طرح کرتی ہے، صرف لباس، آواز اور رفتار کے چند فرق اور حیض کے خاص مسائل کے ساتھ۔ ماہواری کی کوئی بھی صورت اسے حج مکمل کرنے سے نہیں روکتی۔',
+      lists:[
+        ['لباس اور طریقہ',['اس کا احرام کسی بھی رنگ کے عام باپردہ کپڑے ہیں؛ سلے کپڑے، موزے اور جوتے سب ٹھیک ہیں۔ سر ڈھکا رہے۔','چہرہ کھلا رہے اور اس پر کوئی کپڑا نہ لگے۔ غیر محرم مردوں کے سامنے ٹوپی یا چھجے کے ذریعے کپڑا چہرے سے دور لٹکا سکتی ہے۔','احرام میں دستانے نہیں؛ خوشبو نہیں۔','تلبیہ آہستہ، کہ صرف وہ اور ساتھ والے سنیں۔','طواف میں رمل نہیں، اضطباع نہیں، سبز نشانوں کے درمیان تیز چلنا نہیں، اور صفا مروہ پر اونچا چڑھنا نہیں۔ ہجوم کے کنارے، محرم کے ساتھ چلیں۔','حلق کے مرحلے پر بال اکٹھے کر کے سب سروں سے تقریباً ایک پور (ڈھائی سینٹی میٹر) کاٹ لے؛ اس کے لیے سر منڈانا حرام ہے۔']],
+        ['حیض و نفاس',['حیض میں احرام درست ہے: غسل کریں، نیت کریں اور تلبیہ کہیں؛ پھر طواف اور اس کی دو رکعت کے سوا سب کچھ کریں۔','وقوفِ عرفات و مزدلفہ، رمی، قربانی اور بال کاٹنا سب معمول کے مطابق۔','طوافِ زیارت پاک ہونے تک رکے گا؛ اگر اس سے ۱۲ تاریخ گزر جائے تو دم نہیں کیونکہ عذر صحیح ہے۔','حیض کی حالت میں مکہ سے روانہ ہو تو طوافِ وداع معاف ہے۔','سعی کے لیے طہارت ضروری نہیں: طواف کے بعد خون آ جائے تو سعی مکمل کر سکتی ہے۔','تمتع اور عمرے کے طواف سے پہلے حیض: اگر ۹ تاریخ سے پہلے عمرہ مکمل نہ ہو سکے تو فوراً اپنے گروپ کے عالم کو بتائیں۔ عام حنفی حکم یہ ہے کہ حج کی نیت کر لے، حج ادا کرے، اور اس کے بعد عمرہ قضا کرے، دم کے ساتھ۔','ماہواری روکنے کی دوا جائز ہے اگر ڈاکٹر تصدیق کرے کہ نقصان نہیں؛ اس حالت میں کیا گیا طواف درست ہے۔']],
+        ['محرم',['حنفی فقہ میں خاتون حج کے سفر پر شوہر یا محرم کے ساتھ جاتی ہے (وہ مرد جس سے کبھی نکاح نہیں ہو سکتا: باپ، بیٹا، بھائی، چچا، ماموں، بھتیجا، بھانجا، سسر، داماد)؛ کوئی نہ ہو تو حج کی فرضیت مؤخر رہتی ہے۔','حکومتی قواعد بدلتے رہتے ہیں، فقہی حکم نہیں بدلتا، اس لیے بکنگ سے پہلے کسی معتبر عالم سے پوچھ لیں۔','مدینہ میں ریاض الجنہ کے لیے خواتین کے الگ اوقات اور اجازت نامے ہیں؛ نسک ایپ سے پہلے سے وقت لے لیں۔']]
+      ] },
+
+    madinah: { facts:[['حکم','مستحب، حج کا حصہ نہیں'],['یہاں نماز','دوسری جگہ سے ۱۰۰۰ گنا'],['اس کے بعد میقات','ذوالحلیفہ']],
+      intro:'مدینہ کی حاضری حج کے افعال میں سے نہیں، لیکن نبی ﷺ نے فرمایا: "جس نے میری قبر کی زیارت کی اس کے لیے میری شفاعت واجب ہو گئی" (دارقطنی؛ سند کمزور ہے، عمل کے لیے علما نے قبول کیا)۔ محبت اور ادب کے ساتھ جائیں: نہ بلند آواز، نہ جالی کو چھونا، اور دعا صرف اللہ سے۔',
+      steps:[
+        ['راستے میں','نبی ﷺ پر کثرت سے درود بھیجیں۔ شہر میں داخل ہونے سے پہلے غسل یا وضو کریں اور صاف کپڑے پہنیں۔ مدینہ کے لیے احرام نہیں۔'],
+        ['مسجدِ نبوی میں داخلہ','دایاں پاؤں پہلے رکھ کر مسجد میں داخلے کی دعا کے ساتھ داخل ہوں، بہتر ہے بابِ جبریل یا بابِ السلام سے۔ دو رکعت تحیۃ المسجد پڑھیں، اجازت ہو تو ریاض الجنہ میں ورنہ کہیں بھی۔'],
+        ['روضے پر سلام','قبلے کی طرف پیٹھ اور روضے کی طرف رخ کر کے ایک دو میٹر کے فاصلے پر عاجزی اور دھیمی آواز کے ساتھ کھڑے ہوں۔ درود و سلام کہیں۔ پھر ایک قدم دائیں ہٹ کر حضرت ابوبکر کو، پھر ایک قدم اور ہٹ کر حضرت عمر رضی اللہ عنہما کو سلام کہیں۔ جنہوں نے سلام کہنے کو کہا تھا ان کا سلام پہنچائیں۔'],
+        ['دعا','قبلے کی طرف رخ کر کے اللہ سے دعا مانگیں۔ دعا میں روضے کی طرف رخ نہ کریں، اس کی طرف ہاتھ نہ اٹھائیں، اور نبی ﷺ سے حاجتیں نہ مانگیں؛ اللہ سے مانگیں اور اس سے نبی ﷺ کی شفاعت مانگیں۔'],
+        ['ہر نماز یہاں پڑھیں','مسجدِ نبوی کی ایک نماز مسجدِ حرام کے سوا ہر جگہ کی ہزار نمازوں سے بہتر ہے (بخاری 1190)۔ دن نماز، قرآن اور درود میں گزاریں۔ "چالیس نمازوں" والی روایت کمزور ہے؛ کوئی مقرر تعداد نہیں۔'],
+        ['زیارت کی جگہیں','مسجدِ قبا: اپنی رہائش گاہ سے وضو کر کے وہاں دو رکعت پڑھیں، عمرے کا ثواب ہے (ترمذی 324)؛ ہفتے کا دن نبی ﷺ کا معمول تھا۔ جنت البقیع میں صحابہ کو سلام، احد کے شہدا جن میں حضرت حمزہ ہیں، مسجدِ قبلتین، اور خندق کی سات مسجدیں۔'],
+        ['مکہ روانگی','ہوٹل میں یا میقات پر غسل کر کے احرام کی چادریں پہنیں، مسجدِ ذوالحلیفہ (ابیارِ علی) میں دو رکعت پڑھیں، وہیں نیت اور تلبیہ کریں، پھر مکہ کا سفر کریں۔']
+      ],
+      lists:[
+        ['آداب',['روضے کے سامنے خاموشی اور سکون: "اپنی آوازیں نبی کی آواز سے بلند نہ کرو" (۴۹:۲) آپ ﷺ کے وصال کے بعد بھی لاگو ہے۔','جالی کو چھونا، چومنا یا اس کے گرد چکر لگانا، جھکنا اور روضے میں تصویریں، کچھ نہیں۔','ہو سکے تو صدقہ دیں، لوگوں کو کھلائیں اور بیماروں کی عیادت کریں: مدینہ نیکیوں کی جگہ ہے۔','روضے پر آخری سلام کر کے مدینہ چھوڑنا نیک لوگوں کا طریقہ ہے۔']]
+      ] },
+
+    mistakes: { facts:[['دم','حرم میں بکری یا دنبہ'],['صدقہ','تقریباً پونے دو کلو گندم یا اس کی قیمت'],['بدنہ','اونٹ یا گائے']],
+      intro:'اکثر غلطیاں لاعلمی سے ہوتی ہیں اور اکثر کی تلافی دم سے ہو جاتی ہے: حرم کے اندر ذبح کی گئی بکری یا دنبہ جو وہاں کے غریبوں کو دیا جائے، انہی بینک کاؤنٹروں سے جہاں سے قربانی ہوتی ہے۔ سفر سے پہلے یہ فہرست سیکھ لیں تو سفر آسان ہو جاتا ہے۔',
+      lists:[
+        ['سفر سے پہلے',['سچی توبہ؛ جن کا حق مارا ان سے معافی؛ قرض ادا کریں یا انتظام کریں؛ وصیت لکھیں۔','سفر کے لیے صرف حلال مال استعمال کریں۔','مناسک سیکھیں اور مشق کریں: دیکھیں، پڑھیں، اور گھر والوں کے ساتھ طواف اور سعی کی گنتی دہرائیں۔','مسافر کی نماز (قصر) اور عرفات و مزدلفہ میں جمع کے احکام سیکھیں۔','سامان: احرام کی دو تین چادریں، احرام بیلٹ، چپل، بغیر خوشبو صابن، کنکریوں کی چھوٹی تھیلی، دعاؤں کی جیبی کتاب، دوائیں، اور گروپ لیڈر کا نمبر۔','اپنی دعاؤں کی فہرست اور ان لوگوں کے نام لکھ لیں جنہوں نے دعا کی درخواست کی۔']],
+        ['عام غلطیاں',['بغیر احرام میقات سے گزرنا: کسی میقات پر واپس جائیں، ورنہ دم۔','مرد سوتے وقت سر ڈھانپ لیں، یا چہرے پر ماسک دبا کر لگائیں؛ موزے یا ایسے جوتے پہنیں جو پاؤں کا درمیانی حصہ ڈھانپیں۔','احرام میں خوشبودار صابن، شیمپو، وائپس یا خوشبو استعمال کرنا۔','۱۰ کی رمی سے پہلے ناخن کاٹنا، بال اکھاڑنا یا منڈانا۔','ایک بار بھی تلبیہ کہے بغیر نیت کرنا: حنفی فقہ میں اس کے بغیر احرام درست نہیں۔','بغیر وضو طواف، حطیم کے اندر سے گزرنا، یا غلط گنتی۔','حجرِ اسود چومنے کے لیے لوگوں کو دھکے دینا اور تکلیف پہنچانا؛ اشارہ کافی ہے۔','غروب سے پہلے عرفات چھوڑنا، وہاں مغرب پڑھنا، یا بغیر عذر صبح صادق سے پہلے مزدلفہ چھوڑنا۔','۱۱ اور ۱۲ کو زوال سے پہلے رمی، ساری کنکریاں اکٹھی پھینکنا، یا جوتے پھینکنا۔','تمتع یا قران میں قربانی سے پہلے حلق، یا حرم سے باہر حلق۔','طوافِ زیارت کو ۱۲ کے غروب سے آگے مؤخر کرنا۔','بغیر طوافِ وداع مکہ چھوڑنا، یا اس کے بعد خریداری اور لمبا قیام۔','طواف میں اونچی باتیں، سیلفیاں اور فون؛ عملے اور ساتھی حاجیوں سے جھگڑا؛ سگریٹ۔','حج کے دوران عرفہ کے دن روزہ رکھنا۔']],
+        ['جنایات: جرمانے',['دم (بکری یا دنبہ): کوئی بھی واجب چھوڑنا؛ پورا دن یا پوری رات سلے کپڑے یا (مرد) سر ڈھانپے رکھنا؛ پورے عضو پر خوشبو؛ چوتھائی سر یا زیادہ منڈانا یا کاٹنا؛ پورے ہاتھ یا پاؤں کے ناخن؛ بغیر وضو طوافِ زیارت یا عمرے کا طواف جو دہرایا نہ جائے؛ طوافِ زیارت کے تین چکر تک چھوڑنا۔','صدقہ (نصف صاع گندم، تقریباً پونے دو کلو، یا اس کی قیمت، فی چیز): ایک دن سے کم سلے کپڑے؛ عضو کے کچھ حصے پر خوشبو؛ چند بال؛ ایک ناخن؛ بغیر وضو طوافِ وداع یا قدوم؛ طوافِ وداع کا ایک چکر چھوڑنا۔','بدنہ (اونٹ یا گائے): جنابت میں طوافِ زیارت جو دہرایا نہ جائے؛ عرفات کے بعد حلق سے پہلے بیوی سے تعلق۔','حج باطل: وقوفِ عرفات سے پہلے بیوی سے تعلق۔ حج پورا کریں، بکری ذبح کریں اور اگلے سال حج دہرائیں۔ عمرہ باطل: اس کے طواف کے چار چکروں سے پہلے تعلق؛ پورا کریں، دہرائیں، اور دم۔','عذر: مجبوری (بیماری، گرمی، زخم) سے کیا گیا کام بھی جرمانہ چاہتا ہے، لیکن دم، چھ مسکینوں کو کھانا یا تین روزوں میں اختیار ہے۔','دم حرم کے اندر ذبح ہو اور وہاں کے غریبوں کو دیا جائے؛ آپ کی طرف سے گروپ یا بینک کر سکتا ہے۔','ہر شک والی صورت میں مکہ چھوڑنے سے پہلے معلم یا حرم کے مفتی سے پوچھ لیں۔']]
+      ] }
+  };
+
+  function renderHajj(){
+    const host = $('#hajjTiles'); if (!host) return;
+    host.innerHTML = HAJJ.map(g => `
+      <button class="tile" type="button" data-ibadat="${g.id}">
+        <span class="tile__name">${esc(g.name)}</span><bdi class="tile__ur">${g.ur}</bdi>
+        <small>${esc(g.tag)}</small>
+      </button>`).join('');
+  }
+
+  /* ================= Zakat calculator (Hanafi) ================= */
+  const ZK_TOLA = 11.664;            // grams in one tola (the figure behind 87.48 g / 612.36 g)
+  const ZK_OZ = 31.1034768;          // grams in one troy ounce (spot prices are per ounce)
+  const ZK_NISAB_GOLD = 87.48;       // 7.5 tola of gold
+  const ZK_NISAB_SILVER = 612.36;    // 52.5 tola of silver
+  const ZK_RATE = 0.025;             // one fortieth
+  const ZK_CUR = { PKR:'Rs', SAR:'SR', AED:'AED', USD:'$', GBP:'£', EUR:'€' };
+  const ZK_KARAT = [24, 22, 21, 18];
+  const ZK_HM_EN = ['', 'Muḥarram', 'Ṣafar', 'Rabī‘ al-Awwal', 'Rabī‘ ath-Thānī', 'Jumādā al-Ūlā', 'Jumādā ath-Thāniyah', 'Rajab', 'Sha‘bān', 'Ramaḍān', 'Shawwāl', 'Dhul-Qa‘dah', 'Dhul-Ḥijjah'];
+  const ZK_HM_UR = ['', 'محرم', 'صفر', 'ربیع الاول', 'ربیع الثانی', 'جمادی الاول', 'جمادی الثانی', 'رجب', 'شعبان', 'رمضان', 'شوال', 'ذوالقعدہ', 'ذوالحجہ'];
+  const ZK_FX_URLS = [
+    'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.min.json',
+    'https://latest.currency-api.pages.dev/v1/currencies/usd.min.json',
+    'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json'
+  ];
+
+  /* text: [English, Urdu] */
+  const ZK_T = {
+    intro: ['Write today’s value of everything you own from the groups below. The house you live in, your car, furniture and personal things are not counted. The rules follow the Hanafi school.',
+            'نیچے دیے گئے خانوں میں اپنے مال کی آج کی قیمت لکھیں۔ رہائشی گھر، اپنی گاڑی، فرنیچر اور ذاتی استعمال کی چیزیں شامل نہیں۔ مسائل حنفی مذہب کے مطابق ہیں۔'],
+    settings: ['Rates and units', 'ریٹ اور اکائی'],
+    currency: ['Currency', 'کرنسی'],
+    unit: ['Weight unit', 'وزن کی اکائی'],
+    tola: ['Tola', 'تولہ'], gram: ['Gram', 'گرام'],
+    goldRate: ['Gold rate (24K) per', 'سونے کا ریٹ (24 کیرٹ) فی'],
+    silverRate: ['Silver rate per', 'چاندی کا ریٹ فی'],
+    fetch: ['Get today’s rate', 'آج کا ریٹ لیں'],
+    fetching: ['Getting today’s rate…', 'ریٹ لیا جا رہا ہے…'],
+    rateAuto: ['International rate', 'بین الاقوامی ریٹ'],
+    rateManual: ['Rate typed by you', 'آپ کا لکھا ہوا ریٹ'],
+    rateNone: ['No rate yet. Tap the button, or type today’s market rate.', 'ابھی کوئی ریٹ نہیں۔ بٹن دبائیں یا آج کا بازار کا ریٹ خود لکھیں۔'],
+    rateFail: ['Could not fetch the rate. Check the internet, or type today’s market rate.', 'ریٹ نہیں مل سکا۔ انٹرنیٹ دیکھیں یا آج کا بازار کا ریٹ خود لکھیں۔'],
+    rateNote: ['The local sarrāfa market rate can differ a little from the international rate; if you know it, type it in. Both boxes can be edited.',
+               'مقامی صرافہ بازار کا ریٹ بین الاقوامی ریٹ سے تھوڑا مختلف ہو سکتا ہے؛ معلوم ہو تو وہی لکھ دیں۔ دونوں خانے بدلے جا سکتے ہیں۔'],
+    gold: ['Gold', 'سونا'],
+    goldNote: ['All gold counts, including jewellery that is worn or kept (Hanafi). Choose the karat of each piece.',
+               'سارا سونا شامل ہے، پہننے یا رکھنے کا زیور بھی (حنفی)۔ ہر چیز کا کیرٹ چنیں۔'],
+    goldWeight: ['Weight', 'وزن'], karat: ['Karat', 'کیرٹ'],
+    addGold: ['+ Add more gold', '+ مزید سونا'],
+    silver: ['Silver', 'چاندی'],
+    silverWeight: ['Silver weight (jewellery, coins, utensils)', 'چاندی کا وزن (زیور، سکے، برتن)'],
+    cash: ['Cash and savings', 'نقدی اور بچت'],
+    cashHand: ['Cash at home or in hand', 'گھر یا جیب میں نقد رقم'],
+    bank: ['Bank accounts (all of them)', 'بینک اکاؤنٹس (سب)'],
+    certs: ['Saving certificates, prize bonds, foreign currency (today’s value)', 'سیونگ سرٹیفکیٹ، پرائز بانڈ، غیر ملکی کرنسی (آج کی قیمت)'],
+    lent: ['Money you lent to others, committee (BC) paid in', 'دوسروں کو دیا ہوا قرض، کمیٹی میں جمع رقم'],
+    lentNote: ['Only what you expect to get back.', 'صرف وہ رقم جو واپس ملنے کی امید ہو۔'],
+    shares: ['Shares, mutual funds, investments (market value)', 'شیئرز، میوچل فنڈ، سرمایہ کاری (بازار کی قیمت)'],
+    property: ['Plot or property bought to sell again (market value)', 'بیچنے کی نیت سے لیا ہوا پلاٹ یا پراپرٹی (بازار کی قیمت)'],
+    other: ['Anything else that is zakatable', 'کوئی اور زکوٰۃ والا مال'],
+    otherNote: ['e.g. a security deposit you paid, voluntary provident fund.', 'مثلاً دی ہوئی سیکیورٹی رقم، رضاکارانہ پراویڈنٹ فنڈ۔'],
+    biz: ['Business', 'کاروبار'],
+    stock: ['Stock kept for sale (today’s market value)', 'بیچنے کا مال / سٹاک (آج کی قیمت)'],
+    bizCash: ['Business cash and money owed to you (if not counted above)', 'کاروبار کی نقدی اور وصولی (اگر اوپر شامل نہیں)'],
+    bizNote: ['The shop, machinery, vehicles and furniture used in the business are not zakatable.', 'دکان، مشینری، گاڑی اور فرنیچر جو کاروبار میں استعمال ہوں، ان پر زکوٰۃ نہیں۔'],
+    liab: ['What you owe', 'قرض جو آپ نے دینا ہے'],
+    debtNow: ['Debts you have to pay now', 'قرض یا ادھار جو ابھی دینا ہے'],
+    billsDue: ['Unpaid bills, salaries and rent already due', 'واجب الادا بل، تنخواہیں اور کرایہ'],
+    loanYear: ['Long-term loans (house, car): only the next 12 months’ instalments', 'لمبے قرض (گھر، گاڑی): صرف اگلے 12 مہینے کی قسطیں'],
+    result: ['Result', 'نتیجہ'],
+    totalAssets: ['Zakatable assets', 'زکوٰۃ والا کل مال'],
+    minusLiab: ['Minus what you owe', 'منہا: قرض'],
+    net: ['Net zakatable wealth', 'زکوٰۃ کے لیے خالص مال'],
+    nisab: ['Nisāb today', 'آج کا نصاب'],
+    basisSilver: ['612.36 g silver (52.5 tola)', '612.36 گرام چاندی (ساڑھے باون تولہ)'],
+    basisGold: ['87.48 g gold (7.5 tola), because you own only gold', '87.48 گرام سونا (ساڑھے سات تولہ)، کیونکہ آپ کے پاس صرف سونا ہے'],
+    basisSilverOnly: ['612.36 g silver (52.5 tola), because you own only silver', '612.36 گرام چاندی (ساڑھے باون تولہ)، کیونکہ آپ کے پاس صرف چاندی ہے'],
+    basisWeight: ['by weight', 'وزن کے حساب سے'],
+    due: ['Zakat is due', 'زکوٰۃ فرض ہے'],
+    notDue: ['Below the nisāb: no zakat is due', 'نصاب سے کم: زکوٰۃ فرض نہیں'],
+    needSilver: ['Type the silver rate to check the nisāb', 'نصاب جانچنے کے لیے چاندی کا ریٹ لکھیں'],
+    needGold: ['Type the gold rate to value your gold', 'سونے کی قیمت لگانے کے لیے سونے کا ریٹ لکھیں'],
+    empty: ['Write your assets above', 'اوپر اپنا مال لکھیں'],
+    zakat: ['Zakat · 2.5%', 'زکوٰۃ · ڈھائی فیصد'],
+    ifDue: ['If it is above the nisāb, the zakat would be', 'اگر نصاب سے زیادہ ہو تو زکوٰۃ بنے گی'],
+    roundNote: ['Rounding up is better; anything extra is ṣadaqah.', 'رقم اوپر کی طرف راؤنڈ کرنا بہتر ہے؛ زائد صدقہ ہو گا۔'],
+    breakdown: ['Where it comes from', 'یہ کہاں سے بنا'],
+    goldLine: ['Gold', 'سونا'], silverLine: ['Silver', 'چاندی'], cashLine: ['Cash and savings', 'نقدی اور بچت'], bizLine: ['Business', 'کاروبار'],
+    save: ['Save this calculation', 'یہ حساب محفوظ کریں'],
+    saved: ['Saved · محفوظ ہو گیا', 'محفوظ ہو گیا'],
+    share: ['Share', 'شیئر'],
+    clear: ['Clear all', 'سب صاف کریں'],
+    cleared: ['Cleared', 'صاف ہو گیا'],
+    hawl: ['Your zakat date (Hijri)', 'آپ کی زکوٰۃ کی تاریخ (ہجری)'],
+    hawlNote: ['Zakat is worked out on the day one lunar year completes over the nisāb. Fix one date, for example 1 Ramaḍān, keep it every year, and value everything on that day. Ups and downs during the year do not matter.',
+               'زکوٰۃ اس دن نکالی جاتی ہے جب نصاب پر قمری سال پورا ہو۔ ایک تاریخ مقرر کریں، مثلاً یکم رمضان، ہر سال وہی رکھیں، اور اسی دن مال کی قیمت لگائیں۔ سال کے دوران مال کا کم زیادہ ہونا فرق نہیں ڈالتا۔'],
+    month: ['Month', 'مہینہ'], day: ['Day', 'تاریخ'], noDate: ['Not set', 'مقرر نہیں'],
+    daysLeft: ['days left', 'دن باقی'], today: ['Zakat day is today', 'آج زکوٰۃ کا دن ہے'],
+    rulesIn: ['What is counted', 'کیا شامل ہے'],
+    rulesOut: ['What is not counted', 'کیا شامل نہیں'],
+    rulesWho: ['Who can receive zakat', 'زکوٰۃ کس کو دی جائے'],
+    lastCalc: ['Last calculation', 'آخری حساب'],
+    nisabToday: ['Nisāb today', 'آج کا نصاب'],
+    nisabPlain: ['Nisāb', 'نصاب'],
+    nisabWeights: ['7.5 tola gold · 52.5 tola silver', 'ساڑھے سات تولہ سونا · ساڑھے باون تولہ چاندی'],
+    open: ['Calculate zakat', 'زکوٰۃ نکالیں'],
+    cardLine: ['Write your gold, silver, cash and business stock; the nisāb check and the 2.5% come out at once.',
+               'اپنا سونا، چاندی، نقدی اور کاروباری مال لکھیں؛ نصاب کی جانچ اور ڈھائی فیصد فوراً نکل آئے گا۔'],
+    perUnit: ['per', 'فی'],
+    shareTitle: ['Zakat calculation', 'زکوٰۃ کا حساب'],
+    tz: ['Value', 'قیمت'], pure: ['fine gold', 'خالص سونا'],
+    ofGold: ['of gold, or its price today', 'سونا، یا اس کی آج کی قیمت'],
+    ofSilver: ['of silver, or its price today', 'چاندی، یا اس کی آج کی قیمت'],
+    yourGold: ['Your gold', 'آپ کا سونا'], yourSilver: ['Your silver', 'آپ کی چاندی'],
+    valueNote: ['Type the rate above to see the amount in money.', 'رقم میں دیکھنے کے لیے اوپر ریٹ لکھیں۔']
+  };
+  const ZK_RULES = {
+    en: {
+      in: ['Gold and silver in any form: jewellery, coins, bars, utensils.', 'Cash at home, bank balances, savings and fixed deposits, prize bonds, saving certificates, foreign currency.', 'Goods and stock bought to sell, at today’s selling value.', 'Money owed to you that you expect to receive, and committee money you have paid in.', 'Shares and funds: the full market value if you trade them; if held only for dividends, the zakatable part of the company’s assets (when unsure, count the full value to be safe).', 'Plots or property bought with the intention of selling.'],
+      out: ['The house you live in, your car, furniture, clothes, phone and other personal-use things.', 'Diamonds and gems kept for personal use (they count only if bought to sell).', 'A rented-out house or shop itself; only the rent you have saved from it counts.', 'The shop building, machinery, tools, vehicles and furniture used in a business.', 'A compulsory provident or pension fund until the money reaches you; voluntary contributions are counted each year.', 'Bad debts you have lost hope of recovering, until they are actually paid back.'],
+      who: ['A poor Muslim who owns less than the nisāb after their basic needs; it is best to give to needy relatives first, then neighbours.', 'It cannot be given to your parents, grandparents, children, grandchildren or spouse, to a Sayyid (descendant of the Prophet ﷺ), or to a non-Muslim.', 'It cannot be spent on a mosque, a hospital building or a funeral; the money must become the property of a poor person.', 'The intention of zakat is needed when giving it; telling the receiver is not necessary.']
+    },
+    ur: {
+      in: ['سونا اور چاندی کسی بھی شکل میں: زیور، سکے، بسکٹ، برتن۔', 'گھر کی نقدی، بینک بیلنس، بچت اور فکسڈ ڈپازٹ، پرائز بانڈ، سیونگ سرٹیفکیٹ، غیر ملکی کرنسی۔', 'بیچنے کے لیے خریدا ہوا مال اور سٹاک، آج کی فروخت قیمت پر۔', 'وہ رقم جو آپ نے کسی کو دی ہے اور واپس ملنے کی امید ہے، اور کمیٹی میں جمع کی ہوئی رقم۔', 'شیئرز اور فنڈز: اگر خرید و فروخت کرتے ہیں تو پوری بازاری قیمت؛ اگر صرف منافع کے لیے رکھے ہیں تو کمپنی کے زکوٰۃ والے اثاثوں کا حصہ (شک ہو تو احتیاطاً پوری قیمت شامل کریں)۔', 'بیچنے کی نیت سے خریدا ہوا پلاٹ یا پراپرٹی۔'],
+      out: ['رہائشی گھر، اپنی گاڑی، فرنیچر، کپڑے، موبائل اور ذاتی استعمال کی دوسری چیزیں۔', 'ذاتی استعمال کے ہیرے اور جواہرات (صرف تب شامل ہیں جب بیچنے کے لیے خریدے ہوں)۔', 'کرائے پر دیا ہوا گھر یا دکان بذاتِ خود؛ صرف اس کا بچا ہوا کرایہ شامل ہے۔', 'کاروبار میں استعمال ہونے والی دکان، مشینری، اوزار، گاڑیاں اور فرنیچر۔', 'لازمی پراویڈنٹ یا پنشن فنڈ جب تک رقم ہاتھ میں نہ آئے؛ رضاکارانہ جمع کی ہوئی رقم ہر سال شامل ہو گی۔', 'ڈوبا ہوا قرض جس کی واپسی کی امید نہ رہے، جب تک واقعی واپس نہ مل جائے۔'],
+      who: ['وہ غریب مسلمان جو بنیادی ضرورت کے علاوہ نصاب سے کم مال کا مالک ہو؛ پہلے ضرورت مند رشتہ داروں کو، پھر پڑوسیوں کو دینا بہتر ہے۔', 'اپنے والدین، دادا دادی، اولاد، پوتے پوتیوں اور میاں بیوی کو، سید (آلِ رسول ﷺ) کو اور غیر مسلم کو نہیں دی جا سکتی۔', 'مسجد، ہسپتال کی عمارت یا کفن دفن پر خرچ نہیں ہو سکتی؛ رقم کسی غریب کی ملکیت میں دینا ضروری ہے۔', 'دیتے وقت زکوٰۃ کی نیت ضروری ہے؛ لینے والے کو بتانا ضروری نہیں۔']
+    }
+  };
+
+  const zkT = k => ZK_T[k] ? ZK_T[k][isUr() ? 1 : 0] : k;
+  const zkAlt = k => ZK_T[k] ? ZK_T[k][isUr() ? 0 : 1] : '';
+  const zkLabel = k => isUr() ? `${ZK_T[k][1]} <span class="zk-alt zk-alt--en">${esc(ZK_T[k][0])}</span>` : `${esc(ZK_T[k][0])} <bdi class="zk-alt zk-alt--ur">${ZK_T[k][1]}</bdi>`;
+  const zkRateLabel = (k, unit) => isUr() ? `<span>${ZK_T[k][1]} <span class="zk-unitname">${ZK_T[unit][1]}</span></span> <span class="zk-alt zk-alt--en">${esc(ZK_T[k][0])} ${esc(ZK_T[unit][0])}</span>` : `<span>${esc(ZK_T[k][0])} <span class="zk-unitname">${ZK_T[unit][0]}</span></span> <bdi class="zk-alt zk-alt--ur">${ZK_T[k][1]} ${ZK_T[unit][1]}</bdi>`;
+  const zkNum = v => { const n = parseFloat(String(v == null ? '' : v).replace(/[,\s]/g, '').replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))); return isFinite(n) && n > 0 ? n : 0; };
+  const zkFmt = (n, d = 0) => Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const zkMoney = (n, cur, exact) => `${ZK_CUR[cur] || cur} ${zkFmt(n, (exact || n < 100) && Math.abs(n - Math.round(n)) > 0.004 ? 2 : 0)}`;
+  const zkFmtMax = (n, d) => Number(n || 0).toLocaleString('en-US', { maximumFractionDigits: d });
+  const zkW = (g, unit) => zkFmtMax(unit === 'gram' ? g : g / ZK_TOLA, 3);
+
+  function zkDefault(){
+    return { v:1, cur:'PKR', unit:'tola', manual:{ gold:null, silver:null }, fx:null, fxFail:false,
+      gold:[{ g:0, k:22 }], silver:0, cash:{ cashHand:0, bank:0, certs:0, lent:0, shares:0, property:0, other:0 },
+      biz:{ stock:0, bizCash:0 }, liab:{ debtNow:0, billsDue:0, loanYear:0 }, hawl:null, history:[] };
+  }
+  if (!state.zakat || !state.zakat.v) state.zakat = zkDefault();
+  let zkSaveT = null, zkFetching = false;
+  const zkSave = () => { clearTimeout(zkSaveT); zkSaveT = setTimeout(() => store.save(state), 250); };
+  window.addEventListener('pagehide', () => { if (zkSaveT) { clearTimeout(zkSaveT); zkSaveT = null; store.save(state); } });
+
+  /* prices per gram in the chosen currency: typed rate wins, otherwise the fetched spot rate */
+  function zkRates(z){
+    const out = { gold:null, silver:null, src:null, date:null };
+    if (z.fx && z.fx.usd) {
+      const u = z.fx.usd, c = u[z.cur.toLowerCase()];
+      if (c && u.xau && u.xag) { out.gold = c / u.xau / ZK_OZ; out.silver = c / u.xag / ZK_OZ; out.src = 'auto'; out.date = z.fx.date; }
+    }
+    if (z.manual.gold) { out.gold = z.manual.gold; out.src = 'manual'; }
+    if (z.manual.silver) { out.silver = z.manual.silver; out.src = 'manual'; }
+    return out;
+  }
+
+  async function zkFetchFx(){
+    for (const u of ZK_FX_URLS) {
+      try {
+        const r = await fetch(u, { cache:'no-store' }); if (!r.ok) continue;
+        const j = await r.json(); const d = j && j.usd;
+        if (d && d.xau > 0 && d.xag > 0 && d.pkr > 0) return { date: j.date || new Date().toISOString().slice(0, 10), usd: { pkr:d.pkr, sar:d.sar, aed:d.aed, usd:1, gbp:d.gbp, eur:d.eur, xau:d.xau, xag:d.xag } };
+      } catch (e) {}
+    }
+    try {
+      const j = async u => (await fetch(u, { cache:'no-store' })).json();
+      const [g, s, f] = await Promise.all([j('https://api.gold-api.com/price/XAU'), j('https://api.gold-api.com/price/XAG'), j('https://open.er-api.com/v6/latest/USD')]);
+      if (g.price > 0 && s.price > 0 && f.rates && f.rates.PKR) return { date: new Date().toISOString().slice(0, 10), usd: { pkr:f.rates.PKR, sar:f.rates.SAR, aed:f.rates.AED, usd:1, gbp:f.rates.GBP, eur:f.rates.EUR, xau:1 / g.price, xag:1 / s.price } };
+    } catch (e) {}
+    return null;
+  }
+
+  /* the calculation itself */
+  function zkCalc(z){
+    const r = zkRates(z);
+    const goldG = z.gold.reduce((s, x) => s + zkNum(x.g), 0);                              // total weight (all pieces are mostly gold, so all of it counts towards the nisāb)
+    const goldFine = z.gold.reduce((s, x) => s + zkNum(x.g) * (ZK_KARAT.includes(+x.k) ? +x.k : 24) / 24, 0);  // fine-gold content, priced at the 24K rate
+    const silverG = zkNum(z.silver);
+    const cash = Object.values(z.cash).reduce((s, v) => s + zkNum(v), 0);
+    const biz = Object.values(z.biz).reduce((s, v) => s + zkNum(v), 0);
+    const liab = Object.values(z.liab).reduce((s, v) => s + zkNum(v), 0);
+    const goldVal = r.gold ? goldFine * r.gold : 0, silverVal = r.silver ? silverG * r.silver : 0;
+    const assets = goldVal + silverVal + cash + biz;
+    const net = Math.max(0, assets - liab);
+    const onlyGold = goldG > 0 && !silverG && !cash && !biz, onlySilver = silverG > 0 && !goldG && !cash && !biz;
+    // Nisāb: silver (612.36 g) whenever the wealth is mixed; gold (87.48 g) only when a person owns nothing but gold.
+    // For gold-only, the nisāb is compared at the owner's own gold price (karat-adjusted) so weight and value agree.
+    let basis = 'silver', nisabVal = r.silver ? ZK_NISAB_SILVER * r.silver : null, status;
+    if (onlyGold) { basis = 'gold'; nisabVal = r.gold ? ZK_NISAB_GOLD * (goldVal / goldG) : null; }
+    if (onlySilver) basis = 'silverOnly';
+    const byWeight = (onlyGold && !r.gold) || (onlySilver && !r.silver);
+    if (!assets && !goldG && !silverG) status = 'empty';
+    else if (onlyGold && !liab) status = goldG >= ZK_NISAB_GOLD - 1e-9 ? 'due' : 'notDue';
+    else if (onlySilver && !liab) status = silverG >= ZK_NISAB_SILVER - 1e-9 ? 'due' : 'notDue';
+    else if (onlyGold && goldG < ZK_NISAB_GOLD) status = 'notDue';
+    else if (onlySilver && silverG < ZK_NISAB_SILVER) status = 'notDue';
+    else if (goldG && !r.gold) status = 'needGold';
+    else if (silverG && !r.silver) status = 'needSilver';
+    else if (nisabVal == null) status = basis === 'gold' ? 'needGold' : 'needSilver';
+    else status = net >= nisabVal - 1e-9 ? 'due' : 'notDue';
+    const zakat = net * ZK_RATE;
+    return { r, goldG, goldFine, silverG, goldVal, silverVal, cash, biz, liab, assets, net, basis, nisabVal, status, zakat, onlyGold, onlySilver, byWeight, zakatGoldG: goldG * ZK_RATE, zakatSilverG: silverG * ZK_RATE };
+  }
+
+  /* Hijri helpers (same adjustment key as the Ilm card) */
+  function zkHijri(date){
+    try {
+      const adj = parseInt(localStorage.getItem('dl.hijri.adj') || '0', 10) || 0;
+      const p = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', { day:'numeric', month:'numeric', year:'numeric' }).formatToParts(new Date(date.getTime() + adj * 864e5));
+      const o = {}; p.forEach(x => { o[x.type] = x.value; });
+      return { d:+o.day, m:+o.month };
+    } catch (e) { return null; }
+  }
+  const zkDaysMemo = {};
+  function zkDaysTo(h){
+    if (!h) return null;
+    const key = `${h.m}-${h.d}-${new Date().toDateString()}-${localStorage.getItem('dl.hijri.adj') || 0}`;
+    if (key in zkDaysMemo) return zkDaysMemo[key];
+    return (zkDaysMemo[key] = zkDaysToRaw(h));
+  }
+  function zkDaysToRaw(h){
+    const now = new Date(); now.setHours(12, 0, 0, 0);
+    for (let i = 0; i < 400; i++) { const x = zkHijri(new Date(now.getTime() + i * 864e5)); if (!x) return null; if (x.m === h.m && x.d === h.d) return i; }
+    return null;
+  }
+  const zkHawlText = h => h ? `${h.d} ${isUr() ? ZK_HM_UR[h.m] : ZK_HM_EN[h.m]}` : zkT('noDate');
+
+  /* ---- dashboard card ---- */
+  function renderZakat(){
+    const host = $('#zakatCard'); if (!host) return;
+    const z = state.zakat, U = isUr(), last = z.history[z.history.length - 1], r = zkRates(z);
+    const days = zkDaysTo(z.hawl);
+    const nisab = r.silver ? zkMoney(ZK_NISAB_SILVER * r.silver, z.cur) : null;
+    host.innerHTML = `
+      <div class="zk-hero ${U ? 'zk-hero--ur' : ''}">
+        <svg class="zk-scale" viewBox="0 0 120 84" aria-hidden="true"><path d="M60 8v60M22 68h76" /><path d="M60 14 22 30M60 14l38 16" /><path d="M8 48c0 8 6 12 14 12s14-4 14-12M84 48c0 8 6 12 14 12s14-4 14-12" /><path d="M22 30 8 48h28ZM98 30 84 48h28Z" /><circle cx="60" cy="12" r="4" /></svg>
+        <div class="zk-hero__body">
+          ${last
+            ? `<span class="eyebrow">${zkT('lastCalc')} · <bdi>${new Date(last.at).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' })}</bdi></span>
+               <div class="zk-hero__amt ${last.due ? '' : 'is-free'}">${last.due ? zkMoney(last.zakat, last.cur, true) : zkT('notDue')}</div>
+               <p class="zk-hero__line ${U ? 'ur' : ''}">${last.due ? `${zkT('net')}: ${zkMoney(last.net, last.cur)} · ${zkT('nisab')}: ${last.nisab != null ? zkMoney(last.nisab, last.cur) : '—'}` : `${zkT('net')}: ${zkMoney(last.net, last.cur)}`}</p>`
+            : `<span class="eyebrow">${nisab ? `${zkT('nisabToday')} · ${zkT('basisSilver')}` : zkT('nisabPlain')}</span>
+               <div class="zk-hero__amt ${nisab ? '' : 'is-weights'} ${U ? 'ur' : ''}">${nisab || zkT('nisabWeights')}</div>
+               <p class="zk-hero__line ${U ? 'ur' : ''}">${zkT('cardLine')}</p>`}
+          ${z.hawl ? `<p class="zk-hero__date ${U ? 'ur' : ''}">${zkT('hawl')}: <b>${zkHawlText(z.hawl)}</b>${days === 0 ? ` · ${zkT('today')}` : days != null ? ` · ${days} ${zkT('daysLeft')}` : ''}</p>` : ''}
+          <button class="btn btn--gold zk-hero__btn" type="button" data-open="zakat">${zkT('open')} · <bdi class="${U ? 'zk-alt--en' : 'zk-alt--ur'}">${zkAlt('open')}</bdi></button>
+        </div>
+      </div>`;
+  }
+
+  /* ---- the calculator modal ---- */
+  function openZakat(){
+    const z = state.zakat, U = isUr();
+    const amt = (group, key, note) => `
+      <div class="field ${U ? 'field--ur' : ''}">
+        <label for="zk-${key}">${zkLabel(key)}</label>
+        <input id="zk-${key}" class="zk-in" type="text" inputmode="decimal" autocomplete="off" placeholder="0" data-zk-amt="${group}.${key}" value="${zkNum(z[group][key]) ? zkFmt(zkNum(z[group][key]), 0) : ''}">
+        ${note ? `<small class="zk-note ${U ? 'ur' : ''}">${zkT(note)}</small>` : ''}
+      </div>`;
+    const goldRows = () => z.gold.map((x, i) => `
+      <div class="zk-gold" data-zk-gold="${i}">
+        <input class="zk-in" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-label="${zkT('goldWeight')}" data-zk-goldw="${i}" value="${zkNum(x.g) ? zkW(zkNum(x.g), z.unit) : ''}">
+        <span class="zk-unit">${zkT(z.unit)}</span>
+        <select class="select zk-karat" aria-label="${zkT('karat')}" data-zk-goldk="${i}">${ZK_KARAT.map(k => `<option value="${k}" ${+x.k === k ? 'selected' : ''}>${k}K</option>`).join('')}</select>
+        <button class="zk-x" type="button" aria-label="Remove" data-zk-goldx="${i}" ${z.gold.length < 2 ? 'hidden' : ''}>${ICON.close}</button>
+      </div>`).join('');
+    const sec = (key, inner, cls = '') => `<section class="zk-sec ${cls}"><h4 class="${U ? 'ur-h4' : ''}">${zkLabel(key)}</h4>${inner}</section>`;
+    const hm = U ? ZK_HM_UR : ZK_HM_EN;
+    const rules = ZK_RULES[U ? 'ur' : 'en'];
+    const list = (title, items) => `<section><h4 class="${U ? 'ur-h4' : ''}">${zkLabel(title)}</h4><ul class="virtues ${U ? 'virtues--ur' : ''}">${items.map(x => `<li class="${U ? 'ur' : ''}">${esc(x)}</li>`).join('')}</ul></section>`;
+
+    openModal({ eyebrow: 'Zakāt · Hanafi · 2.5%', title: `Zakat calculator<bdi class="title-ur">زکوٰۃ کیلکولیٹر</bdi>`, wide: true,
+      body: `<div class="detail zk ${U ? 'detail--ur zk--ur' : ''}">
+        <p class="detail__intro ${U ? 'ur' : ''}">${zkT('intro')}</p>
+
+        ${sec('settings', `
+          <div class="zk-grid zk-grid--2">
+            <div class="field ${U ? 'field--ur' : ''}"><label for="zk-cur">${zkLabel('currency')}</label><select id="zk-cur" class="select">${Object.keys(ZK_CUR).map(c => `<option value="${c}" ${z.cur === c ? 'selected' : ''}>${c} · ${ZK_CUR[c]}</option>`).join('')}</select></div>
+            <div class="field ${U ? 'field--ur' : ''}"><label for="zk-unit">${zkLabel('unit')}</label><select id="zk-unit" class="select"><option value="tola" ${z.unit === 'tola' ? 'selected' : ''}>${zkT('tola')} · ${zkAlt('tola')}</option><option value="gram" ${z.unit === 'gram' ? 'selected' : ''}>${zkT('gram')} · ${zkAlt('gram')}</option></select></div>
+            <div class="field ${U ? 'field--ur' : ''}"><label for="zk-rgold">${zkRateLabel('goldRate', z.unit)}</label><input id="zk-rgold" class="zk-in" type="text" inputmode="decimal" autocomplete="off" placeholder="0" data-zk-rate="gold"></div>
+            <div class="field ${U ? 'field--ur' : ''}"><label for="zk-rsilver">${zkRateLabel('silverRate', z.unit)}</label><input id="zk-rsilver" class="zk-in" type="text" inputmode="decimal" autocomplete="off" placeholder="0" data-zk-rate="silver"></div>
+          </div>
+          <div class="zk-ratebar"><button class="btn" type="button" id="zkFetch">${zkT('fetch')}</button><span class="zk-ratestatus ${U ? 'ur' : ''}" id="zkRateStatus"></span></div>
+          <small class="zk-note ${U ? 'ur' : ''}">${zkT('rateNote')}</small>`)}
+
+        ${sec('gold', `<small class="zk-note ${U ? 'ur' : ''}">${zkT('goldNote')}</small><div id="zkGoldRows">${goldRows()}</div><button class="btn btn--text zk-add" type="button" id="zkAddGold">${zkT('addGold')}</button>`)}
+
+        ${sec('silver', `<div class="field ${U ? 'field--ur' : ''}"><label for="zk-silver">${zkLabel('silverWeight')}</label><div class="zk-gold zk-gold--one"><input id="zk-silver" class="zk-in" type="text" inputmode="decimal" autocomplete="off" placeholder="0" data-zk-silver value="${zkNum(z.silver) ? zkW(zkNum(z.silver), z.unit) : ''}"><span class="zk-unit">${zkT(z.unit)}</span></div></div>`)}
+
+        ${sec('cash', `<div class="zk-grid">${amt('cash', 'cashHand')}${amt('cash', 'bank')}${amt('cash', 'certs')}${amt('cash', 'lent', 'lentNote')}${amt('cash', 'shares')}${amt('cash', 'property')}${amt('cash', 'other', 'otherNote')}</div>`)}
+
+        ${sec('biz', `<div class="zk-grid">${amt('biz', 'stock')}${amt('biz', 'bizCash')}</div><small class="zk-note ${U ? 'ur' : ''}">${zkT('bizNote')}</small>`)}
+
+        ${sec('liab', `<div class="zk-grid">${amt('liab', 'debtNow')}${amt('liab', 'billsDue')}${amt('liab', 'loanYear')}</div>`, 'zk-sec--liab')}
+
+        ${sec('result', `<div class="zk-result" id="zkResult"></div>
+          <div class="zk-actions"><button class="btn btn--gold" type="button" id="zkSave">${zkT('save')}</button><button class="btn" type="button" id="zkShare">${zkT('share')}</button><button class="btn btn--text btn--danger" type="button" id="zkClear">${zkT('clear')}</button></div>`)}
+
+        ${sec('hawl', `<small class="zk-note ${U ? 'ur' : ''}">${zkT('hawlNote')}</small>
+          <div class="zk-grid zk-grid--2">
+            <div class="field ${U ? 'field--ur' : ''}"><label for="zk-hm">${zkLabel('month')}</label><select id="zk-hm" class="select"><option value="">${zkT('noDate')}</option>${hm.slice(1).map((n, i) => `<option value="${i + 1}" ${z.hawl && z.hawl.m === i + 1 ? 'selected' : ''}>${n}</option>`).join('')}</select></div>
+            <div class="field ${U ? 'field--ur' : ''}"><label for="zk-hd">${zkLabel('day')}</label><select id="zk-hd" class="select">${Array.from({ length: 30 }, (_, i) => `<option value="${i + 1}" ${z.hawl && z.hawl.d === i + 1 ? 'selected' : ''}>${i + 1}</option>`).join('')}</select></div>
+          </div><p class="zk-hawlline ${U ? 'ur' : ''}" id="zkHawlLine"></p>`)}
+
+        ${list('rulesIn', rules.in)}${list('rulesOut', rules.out)}${list('rulesWho', rules.who)}
+      </div>
+      <div class="zk-sticky" id="zkSticky"></div>` });
+    const box = modal.querySelector('.modal__box');
+    box.style.width = 'min(760px,100%)';
+    const fillRates = () => {
+      const r = zkRates(z), unitG = z.unit === 'gram' ? 1 : ZK_TOLA;
+      const gi = $('#zk-rgold', box), si = $('#zk-rsilver', box);
+      if (document.activeElement !== gi) gi.value = r.gold ? zkFmtMax(r.gold * unitG, r.gold * unitG < 100 ? 2 : 0) : '';
+      if (document.activeElement !== si) si.value = r.silver ? zkFmtMax(r.silver * unitG, r.silver * unitG < 100 ? 2 : 0) : '';
+      const st = $('#zkRateStatus', box);
+      if (zkFetching) st.textContent = zkT('fetching');
+      else if (r.src === 'manual') st.textContent = zkT('rateManual') + (r.date ? ` · ${zkT('rateAuto')} ${r.date}` : '');
+      else if (r.src === 'auto') st.textContent = `${zkT('rateAuto')} · ${r.date}`;
+      else st.textContent = zkT(z.fxFail ? 'rateFail' : 'rateNone');
+      st.classList.toggle('is-err', !zkFetching && !r.src && z.fxFail);
+    };
+    const row = (k, v, cls = '') => `<div class="zk-line ${cls}"><span>${k}</span><b>${v}</b></div>`;
+    const render = () => {
+      const c = zkCalc(z), cur = z.cur;
+      const basisKey = c.basis === 'gold' ? 'basisGold' : c.basis === 'silverOnly' ? 'basisSilverOnly' : 'basisSilver';
+      const statusCls = c.status === 'due' ? 'is-due' : c.status === 'notDue' ? 'is-free' : c.status === 'empty' ? '' : 'is-warn';
+      const nisabText = c.nisabVal != null ? zkMoney(c.nisabVal, cur) : (c.basis === 'gold' ? `${zkW(ZK_NISAB_GOLD, z.unit)} ${zkT(z.unit)} · ${zkT('basisWeight')}` : `${zkW(ZK_NISAB_SILVER, z.unit)} ${zkT(z.unit)} · ${zkT('basisWeight')}`);
+      const zakatW = c.onlyGold ? `${zkW(c.zakatGoldG, z.unit)} ${zkT(z.unit)} ${zkT('ofGold')}` : `${zkW(c.zakatSilverG, z.unit)} ${zkT(z.unit)} ${zkT('ofSilver')}`;
+      if (c.byWeight) {
+        $('#zkResult', box).innerHTML = `
+          <div class="zk-status ${statusCls}">${zkT(c.status)}</div>
+          ${row(zkT(c.onlyGold ? 'yourGold' : 'yourSilver'), `${zkW(c.onlyGold ? c.goldG : c.silverG, z.unit)} ${zkT(z.unit)}`, 'zk-line--strong')}
+          ${row(`${zkT('nisab')} <small>${zkT(basisKey)}</small>`, nisabText)}
+          ${c.status === 'due' ? row(zkT('zakat'), zakatW, 'zk-line--zakat') : ''}
+          <small class="zk-note ${U ? 'ur' : ''}">${zkT('valueNote')}</small>`;
+        $('#zkSticky', box).innerHTML = `<span class="zk-sticky__k">${zkT('zakat')}</span><b class="zk-sticky__v ${statusCls}">${c.status === 'due' ? zakatW : zkT('notDue')}</b>`;
+        refreshUnitNames();
+        return;
+      }
+      $('#zkResult', box).innerHTML = `
+        <div class="zk-status ${statusCls}">${zkT(c.status)}</div>
+        ${row(zkT('totalAssets'), zkMoney(c.assets, cur))}
+        ${c.liab ? row(zkT('minusLiab'), '− ' + zkMoney(c.liab, cur)) : ''}
+        ${row(zkT('net'), zkMoney(c.net, cur), 'zk-line--strong')}
+        ${row(`${zkT('nisab')} <small>${zkT(basisKey)}</small>`, nisabText)}
+        ${row(c.status === 'due' ? zkT('zakat') : `${zkT('ifDue')}`, zkMoney(c.zakat, cur, true), c.status === 'due' ? 'zk-line--zakat' : 'zk-line--muted')}
+        ${c.status === 'due' ? `<small class="zk-note ${U ? 'ur' : ''}">${zkT('roundNote')}</small>` : ''}
+        <div class="zk-break">
+          ${c.goldG ? row(`${zkT('goldLine')} <small>${zkW(c.goldG, z.unit)} ${zkT(z.unit)} · ${zkW(c.goldFine, z.unit)} ${zkT('pure')}</small>`, c.r.gold ? zkMoney(c.goldVal, cur) : '—') : ''}
+          ${c.silverG ? row(`${zkT('silverLine')} <small>${zkW(c.silverG, z.unit)} ${zkT(z.unit)}</small>`, c.r.silver ? zkMoney(c.silverVal, cur) : '—') : ''}
+          ${c.cash ? row(zkT('cashLine'), zkMoney(c.cash, cur)) : ''}
+          ${c.biz ? row(zkT('bizLine'), zkMoney(c.biz, cur)) : ''}
+        </div>`;
+      $('#zkSticky', box).innerHTML = `<span class="zk-sticky__k">${zkT('zakat')}</span><b class="zk-sticky__v ${statusCls}">${c.status === 'due' ? zkMoney(c.zakat, cur, true) : c.status === 'notDue' ? zkT('notDue') : c.status === 'empty' ? '—' : zkMoney(c.zakat, cur, true) + ' ?'}</b>`;
+      refreshUnitNames();
+    };
+    const refreshUnitNames = () => {
+      box.querySelectorAll('.zk-unit').forEach(el => { el.textContent = zkT(z.unit); });
+      box.querySelectorAll('[data-zk-rate]').forEach(i => { const lab = box.querySelector(`label[for="${i.id}"]`); if (lab) lab.innerHTML = zkRateLabel(i.dataset.zkRate === 'gold' ? 'goldRate' : 'silverRate', z.unit); });
+    };
+    const renderHawl = () => {
+      const days = zkDaysTo(z.hawl);
+      $('#zkHawlLine', box).textContent = z.hawl ? `${zkHawlText(z.hawl)}${days === 0 ? ` · ${zkT('today')}` : days != null ? ` · ${days} ${zkT('daysLeft')}` : ''}` : '';
+    };
+    const refreshWeights = () => {
+      box.querySelectorAll('[data-zk-goldw]').forEach(i => { const g = zkNum(z.gold[+i.dataset.zkGoldw].g); i.value = g ? zkW(g, z.unit) : ''; });
+      const si = $('#zk-silver', box); si.value = zkNum(z.silver) ? zkW(zkNum(z.silver), z.unit) : '';
+    };
+    const doFetch = async () => {
+      if (zkFetching) return;
+      zkFetching = true; fillRates();
+      const fx = await zkFetchFx();
+      zkFetching = false;
+      if (fx) { z.fx = fx; z.fxFail = false; } else z.fxFail = true;
+      zkSave(); if (box.isConnected) { fillRates(); render(); } else renderZakat();
+    };
+
+    box.addEventListener('input', e => {
+      const t = e.target, unitG = z.unit === 'gram' ? 1 : ZK_TOLA;
+      if (t.dataset.zkAmt) { const [g, k] = t.dataset.zkAmt.split('.'); z[g][k] = zkNum(t.value); }
+      else if (t.dataset.zkGoldw != null) z.gold[+t.dataset.zkGoldw].g = zkNum(t.value) * unitG;
+      else if (t.dataset.zkSilver != null) z.silver = zkNum(t.value) * unitG;
+      else if (t.dataset.zkRate) { z.manual[t.dataset.zkRate] = zkNum(t.value) ? zkNum(t.value) / unitG : null; fillRates(); }
+      else return;
+      zkSave(); render();
+    });
+    box.addEventListener('change', e => {
+      const t = e.target;
+      if (t.id === 'zk-cur') { z.cur = t.value; z.manual = { gold:null, silver:null }; fillRates(); }
+      else if (t.id === 'zk-unit') { z.unit = t.value; refreshWeights(); fillRates(); }
+      else if (t.dataset.zkGoldk != null) z.gold[+t.dataset.zkGoldk].k = +t.value;
+      else if (t.id === 'zk-hm' || t.id === 'zk-hd') { const m = +$('#zk-hm', box).value, d = +$('#zk-hd', box).value; z.hawl = m ? { m, d } : null; renderZakat(); renderHawl(); }
+      else return;
+      zkSave(); render();
+    });
+    box.addEventListener('focusout', e => {
+      const t = e.target; if (!t.classList || !t.classList.contains('zk-in') || !t.dataset.zkAmt) return;
+      const n = zkNum(t.value); t.value = n ? zkFmt(n, 0) : '';
+    });
+    box.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      if (b.id === 'zkAddGold') { z.gold.push({ g:0, k:22 }); $('#zkGoldRows', box).innerHTML = goldRows(); zkSave(); render(); }
+      else if (b.dataset.zkGoldx != null) { z.gold.splice(+b.dataset.zkGoldx, 1); if (!z.gold.length) z.gold.push({ g:0, k:22 }); $('#zkGoldRows', box).innerHTML = goldRows(); zkSave(); render(); }
+      else if (b.id === 'zkFetch') doFetch();
+      else if (b.id === 'zkClear') { const keep = { cur:z.cur, unit:z.unit, manual:z.manual, fx:z.fx, fxFail:z.fxFail, hawl:z.hawl, history:z.history }; Object.assign(z, zkDefault(), keep); zkSave(); toast(zkT('cleared')); openZakat(); }
+      else if (b.id === 'zkSave') {
+        const c = zkCalc(z);
+        if (c.status === 'empty') { toast(zkT('empty')); return; }
+        z.history.push({ at: new Date().toISOString(), cur: z.cur, assets: c.assets, liab: c.liab, net: c.net, nisab: c.nisabVal, basis: c.basis, zakat: c.zakat, due: c.status === 'due' });
+        if (z.history.length > 24) z.history.shift();
+        zkSave(); renderZakat(); toast(zkT('saved'));
+      }
+      else if (b.id === 'zkShare') {
+        const c = zkCalc(z), cur = z.cur, ur = isUr();
+        const L = ur ? ['زکوٰۃ کا حساب', 'زکوٰۃ والا کل مال', 'منہا قرض', 'خالص مال', 'نصاب', 'زکوٰۃ (ڈھائی فیصد)', 'زکوٰۃ فرض ہے', 'نصاب سے کم: زکوٰۃ فرض نہیں'] : ['Zakat calculation', 'Zakatable assets', 'Minus what you owe', 'Net zakatable wealth', 'Nisāb', 'Zakat (2.5%)', 'Zakat is due', 'Below the nisāb: no zakat due'];
+        const lines = [`${L[0]} · ${new Date().toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' })}`, `${L[1]}: ${zkMoney(c.assets, cur)}`];
+        if (c.liab) lines.push(`${L[2]}: ${zkMoney(c.liab, cur)}`);
+        lines.push(`${L[3]}: ${zkMoney(c.net, cur)}`);
+        if (c.nisabVal != null) lines.push(`${L[4]}: ${zkMoney(c.nisabVal, cur)}`);
+        lines.push(c.status === 'due' ? `${L[6]} · ${L[5]}: ${zkMoney(c.zakat, cur)}` : c.status === 'notDue' ? L[7] : `${L[5]}: ${zkMoney(c.zakat, cur)}`);
+        const msg = lines.join('\n') + '\n\n— Daily Light app\nhttps://asadhamza007.github.io/daily-light/';
+        if (navigator.share) navigator.share({ text: msg }).catch(() => {});
+        else if (navigator.clipboard) navigator.clipboard.writeText(msg).then(() => toast(ur ? 'کاپی ہو گیا' : 'Copied'));
+      }
+    });
+
+    fillRates(); render(); renderHawl();
+    const fresh = z.fx && z.fx.date === new Date().toISOString().slice(0, 10);
+    if (!fresh && navigator.onLine !== false) doFetch();
+  }
+
   function renderIbadat(){
     $('#ibadatTiles').innerHTML = IBADAT.map(g => `
       <button class="tile" type="button" data-ibadat="${g.id}">
@@ -2715,7 +3634,7 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
   }
 
   function renderAll(){
-    renderHeader(); renderPrayers(); renderTasks(); renderHabits(); renderArch(); renderWeek(); renderArchive(); renderQuran(); renderWazifa();
+    renderHeader(); renderPrayers(); renderTasks(); renderHabits(); renderArch(); renderWeek(); renderArchive(); renderQuran(); renderWazifa(); renderHajj(); renderZakat();
   }
 
   /* ================= Modal ================= */
@@ -3420,8 +4339,9 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
   }
   function openIbadat(id){
     if (id === 'qibla') return openQibla();
-    const g = IBADAT.find(x => x.id === id); if (!g) return;
-    const U = isUr(), u = U ? IBADAT_UR[id] : null;
+    const g = IBADAT.find(x => x.id === id) || HAJJ.find(x => x.id === id); if (!g) return;
+    const isHajj = !IBADAT.some(x => x.id === id);
+    const U = isUr(), u = U ? (isHajj ? HAJJ_UR[id] : IBADAT_UR[id]) : null;
     const factsArr = u && u.facts ? u.facts : g.facts;
     const facts = factsArr ? `<div class="rakat ${U ? 'rakat--ur' : ''}">${factsArr.map(([k, v]) => `<span><b>${esc(k)}</b>${esc(v)}</span>`).join('')}</div>` : '';
     const intro = u && u.intro ? u.intro : g.intro;
@@ -3437,7 +4357,7 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
       </div>`).join('');
     const signs = g.signs ? `<section><h4>رموزِ اوقاف · Stop signs</h4><div class="signs">${signRows(g.signs)}</div></section>` : '';
     const tajwid = g.tajwid ? `<section><h4>بنیادی تجوید · Basic tajwīd</h4><div class="signs">${signRows(g.tajwid)}</div></section>` : '';
-    openModal({ eyebrow: 'Ibādāt · Hanafi', title: `${esc(g.name)}<bdi class="title-ur">${g.ur}</bdi>`, wide: true,
+    openModal({ eyebrow: isHajj ? 'Ḥajj o ‘Umrah · Hanafi' : 'Ibādāt · Hanafi', title: `${esc(g.name)}<bdi class="title-ur">${g.ur}</bdi>`, wide: true,
       body: `<div class="detail ${U ? 'detail--ur' : ''}">${facts}<p class="detail__intro ${U ? 'ur' : ''}">${esc(intro)}</p>${anim}${steps}${recs}${signs}${tajwid}${lists}</div>` });
     modal.querySelector('.modal__box').style.width = 'min(760px,100%)';
     fillQuranRefs(modal);
@@ -3800,6 +4720,7 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
     else if (el.dataset.open === 'copytasks') { const y = tasksFor(shiftKey(viewKey, -1)); dayData().taskList = y.map(t => ({ id: uid(), title: t.title, tag: t.tag })); commit(); toast('Copied yesterday’s tasks'); }
     else if (el.dataset.deed) { dayData().taskList.push({ id: uid(), title: el.dataset.deed, tag: 'Suggested' }); commit(); toast('Added to today'); }
     else if (el.dataset.open === 'habits') openManage('habits');
+    else if (el.dataset.open === 'zakat') openZakat();
   });
   $('#backToday').onclick = () => { viewKey = todayKey(); renderAll(); };
   $('#manageTasks').onclick = () => openManage('tasks');
