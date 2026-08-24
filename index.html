@@ -763,6 +763,136 @@
   .asma__mid{grid-area:mid;font-size:11px;color:var(--ink-3);letter-spacing:.04em}
   .asma__ur{grid-area:ur;font-family:var(--font-urdu);direction:rtl;font-size:13px;color:var(--ink-2);line-height:1.9}
   .ilm-ar{font-family:var(--font-quran);font-size:20px;line-height:2;display:block;color:var(--gold-2);margin-bottom:6px}
+  /* ---------- Hadith Kutub ---------- */
+  .hk-hero{position:relative;overflow:hidden;margin:14px 0 4px;padding:16px 14px 14px;border:1px solid rgba(216,182,108,.42);border-radius:16px;background:radial-gradient(120% 150% at 50% 0%,rgba(216,182,108,.15),rgba(216,182,108,.04) 55%,transparent),linear-gradient(180deg,rgba(255,255,255,.04),transparent);text-align:center}
+  .hk-shelf{display:flex;gap:5px;justify-content:center;align-items:flex-end;padding:2px 0 10px;border-bottom:1px solid var(--line)}
+  .hk-spine{width:33px;border-radius:5px 5px 2px 2px;border:1px solid rgba(216,182,108,.4);background:linear-gradient(180deg,rgba(216,182,108,.16),rgba(255,255,255,.02));display:grid;place-items:center;padding:6px 2px;transition:transform .25s var(--ease)}
+  .hk-spine bdi{writing-mode:vertical-rl;font-family:var(--font-urdu);font-size:10.5px;color:var(--ink-2);line-height:1.1}
+  .hk-spine:nth-child(1){height:72px}.hk-spine:nth-child(2){height:68px}.hk-spine:nth-child(3){height:62px}.hk-spine:nth-child(4){height:66px}.hk-spine:nth-child(5){height:64px}.hk-spine:nth-child(6){height:60px}.hk-spine:nth-child(7){height:55px}
+  .card--hk:hover .hk-spine{transform:translateY(-2px)}
+  .hk-hero__sub{margin-top:9px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .hk-hero__btn{margin-top:12px;width:100%;justify-content:center;font-size:14px;font-weight:800;padding:13px 18px;background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#1B1405;border-color:transparent;border-radius:12px}
+  .hk-hero__btn:hover{filter:brightness(1.06)}
+  .hk-cont{margin-top:12px;width:100%;display:flex;align-items:center;gap:10px;padding:11px 13px;border:1px solid rgba(216,182,108,.45);border-radius:var(--r-row);background:linear-gradient(135deg,rgba(216,182,108,.10),transparent);color:var(--ink);cursor:pointer;font:inherit;text-align:left;transition:border-color .2s,transform .12s}
+  .hk-cont:active{transform:scale(.99)}
+  .hk-cont__l{flex:1;min-width:0}
+  .hk-cont__l small{display:block;font-size:9.5px;letter-spacing:.16em;font-weight:800;color:var(--gold)}
+  .hk-cont__l bdi{display:block;font-family:var(--font-urdu);direction:rtl;text-align:left;font-size:14px;line-height:1.9;color:var(--ink)}
+
+  .hk-box{width:min(780px,100%);padding:16px 16px 20px}
+  .hk-pane{min-height:200px}
+  .hk-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .hk-back{width:32px;height:32px;flex:none;border-radius:10px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);display:grid;place-items:center;cursor:pointer;color:var(--ink-2);transition:border-color .2s,transform .12s}
+  .hk-back:hover{border-color:var(--gold)}
+  .hk-back:active{transform:scale(.94)}
+  .hk-head__t{flex:1;min-width:0}
+  .hk-head__ur{font-family:var(--font-urdu);font-size:19px;line-height:1.7;color:var(--ink)}
+  .hk-head__ur bdi{direction:rtl}
+  .hk-head__sub{font-size:11px;color:var(--ink-3);margin-top:-3px}
+  .hk-offchip{cursor:default;border-style:solid}
+  .chip--hk{border-style:solid;border-color:rgba(216,182,108,.5);color:var(--gold-2);font-family:inherit}
+  .chip--hk bdi{font-family:var(--font-urdu);direction:rtl}
+
+  .hk-search{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.18);padding:2px 12px;margin-bottom:10px}
+  .hk-search__ic{color:var(--ink-3);display:grid;place-items:center}
+  .hk-search input{flex:1;background:transparent;border:0;outline:0;color:var(--ink);font:500 13px var(--font-body);padding:10px 0;min-width:0}
+  .hk-search input::placeholder{color:var(--ink-3)}
+  .hk-quick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .hk-list{display:grid;gap:8px}
+  .hk-row{display:flex;align-items:center;gap:11px;padding:11px 12px;border:1px solid var(--line);border-radius:var(--r-row);background:rgba(255,255,255,.03);cursor:pointer;transition:border-color .2s,transform .12s;text-align:left}
+  .hk-row:hover{border-color:var(--line-2)}
+  .hk-row:active{transform:scale(.99)}
+  .hk-row:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .hk-row__meta{flex:1;min-width:0}
+  .hk-row__en{display:block;font-weight:600;font-size:12.5px;color:var(--ink-2)}
+  .hk-row__cnt{display:block;font-size:11px;color:var(--ink-3);margin-top:2px;font-variant-numeric:tabular-nums}
+  .hk-row__cnt--ur bdi{font-family:var(--font-urdu);direction:rtl;font-size:12px;line-height:1.9}
+  .hk-row__ur{font-family:var(--font-urdu);font-size:16.5px;line-height:1.9;direction:rtl;color:var(--ink);white-space:nowrap}
+  .hk-num{flex:none;width:26px;height:26px;border-radius:8px;border:1px solid rgba(216,182,108,.4);color:var(--gold);display:grid;place-items:center;font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
+  .hk-dlcell{flex:none;display:grid;place-items:center;min-width:30px}
+  .hk-stbtn{width:30px;height:30px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.02);display:grid;place-items:center;cursor:pointer;color:var(--ink-3);transition:border-color .2s,color .2s,transform .12s}
+  .hk-stbtn:hover{border-color:var(--gold);color:var(--gold)}
+  .hk-stbtn:active{transform:scale(.92)}
+  .hk-stbtn.is-done{border-color:rgba(140,200,160,.5);color:#8FD4A8}
+  .hk-dlring{display:grid;place-items:center;width:30px;height:30px;border-radius:10px;border:1px solid rgba(216,182,108,.55);color:var(--gold-2);font-size:8.5px;font-weight:800;font-variant-numeric:tabular-nums}
+  .hk-cap{margin:12px 2px 0;font-size:11px;color:var(--ink-3);line-height:1.6}
+  .hk-cap b{color:var(--ink-2)}
+
+  .hk-resume{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:12px;padding:11px 13px;border:1px solid rgba(216,182,108,.45);border-radius:var(--r-row);background:linear-gradient(135deg,rgba(216,182,108,.10),transparent);color:var(--gold-2);cursor:pointer;font:inherit;transition:transform .12s}
+  .hk-resume:active{transform:scale(.99)}
+  .hk-resume__l{flex:1;min-width:0;text-align:left}
+  .hk-resume__l small{display:block;font-size:9.5px;letter-spacing:.16em;font-weight:800;color:var(--gold)}
+  .hk-resume__l bdi{display:block;font-size:12.5px;color:var(--ink);font-weight:600;margin-top:2px}
+
+  .hk-langs{display:flex;gap:6px;margin-bottom:12px}
+  .hk-lang{border:1px solid var(--line);background:transparent;color:var(--ink-3);border-radius:999px;font:700 11px var(--font-body);padding:7px 13px;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+  .hk-lang.is-on{border-color:rgba(216,182,108,.55);color:var(--gold-2);background:rgba(216,182,108,.09)}
+  .hk-item{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03);padding:14px 14px 11px;margin-bottom:10px;transition:border-color .4s}
+  .hk-item.is-hot{border-color:var(--gold)}
+  .hk-item__top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+  .hk-badge{font-family:var(--font-urdu);font-size:12.5px;color:#1B1405;background:linear-gradient(180deg,var(--gold-2),var(--gold));border-radius:9px;padding:2px 10px 4px}
+  .hk-badge bdi{direction:rtl}
+  .hk-grade{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-2);border-radius:999px;padding:4px 10px;font-size:10px;font-weight:700;color:var(--ink-2);max-width:58%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .hk-grade i{width:6px;height:6px;flex:none;border-radius:99px;background:var(--ink-3)}
+  .hk-grade.g-sahih{border-color:rgba(140,200,160,.45);color:#9FDCB4}
+  .hk-grade.g-sahih i{background:#8FD4A8}
+  .hk-grade.g-hasan{border-color:rgba(216,182,108,.5);color:var(--gold-2)}
+  .hk-grade.g-hasan i{background:var(--gold)}
+  .hk-grade.g-daif{border-color:rgba(232,154,154,.45);color:var(--danger)}
+  .hk-grade.g-daif i{background:var(--danger)}
+  .hk-ar{display:none;font-family:var(--font-quran);font-size:21px;line-height:2.05;direction:rtl;text-align:right;color:var(--ink)}
+  .hk-ur{display:none;font-family:var(--font-urdu);font-size:15px;line-height:2.3;direction:rtl;text-align:right;color:var(--ink-2)}
+  .hk-en{display:none;font-size:13px;line-height:1.75;color:var(--ink-2);margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+  .hk-pane.l-ar .hk-ar{display:block}
+  .hk-pane.l-ur .hk-ur{display:block}
+  .hk-pane.l-en .hk-en{display:block}
+  .hk-pane:not(.l-ar) .hk-div,.hk-pane:not(.l-ur) .hk-div{display:none}
+  .hk-div{display:flex;align-items:center;gap:10px;margin:11px 0}
+  .hk-div i{flex:1;height:1px;background:var(--line)}
+  .hk-div b{width:6px;height:6px;transform:rotate(45deg);background:var(--gold);border-radius:1px}
+  .hk-ref{margin-top:11px;font-size:10.5px;color:var(--ink-3);display:flex;justify-content:space-between;font-variant-numeric:tabular-nums}
+  .hk-acts{display:flex;gap:8px;margin-top:11px;border-top:1px solid var(--line);padding-top:10px}
+  .hk-act{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.02);color:var(--ink-2);font:600 10.5px var(--font-body);padding:9px 4px;cursor:pointer;transition:border-color .2s,color .2s,transform .12s}
+  .hk-act:hover{border-color:var(--gold);color:var(--gold-2)}
+  .hk-act:active{transform:scale(.96)}
+  .hk-act.is-on{border-color:rgba(216,182,108,.55);color:var(--gold-2)}
+  .hk-more{width:100%;justify-content:center;margin:4px 0 10px}
+  .hk-pager{display:flex;gap:8px;margin-top:6px}
+  .hk-pager .btn{flex:1;justify-content:center}
+  .hk-jump{flex:1.2;display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.18);padding:0 10px}
+  .hk-jump span{color:var(--ink-3);font-size:11px}
+  .hk-jump input{width:100%;background:transparent;border:0;outline:0;color:var(--ink);font:600 12px var(--font-body);text-align:center;min-width:0}
+  .hk-jump input::placeholder{color:var(--ink-3);font-weight:500}
+
+  .hk-skel{height:120px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(100deg,rgba(255,255,255,.03) 30%,rgba(255,255,255,.07) 50%,rgba(255,255,255,.03) 70%);background-size:200% 100%;animation:hkShimmer 1.2s linear infinite;margin-bottom:10px}
+  .hk-skel--sm{height:64px}
+  @keyframes hkShimmer{to{background-position:-200% 0}}
+  .hk-empty,.hk-err{padding:22px 14px;text-align:center;color:var(--ink-3);font-size:12.5px;line-height:1.7;border:1px dashed var(--line);border-radius:16px;margin-bottom:10px}
+  .hk-empty b{color:var(--ink-2)}
+  .hk-reshead{margin:4px 2px 10px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+  .hk-res{border:1px solid var(--line);border-radius:var(--r-row);background:rgba(255,255,255,.03);padding:11px 12px;margin-bottom:8px;cursor:pointer;transition:border-color .2s,transform .12s}
+  .hk-res:hover{border-color:var(--line-2)}
+  .hk-res:active{transform:scale(.99)}
+  .hk-res__top{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--gold-2);margin-bottom:6px}
+  .hk-res__top bdi{font-family:var(--font-urdu);direction:rtl}
+  .hk-res__snip{font-size:12.5px;line-height:1.8;color:var(--ink-2)}
+  .hk-res__snip.is-rtl{font-family:var(--font-urdu);direction:rtl;text-align:right;line-height:2.15}
+  .hk-res__snip mark{background:rgba(216,182,108,.28);color:var(--ink);border-radius:3px;padding:0 2px}
+
+  html[data-theme="noor"] .hk-hero{border-color:rgba(184,144,47,.55);background:radial-gradient(120% 150% at 50% 0%,rgba(184,144,47,.15),rgba(184,144,47,.05) 55%,transparent)}
+  html[data-theme="noor"] .hk-search,html[data-theme="noor"] .hk-jump{background:rgba(120,95,40,.06)}
+  html[data-theme="noor"] .hk-badge{color:#FFFDF8}
+  html[data-theme="noor"] .hk-grade.g-sahih{border-color:rgba(46,125,79,.45);color:#2E7D4F}
+  html[data-theme="noor"] .hk-grade.g-sahih i{background:#2E7D4F}
+  html[data-theme="noor"] .hk-stbtn.is-done{border-color:rgba(46,125,79,.45);color:#2E7D4F}
+  html[data-theme="noor"] .hk-res__snip mark{background:rgba(184,144,47,.25)}
+  @media (max-width:560px){
+    .hk-box{padding:14px 12px 16px}
+    .hk-row__ur{font-size:15px}
+    .hk-grade{max-width:52%}
+    .hk-pager{flex-wrap:wrap}
+    .hk-jump{order:3;flex:1 1 100%}
+  }
 </style>
 </head>
 <body>
@@ -1003,6 +1133,28 @@
       </div>
     </section>
 
+    <!-- Hadith Kutub -->
+    <section class="card card--hk" style="--i:7" aria-labelledby="h-hk">
+      <header class="card__head">
+        <div><span class="eyebrow">Sihah · احادیث</span><h2 id="h-hk">Hadith Kutub · <bdi class="title-ur" style="margin:0">حدیث کُتب</bdi></h2></div>
+        <div class="counter"><b id="hkCount">7 kitabain</b><button class="btn btn--text" id="hkOpen">Open ↗</button></div>
+      </header>
+      <div class="hk-hero">
+        <div class="hk-shelf" aria-hidden="true">
+          <div class="hk-spine"><bdi>بخاری</bdi></div>
+          <div class="hk-spine"><bdi>مسلم</bdi></div>
+          <div class="hk-spine"><bdi>ترمذی</bdi></div>
+          <div class="hk-spine"><bdi>ابوداود</bdi></div>
+          <div class="hk-spine"><bdi>نسائی</bdi></div>
+          <div class="hk-spine"><bdi>ابن ماجہ</bdi></div>
+          <div class="hk-spine"><bdi>مؤطا</bdi></div>
+        </div>
+        <div class="hk-hero__sub">36,000+ ahadith · عربی · اردو · English · word search</div>
+        <button class="btn hk-hero__btn" type="button" id="hkOpen2">📚 Kitabain kholein</button>
+      </div>
+      <div id="hkContinue"></div>
+    </section>
+
     <!-- Wazifa -->
     <section class="card card--wazifa" style="--i:7" aria-labelledby="h-wazifa">
       <header class="card__head">
@@ -1026,6 +1178,7 @@
 </div>
 
 <div class="modal" id="modal" hidden role="dialog" aria-modal="true"></div>
+<div class="modal" id="hkModal" hidden role="dialog" aria-modal="true"></div>
 <div class="audiobar" id="audioBar" hidden>
   <span class="audiobar__label" id="audioLabel"></span>
   <button class="audiobar__btn audiobar__btn--ur" type="button" id="audioUr" aria-label="Tarjuma audio">اردو</button>
@@ -4392,6 +4545,778 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
   checkToday(false);
   document.addEventListener('visibilitychange', function () { if (!document.hidden) checkToday(false); });
   setInterval(function () { if (!document.hidden) checkToday(false); }, 3600000);
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  var q = function (s) { return document.querySelector(s); };
+  if (!q('#hkOpen')) return;
+
+  /* ================= config ================= */
+  var API_BASES = [
+    'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/',
+    'https://raw.githubusercontent.com/fawazahmed0/hadith-api/1/'
+  ];
+  var ORDER = ['bukhari', 'muslim', 'tirmidhi', 'abudawud', 'nasai', 'ibnmajah', 'malik'];
+  var SAHIHAIN = { bukhari: 1, muslim: 1 };
+  var BOOKS = {"bukhari":{"en":"Sahih al-Bukhari","ur":"صحیح بخاری","who":"Imam Bukhari · 256H","total":7589,"secs":[[1,"Revelation",1,7],[2,"Belief",8,58],[3,"Knowledge",59,134],[4,"Ablutions (Wudu')",135,247],[5,"Bathing (Ghusl)",248,293],[6,"Menstrual Periods",294,333],[7,"Rubbing hands and feet with dust (Tayammum)",334,348],[8,"Prayers (Salat)",349,520],[9,"Times of the Prayers",522,602],[10,"Call to Prayers (Adhaan)",603,875],[11,"Friday Prayer",876,941],[12,"Fear Prayer",942,947],[13,"The Two Festivals (Eids)",948,989],[14,"Witr Prayer",990,1004],[15,"Invoking Allah for Rain (Istisqaa)",1005,1039],[16,"Eclipses",1040,1066],[17,"Prostration During Recital of Qur'an",1067,1079],[18,"Shortening the Prayers (At-Taqseer)",1080,1119],[19,"Prayer at Night (Tahajjud)",1120,1187],[20,"Virtues of Prayer at Masjid Makkah and Madinah",1188,1197],[21,"Actions while Praying",1198,1223],[22,"Forgetfulness in Prayer",1224,1236],[23,"Funerals (Al-Janaa'iz)",1237,1394],[24,"Obligatory Charity Tax (Zakat)",1395,1512],[25,"Hajj (Pilgrimage)",1513,1772],[26,"`Umrah (Minor pilgrimage)",1773,1805],[27,"Pilgrims Prevented from Completing the Pilgrimage",1806,1820],[28,"Penalty of Hunting while on Pilgrimage",1821,1866],[29,"Virtues of Madinah",1867,1890],[30,"Fasting",1891,2007],[31,"Praying at Night in Ramadaan (Taraweeh)",2008,2013],[32,"Virtues of the Night of Qadr",2014,2024],[33,"Retiring to a Mosque for Remembrance of Allah (I'tikaf)",2025,2046],[34,"Sales and Trade",2047,2238],[35,"Sales in which a Price is paid for Goods to be Delivered Later (As-Salam)",2239,2256],[36,"Shuf'a",2257,2259],[37,"Hiring",2260,2286],[38,"Transferance of a Debt from One Person to Another (Al-Hawaala)",2287,2289],[39,"Kafalah",2290,2298],[40,"Representation, Authorization, Business by Proxy",2299,2319],[41,"Agriculture",2320,2350],[42,"Distribution of Water",2351,2383],[43,"Loans, Payment of Loans, Freezing of Property, Bankruptcy",2385,2409],[44,"Khusoomaat",2410,2425],[45,"Lost Things Picked up by Someone (Luqatah)",2426,2439],[46,"Oppressions",2440,2482],[47,"Partnership",2483,2507],[48,"Mortgaging",2508,2515],[49,"Manumission of Slaves",2517,2559],[50,"Makaatib",2560,2565],[51,"Gifts",2566,2636],[52,"Witnesses",2637,2689],[53,"Peacemaking",2690,2710],[54,"Conditions",2712,2737],[55,"Wills and Testaments (Wasaayaa)",2738,2781],[56,"Fighting for the Cause of Allah (Jihaad)",2782,3090],[57,"One-fifth of Booty to the Cause of Allah (Khumus)",3091,3155],[58,"Jizyah and Mawaada'ah",3157,3189],[59,"Beginning of Creation",3190,3325],[60,"Prophets",3326,3488],[61,"Virtues and Merits of the Prophet (pbuh) and his Companions",3489,3648],[62,"Companions of the Prophet",3649,3775],[63,"Merits of the Helpers in Madinah (Ansaar)",3776,3948],[64,"Military Expeditions led by the Prophet (pbuh) (Al-Maghaazi)",3949,4473],[65,"Prophetic Commentary on the Qur'an (Tafseer of the Prophet (pbuh))",4474,4977],[66,"Virtues of the Qur'an",4979,5062],[67,"Wedlock, Marriage (Nikaah)",5063,5250],[68,"Divorce",5251,5350],[69,"Supporting the Family",5351,5372],[70,"Food, Meals",5373,5466],[71,"Sacrifice on Occasion of Birth (`Aqiqa)",5467,5474],[72,"Hunting, Slaughtering",5475,5544],[73,"Al-Adha Festival Sacrifice (Adaahi)",5545,5574],[74,"Drinks",5575,5639],[75,"Patients",5640,5677],[76,"Medicine",5678,5782],[77,"Dress",5783,5969],[78,"Good Manners and Form (Al-Adab)",5970,6226],[79,"Asking Permission",6227,6303],[80,"Invocations",6304,6411],[81,"To make the Heart Tender (Ar-Riqaq)",6412,6593],[82,"Divine Will (Al-Qadar)",6594,6620],[83,"Oaths and Vows",6621,6707],[84,"Expiation for Unfulfilled Oaths",6708,6722],[85,"Laws of Inheritance (Al-Faraa'id)",6723,6771],[86,"Limits and Punishments set by Allah (Hudood)",6772,6860],[87,"Blood Money (Ad-Diyat)",6861,6917],[88,"Apostates",6918,6939],[89,"(Statements made under) Coercion",6940,6952],[90,"Tricks",6953,6981],[91,"Interpretation of Dreams",6982,7047],[92,"Afflictions and the End of the World",7048,7136],[93,"Judgments (Ahkaam)",7137,7225],[94,"Wishes",7226,7245],[95,"Accepting Information Given by a Truthful Person",7246,7267],[96,"Holding Fast to the Qur'an and Sunnah",7268,7370],[97,"Oneness, Uniqueness of Allah (Tawheed)",7371,7563]]},"muslim":{"en":"Sahih Muslim","ur":"صحیح مسلم","who":"Imam Muslim · 261H","total":7564,"secs":[[0,"Introduction",1,92],[1,"The Book of Faith",93,533],[2,"The Book of Purification",534,678],[3,"The Book of Menstruation",679,836],[4,"The Book of Prayers",837,1160],[5,"The Book of Mosques and Places of Prayer",1161,1569],[6,"The Book of Prayer - Travellers",1570,1950],[7,"The Book of Prayer - Friday",1951,2043],[8,"The Book of Prayer - Two Eids",2044,2069],[9,"The Book of Prayer - Rain",2070,2088],[10,"The Book of Prayer - Eclipses",2089,2122],[11,"The Book of Prayer - Funerals",2123,2262],[12,"The Book of Zakat",2263,2494],[13,"The Book of Fasting",2495,2779],[14,"The Book of I'tikaf",2780,2790],[15,"The Book of Pilgrimage",2791,3397],[16,"The Book of Marriage",388,3567],[17,"The Book of Suckling",3568,3651],[18,"The Book of Divorce",3652,3742],[19,"The Book of Invoking Curses",3743,3769],[20,"The Book of Emancipating Slaves",3770,3800],[21,"The Book of Transactions",3801,3961],[22,"The Book of Musaqah",3962,4139],[23,"The Book of the Rules of Inheritance",4140,4162],[24,"The Book of Gifts",4163,4203],[25,"The Book of Wills",4204,4234],[26,"The Book of Vows",4235,4253],[27,"The Book of Oaths",4254,4341],[28,"The Book of Oaths, Muharibin, Qasas (Retaliation), and Diyat (Blood Money)",4342,4397],[29,"The Book of Legal Punishments",4398,4469],[30,"The Book of Judicial Decisions",4470,4497],[31,"The Book of Lost Property",4498,4518],[32,"The Book of Jihad and Expeditions",4519,4700],[33,"The Book on Government",4701,4967],[34,"The Book of Hunting, Slaughter, and what may be Eaten",4972,5063],[35,"The Book of Sacrifices",5064,5126],[36,"The Book of Drinks",5114,5383],[37,"The Book of Clothes and Adornment",5385,5585],[38,"The Book of Manners and Etiquette",5586,5645],[39,"The Book of Greetings",5646,5861],[40,"The Book Concerning the Use of Correct Words",5862,5884],[41,"The Book of Poetry",5887,5896],[42,"The Book of Dreams",5897,5937],[43,"The Book of Virtues",384,6168],[44,"The Book of the Merits of the Companions",6169,6499],[45,"The Book of Virtue, Enjoining Good Manners, and Joining of the Ties of Kinship",6500,6722],[46,"The Book of Destiny",6723,6774],[47,"The Book of Knowledge",6775,6804],[48,"The Book Pertaining to the Remembrance of Allah, Supplication, Repentance and Seeking Forgiveness",6805,6936],[49,"The Book of Heart-Melting Traditions",6937,6951],[50,"The Book of Repentance",6952,7023],[51,"Characteristics of The Hypocrites And Rulings Concerning Them",7024,7044],[52,"Characteristics of the Day of Judgment, Paradise, and Hell",7045,7129],[53,"The Book of Paradise, its Description, its Bounties and its Inhabitants",7130,7234],[54,"The Book of Tribulations and Portents of the Last Hour",7235,7416],[55,"The Book of Zuhd and Softening of Hearts",7417,7522],[56,"The Book of Commentary on the Qur'an",7523,7563]]},"tirmidhi":{"en":"Jami at-Tirmidhi","ur":"جامع ترمذی","who":"Imam Tirmidhi · 279H","total":3998,"secs":[[1,"The Book on Purification",1,148],[2,"The Book on Salat (Prayer)",149,451],[3,"The Book on Al-Witr",452,487],[4,"The Book on the Day of Friday",488,529],[5,"The Book on the Two Eids",530,543],[6,"The Book on Traveling",544,616],[7,"The Book on Zakat",617,681],[8,"The Book on Fasting",682,808],[9,"The Book on Hajj",809,964],[10,"The Book on Jana''iz (Funerals)",965,1079],[11,"The Book on Marriage",1080,1145],[12,"The Book on Suckling",1146,1174],[13,"The Book on Divorce and Li'an",1175,1204],[14,"The Book on Business",1205,1321],[15,"The Chapters On Judgements From The Messenger of Allah",1322,1385],[16,"The Book on Blood Money",1386,1422],[17,"The Book on Legal Punishments (Al-Hudud)",1423,1463],[18,"The Book on Hunting",1464,1492],[19,"The Book on Sacrifices",1493,1523],[20,"The Book on Vows and Oaths",1524,1547],[21,"The Book on Military Expeditions",1548,1618],[22,"The Book on Virtues of Jihad",1619,1669],[23,"The Book on Jihad",1670,1719],[24,"The Book on Clothing",1720,1787],[25,"The Book on Food",1788,1860],[26,"The Book on Drinks",1861,1896],[27,"Chapters on Righteousness And Maintaining Good Relations With Relatives",1897,2035],[28,"Chapters on Medicine",2036,2089],[29,"Chapters On Inheritance",2090,2115],[30,"Chapters On Wasaya (Wills and Testament)",2116,2124],[31,"Chapters On Wala' And Gifts",2125,2132],[32,"Chapters On Al-Qadar",2133,2298],[33,"Chapters On Al-Fitan",2158,2269],[34,"Chapters On Dreams",2270,2294],[35,"Chapters On Witnesses",2295,2303],[36,"Chapters On Zuhd",2304,2414],[37,"Chapters on the description of the Day of Judgement, Ar-Riqaq, and Al-Wara'",2415,2522],[38,"Chapters on the description of Paradise",2523,2735],[39,"The Book on the Description of Hellfire",2573,2795],[40,"The Book on Faith",2606,2644],[41,"Chapters on Knowledge",2645,2687],[42,"Chapters on Seeking Permission",2688,2734],[43,"Chapters on Manners",2736,2858],[44,"Chapters on Parables",2859,2874],[45,"Chapters on The Virtues of the Qur'an",2875,2926],[46,"Chapters on Recitation",2927,2949],[47,"Chapters on Tafsir",2950,3723],[48,"Chapters on Supplication",3370,3604.1],[49,"Chapters on Virtues",3605,3956]]},"abudawud":{"en":"Sunan Abu Dawud","ur":"سنن ابوداود","who":"Imam Abu Dawud · 275H","total":5274,"secs":[[1,"Purification (Kitab Al-Taharah)",1,390],[2,"Prayer (Kitab Al-Salat)",391,1160],[3,"The Book Of The Prayer For Rain (Kitab al-Istisqa')",1161,1197],[4,"Prayer (Kitab Al-Salat): Detailed Rules of Law about the Prayer during Journey",1198,1249],[5,"Prayer (Kitab Al-Salat): Voluntary Prayers",1250,1370],[6,"Prayer (Kitab Al-Salat): Detailed Injunctions about Ramadan",1371,1400],[7,"Prayer (Kitab Al-Salat): Prostration while reciting the Qur'an",1401,1415],[8,"Prayer (Kitab Al-Salat): Detailed Injunctions about Witr",1416,1555],[9,"Zakat (Kitab Al-Zakat)",1556,1700],[10,"The Book of Lost and Found Items",1701,1720],[11,"The Rites of Hajj (Kitab Al-Manasik Wa'l-Hajj)",1721,2045],[12,"Marriage (Kitab Al-Nikah)",2046,2174],[13,"Divorce (Kitab Al-Talaq)",2175,2312],[14,"Fasting (Kitab Al-Siyam)",2313,2476],[15,"Jihad (Kitab Al-Jihad)",2477,2787],[16,"Sacrifice (Kitab Al-Dahaya)",2788,2843],[17,"Game (Kitab Al-Said)",2844,2861],[18,"Wills (Kitab Al-Wasaya)",2862,2884],[19,"Shares of Inheritance (Kitab Al-Fara'id)",2885,2927],[20,"Tribute, Spoils, and Rulership (Kitab Al-Kharaj, Wal-Fai' Wal-Imarah)",2928,3088],[21,"Funerals (Kitab Al-Jana'iz)",3089,3241],[22,"Oaths and Vows (Kitab Al-Aiman Wa Al-Nudhur)",3242,3325],[23,"Commercial Transactions (Kitab Al-Buyu)",3326,3415],[24,"Wages (Kitab Al-Ijarah)",3416,3570],[25,"The Office of the Judge (Kitab Al-Aqdiyah)",3571,3640],[26,"Knowledge (Kitab Al-Ilm)",3641,3668],[27,"Drinks (Kitab Al-Ashribah)",3669,3735],[28,"Foods (Kitab Al-At'imah)",3736,3854],[29,"Medicine (Kitab Al-Tibb)",3855,3903],[30,"Divination and Omens (Kitab Al-Kahanah Wa Al-Tatayyur)",3904,3925],[31,"The Book of Manumission of Slaves",3926,3968],[32,"Dialects and Readings of the Qur'an (Kitab Al-Huruf Wa Al-Qira'at)",3969,4008],[33,"Hot Baths (Kitab Al-Hammam)",4009,4019],[34,"Clothing (Kitab Al-Libas)",4020,4158],[35,"Combing the Hair (Kitab Al-Tarajjul)",4159,4213],[36,"Signet-Rings (Kitab Al-Khatam)",4214,4239],[37,"Trials and Fierce Battles (Kitab Al-Fitan Wa Al-Malahim)",4240,4278],[38,"The Promised Deliverer (Kitab Al-Mahdi)",4279,4290],[39,"Battles (Kitab Al-Malahim)",4291,4350],[40,"Prescribed Punishments (Kitab Al-Hudud)",4351,4493],[41,"Types of Blood-Wit (Kitab Al-Diyat)",4494,4595],[42,"Model Behavior of the Prophet (Kitab Al-Sunnah)",4596,4772],[43,"General Behavior (Kitab Al-Adab)",4773,5274]]},"nasai":{"en":"Sunan an-Nasa’i","ur":"سنن نسائی","who":"Imam Nasai · 303H","total":5765,"secs":[[1,"The Book of Purification",1,324],[2,"The Book of Water",325,347],[3,"The Book of Menstruation and Istihadah",348,395],[4,"The Book of Ghusl and Tayammum",396,447],[5,"The Book of Salah",448,493],[6,"The Book of the Times (of Prayer)",494,625],[7,"The Book of the Adhan (The Call to Prayer)",626,687],[8,"The Book of the Masjids",688,741],[9,"The Book of the Qiblah",742,776],[10,"The Book of Leading the Prayer (Al-Imamah)",777,875],[11,"The Book of the Commencement of the Prayer",876,1028],[12,"The Book of The At-Tatbiq (Clasping One's Hands Together)",1029,1178],[13,"The Book of Forgetfulness (In Prayer)",1179,1366],[14,"The Book of Jumu'ah (Friday Prayer)",1367,1432],[15,"The Book of Shortening the Prayer When Traveling",1433,1458],[16,"The Book of Eclipses",1459,1503],[17,"The Book of Praying for Rain (Al-Istisqa')",1504,1528],[18,"The Book of the Fear Prayer",1529,1555],[19,"The Book of the Prayer for the Two 'Eids",1556,1597],[20,"The Book of Qiyam Al-Lail (The Night Prayer) and Voluntary Prayers During the Day",1598,1817],[21,"The Book of Funerals",1818,2089],[22,"The Book of Fasting",2090,2434],[23,"The Book of Zakah",2435,2618],[24,"The Book of Hajj",2619,3084],[25,"The Book of Jihad",3085,3195],[26,"The Book of Marriage",3196,3388],[27,"The Book of Divorce",3389,3560],[28,"The Book of Horses, Races and Shooting",3561,3593],[29,"The Book of Endowments",3594,3610],[30,"The Book of Wills",3611,3671],[31,"The Book of Presents",3672,3687],[32,"The Book of Gifts",3688,3705],[33,"The Book of ar-Ruqba",3706,3719],[34,"The Book of 'Umra",3720,3760],[35,"The Book of Agriculture",3761,3856],[36,"The Book of the Kind Treatment of Women",3939,3965],[37,"The Book of Fighting [The Prohibition of Bloodshed]",3966,4132],[38,"The Book of Distribution of Al-Fay'",4133,4148],[39,"The Book of al-Bay'ah",4149,4211],[40,"The Book of al-'Aqiqah",4212,4221],[41,"The Book of al-Fara' and al-'Atirah",4222,4262],[42,"The Book of Hunting and Slaughtering",4263,4360],[43,"The Book of ad-Dahaya (Sacrifices)",4361,4448],[44,"The Book of Financial Transactions",4449,4705],[45,"The Book of Oaths (qasamah), Retaliation and Blood Money",4706,4869],[46,"The Book of Cutting off the Hand of the Thief",4870,4984],[47,"The Book Of Faith and its Signs",4985,5039],[48,"The Book of Adornment",5040,5378],[49,"The Book of the Etiquette of Judges",5379,5427],[50,"The Book of Seeking Refuge with Allah",5428,5539],[51,"The Book of Drinks",5540,5758]]},"ibnmajah":{"en":"Sunan Ibn Majah","ur":"سنن ابن ماجہ","who":"Imam Ibn Majah · 273H","total":4343,"secs":[[0,"The Book of the Sunnah",1,266],[1,"The Book of Purification and its Sunnah",267,666],[2,"The Book of the Prayer",667,705],[3,"The Book of the Adhan and the Sunnah Regarding It",706,734],[4,"The Book On The Mosques And The Congregations",735,802],[5,"Establishing the Prayer and the Sunnah Regarding Them",803,1432],[6,"Chapters Regarding Funerals",1433,1637],[7,"Fasting",1638,1782],[8,"The Chapters Regarding Zakat",1783,1844],[9,"The Chapters on Marriage",1845,2015],[10,"The Chapters on Divorce",2016,2477],[11,"The Chapters on Expiation",2090,2136],[12,"The Chapters on Business Transactions",2137,2307],[13,"The Chapters on Rulings",2308,2374],[14,"The Chapters on Gifts",2375,2389],[15,"The Chapters on Charity",2390,2528],[16,"The Chapters on Pawning",2436,2491],[17,"The Chapters on Pre-emption",2492,2501],[18,"The Chapters on Lost Property",2502,2511],[19,"The Chapters on Manumission (of Slaves)",2512,2532],[20,"The Chapters on Legal Punishments",2533,2614],[21,"The Chapters on Blood Money",2615,2694],[22,"The Chapters on Wills",2695,2718],[23,"Chapters on Shares of Inheritance",2719,2752],[24,"The Chapters on Jihad",2753,2881],[25,"Chapters on Hajj Rituals",2882,3119],[26,"Chapters on Sacrifices",3120,3161],[27,"Chapters on Slaughtering",3162,3199],[28,"Chapters on Hunting",3200,3250],[29,"Chapters on Food",3251,3370],[30,"Chapters on Drinks",3371,3435],[31,"Chapters on Medicine",3436,3549],[32,"Chapters on Dress",3550,3656],[33,"Etiquette",3657,3826],[34,"Supplication",3827,3892],[35,"Interpretation of Dreams",3893,3926],[36,"Tribulations",3927,4099],[37,"Zuhd",4100,4341]]},"malik":{"en":"Muwatta Imam Malik","ur":"مؤطا امام مالک","who":"Imam Malik · 179H","total":1889,"secs":[[1,"The Times of Prayer",1,31],[2,"Purity",32,145],[3,"Prayer",146,221],[4,"Forgetfulness in Prayer",222,224],[5,"Jumu'a",225,245],[6,"Prayer in Ramadan",246,253],[7,"Tahajjud",254,286],[8,"Prayer in Congregation",287,325],[9,"Shortening the Prayer",326,427],[10,"The Two 'Ids",428,440],[11,"The Fear Prayer",441,444],[12,"The Eclipse Prayer",445,448],[13,"Asking for Rain",449,454],[14,"The Qibla",455,469],[15,"The Qur'an",470,519],[16,"Burials",520,577],[17,"Zakat",578,629],[18,"Fasting",630,689],[19,"I'tikaf in Ramadan",690,704],[20,"Hajj",705,957],[21,"Jihad",959,1008],[22,"Vows and Oaths",1009,1027],[23,"Sacrificial Animals",1028,1041],[24,"Slaughtering Animals",1042,1051],[25,"Game",1052,1066],[26,"The 'Aqiqa",1067,1073],[27,"Fara'id",1074,1089],[28,"Marriage",1091,1149],[29,"Divorce",1150,1271],[30,"Suckling",1272,1289],[31,"Business Transactions",1290,1385],[32,"Qirad",1386,1387],[33,"Sharecropping",1388,1389],[34,"Renting Land",1390,1394],[35,"Pre-emption in Property",1395,1398],[36,"Judgements",1399,1454],[37,"Wills and Testaments",1455,1463],[38,"Setting Free and Wala'",1464,1488],[39,"The Mukatab",1489,1496],[40,"The Mudabbar",1497,1499],[41,"Hudud",1500,1536],[42,"Drinks",1537,1551],[43,"Blood-Money",1552,1595],[44,"The Oath of Qasama",1596,1597],[45,"Madina",1598,1622],[46,"The Decree",1623,1632],[47,"Good Character",1633,1650],[48,"Dress",1651,1670],[49,"The Description of the Prophet, may Allah Bless Him and Grant Him Peace",1671,1710],[50,"The Evil Eye",1711,1729],[51,"Hair",1730,1746],[52,"Visions",1747,1755],[53,"Greetings",1756,1762],[54,"General Subjects",1763,1807],[55,"The Oath of Allegiance",1808,1810],[56,"Speech",1811,1838],[57,"Jahannam",1839,1840],[58,"Sadaqa",1841,1855],[59,"Knowledge",1856,1856],[60,"The Supplication of the Unjustly Wronged",1857,1857],[61,"The Names of the Prophet, may Allah Bless Him and Grant Him Peace",1858,1858]]}};
+  var APP_LINK = 'https://asadhamza007.github.io/daily-light/';
+  var LSK = 'dl-hadith-v1';
+
+  /* ================= state ================= */
+  var S = { last: null, marks: [], dl: {}, langs: { ar: true, ur: true, en: false } };
+  try {
+    var raw0 = localStorage.getItem(LSK);
+    if (raw0) {
+      var p0 = JSON.parse(raw0);
+      if (p0 && typeof p0 === 'object') {
+        S.last = p0.last || null;
+        S.marks = Array.isArray(p0.marks) ? p0.marks : [];
+        S.dl = p0.dl && typeof p0.dl === 'object' ? p0.dl : {};
+        if (p0.langs) S.langs = { ar: p0.langs.ar !== false, ur: p0.langs.ur !== false, en: !!p0.langs.en };
+      }
+    }
+  } catch (e0) {}
+  function save() { try { localStorage.setItem(LSK, JSON.stringify(S)); } catch (e) {} }
+
+  /* ================= helpers ================= */
+  var tEl = q('#toast'), tT = null;
+  function toast(m) {
+    if (!tEl) return;
+    tEl.textContent = m; tEl.classList.add('is-visible');
+    clearTimeout(tT); tT = setTimeout(function () { tEl.classList.remove('is-visible'); }, 2600);
+  }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function maxN(b) { var s = BOOKS[b].secs; return s.length ? s[s.length - 1][3] : 0; }
+  function secOf(b, si) { return BOOKS[b].secs[si]; }
+  function secIndexByNo(b, no) {
+    var s = BOOKS[b].secs;
+    for (var i = 0; i < s.length; i++) if (s[i][0] === no) return i;
+    return -1;
+  }
+  function secIndexByHadith(b, n) {
+    var s = BOOKS[b].secs;
+    for (var i = 0; i < s.length; i++) if (n >= s[i][2] && n <= s[i][3]) return i;
+    return -1;
+  }
+  function markKey(b, n) { return b + ':' + n; }
+  function isMarked(b, n) {
+    for (var i = 0; i < S.marks.length; i++) if (S.marks[i].b === b && S.marks[i].n === n) return true;
+    return false;
+  }
+
+  /* text normalisation: harakat/tatweel strip + Arabic<->Urdu letter unification */
+  var DIAC_RX = /[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g;
+  function norm(s) {
+    return String(s || '')
+      .replace(DIAC_RX, '')
+      .replace(/[\u0623\u0625\u0622\u0671]/g, '\u0627')
+      .replace(/[\u064A\u0649\u06D2]/g, '\u06CC')
+      .replace(/\u0643/g, '\u06A9')
+      .replace(/[\u0629\u0647\u06C1]/g, '\u06BE')
+      .toLowerCase();
+  }
+
+  function shareText(t) {
+    var msg = t + '\n\n\u2014 Daily Light app se\n' + APP_LINK;
+    if (navigator.share) { navigator.share({ text: msg }).catch(function () {}); return; }
+    try { navigator.clipboard.writeText(msg).then(function () { toast('Copy ho gaya \u2014 WhatsApp par paste karein'); }); } catch (e) {}
+  }
+
+  /* ================= network ================= */
+  function fetchTextProg(url, onBytes) {
+    return fetch(url).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      if (!res.body || typeof ReadableStream === 'undefined') return res.text();
+      var total = +res.headers.get('Content-Length') || 0;
+      var reader = res.body.getReader(), chunks = [], got = 0;
+      function pump() {
+        return reader.read().then(function (x) {
+          if (x.done) return;
+          chunks.push(x.value); got += x.value.length;
+          if (onBytes) onBytes(got, total);
+          return pump();
+        });
+      }
+      return pump().then(function () {
+        var size = 0, i;
+        for (i = 0; i < chunks.length; i++) size += chunks[i].length;
+        var all = new Uint8Array(size), off = 0;
+        for (i = 0; i < chunks.length; i++) { all.set(chunks[i], off); off += chunks[i].length; }
+        return new TextDecoder('utf-8').decode(all);
+      });
+    });
+  }
+  function apiJSON(path, onBytes) {
+    var urls = [
+      API_BASES[0] + path + '.min.json',
+      API_BASES[1] + path + '.min.json',
+      API_BASES[0] + path + '.json',
+      API_BASES[1] + path + '.json'
+    ];
+    var i = 0;
+    function attempt(err) {
+      if (i >= urls.length) return Promise.reject(err || new Error('network'));
+      var u = urls[i++];
+      return fetchTextProg(u, onBytes).then(function (t) { return JSON.parse(t); }).catch(attempt);
+    }
+    return attempt();
+  }
+
+  /* ================= grades ================= */
+  var GRADER_PREF = ['Darussalam', 'Al-Albani', 'Zubair', 'Shakir'];
+  function pickGrade(arr) {
+    if (!arr || !arr.length) return null;
+    for (var p = 0; p < GRADER_PREF.length; p++) {
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] && arr[i].name && arr[i].name.indexOf(GRADER_PREF[p]) > -1 && arr[i].grade) return arr[i];
+      }
+    }
+    return arr[0] && arr[0].grade ? arr[0] : null;
+  }
+  function gradeClass(t) {
+    var s = String(t).toLowerCase();
+    if (/da.{0,2}if|weak|munkar|ma[uw]d[uo]|fabricat|batil/.test(s)) return 'daif';
+    if (/sahih/.test(s)) return 'sahih';
+    if (/hasan/.test(s)) return 'hasan';
+    return 'meh';
+  }
+  function gradeOf(book, engH) {
+    if (SAHIHAIN[book]) return { t: '\u0635\u062D\u06CC\u062D \u00B7 Sahih', c: 'sahih' };
+    var g = pickGrade(engH && engH.grades);
+    if (!g) return null;
+    return { t: g.grade, c: gradeClass(g.grade) };
+  }
+
+  /* ================= IndexedDB ================= */
+  var dbP = null;
+  function idb() {
+    if (dbP) return dbP;
+    dbP = new Promise(function (res, rej) {
+      if (!('indexedDB' in window)) { rej(new Error('no idb')); return; }
+      var r = indexedDB.open('daily-light-hk', 1);
+      r.onupgradeneeded = function () { r.result.createObjectStore('books'); };
+      r.onsuccess = function () { res(r.result); };
+      r.onerror = function () { rej(r.error || new Error('idb')); };
+    });
+    return dbP;
+  }
+  function idbGet(k) {
+    return idb().then(function (d) {
+      return new Promise(function (res, rej) {
+        var t = d.transaction('books').objectStore('books').get(k);
+        t.onsuccess = function () { res(t.result); };
+        t.onerror = function () { rej(t.error); };
+      });
+    });
+  }
+  function idbPut(k, v) {
+    return idb().then(function (d) {
+      return new Promise(function (res, rej) {
+        var t = d.transaction('books', 'readwrite').objectStore('books').put(v, k);
+        t.onsuccess = function () { res(); };
+        t.onerror = function () { rej(t.error); };
+      });
+    });
+  }
+  function idbDel(k) {
+    return idb().then(function (d) {
+      return new Promise(function (res, rej) {
+        var t = d.transaction('books', 'readwrite').objectStore('books').delete(k);
+        t.onsuccess = function () { res(); };
+        t.onerror = function () { rej(t.error); };
+      });
+    });
+  }
+
+  var rowsCache = {};
+  function getRows(book) {
+    if (rowsCache[book]) return Promise.resolve(rowsCache[book]);
+    return idbGet(book).then(function (v) {
+      if (!v || !v.rows) throw new Error('missing');
+      rowsCache[book] = v.rows;
+      return v.rows;
+    });
+  }
+
+  /* ================= section loading ================= */
+  var mem = {};
+  function mapByN(d) {
+    var m = {};
+    if (d && d.hadiths) for (var i = 0; i < d.hadiths.length; i++) m[d.hadiths[i].hadithnumber] = d.hadiths[i];
+    return m;
+  }
+  function mergeSection(book, secNo, urD, arD, enD) {
+    var arM = mapByN(arD), enM = mapByN(enD), rows = [], hs = (urD && urD.hadiths) || [];
+    for (var i = 0; i < hs.length; i++) {
+      var h = hs[i], n = h.hadithnumber;
+      var eh = enM[n] || null, g = gradeOf(book, eh);
+      rows.push({
+        n: n, s: secNo,
+        ur: h.text || '',
+        ar: (arM[n] && arM[n].text) || '',
+        en: enD ? ((eh && eh.text) || '') : undefined,
+        g: g ? g.t : '', gc: g ? g.c : ''
+      });
+    }
+    return rows;
+  }
+  function loadSection(book, si, needEnForce) {
+    var sec = secOf(book, si), secNo = sec[0];
+    var needEn = needEnForce || S.langs.en || !SAHIHAIN[book];
+    var key = book + ':' + secNo + (needEn ? ':e' : '');
+    if (mem[key]) return Promise.resolve(mem[key]);
+    if (S.dl[book]) {
+      return getRows(book).then(function (rows) {
+        var out = [];
+        for (var i = 0; i < rows.length; i++) if (rows[i].s === secNo) out.push(rows[i]);
+        mem[key] = out;
+        return out;
+      });
+    }
+    var jobs = [
+      apiJSON('editions/urd-' + book + '/sections/' + secNo),
+      apiJSON('editions/ara-' + book + '/sections/' + secNo),
+      needEn ? apiJSON('editions/eng-' + book + '/sections/' + secNo).catch(function () { return null; }) : Promise.resolve(null)
+    ];
+    return Promise.all(jobs).then(function (r) {
+      var rows = mergeSection(book, secNo, r[0], r[1], r[2]);
+      mem[key] = rows;
+      return rows;
+    });
+  }
+
+  /* ================= download for offline + search ================= */
+  var dlBusy = {};
+  function setDlUI(book, html) {
+    var cell = document.getElementById('hk-dl-' + book);
+    if (cell) cell.innerHTML = html;
+  }
+  function dlStateHTML(book) {
+    if (dlBusy[book] != null) {
+      var pc = dlBusy[book] < 0 ? '\u2026' : dlBusy[book] + '%';
+      return '<span class="hk-dlring">' + pc + '</span>';
+    }
+    if (S.dl[book]) {
+      return '<button class="hk-stbtn is-done" type="button" data-undl="' + book + '" aria-label="Offline \u00b7 remove">' + ICO.check + '</button>';
+    }
+    return '<button class="hk-stbtn" type="button" data-dl="' + book + '" aria-label="Download for offline search">' + ICO.cloud + '</button>';
+  }
+  function downloadBook(book) {
+    if (dlBusy[book] != null || S.dl[book]) return;
+    if (!('indexedDB' in window)) { toast('Is browser mein offline storage nahi hai'); return; }
+    dlBusy[book] = -1;
+    setDlUI(book, dlStateHTML(book));
+    toast(BOOKS[book].en + ' download ho rahi hai\u2026');
+    var eds = ['urd-' + book, 'ara-' + book, 'eng-' + book];
+    var done = [null, null, null];
+    var seq = Promise.resolve();
+    eds.forEach(function (ed, idx) {
+      seq = seq.then(function () {
+        return apiJSON('editions/' + ed, function (got, total) {
+          var frac = total ? Math.min(got / total, 0.99) : 0;
+          var pct = Math.round(((idx + frac) / 3) * 100);
+          dlBusy[book] = pct;
+          setDlUI(book, dlStateHTML(book));
+        }).then(function (d) { done[idx] = d; });
+      });
+    });
+    return seq.then(function () {
+      var urD = done[0], arM = mapByN(done[1]), enM = mapByN(done[2]);
+      var rows = [], hs = (urD && urD.hadiths) || [];
+      for (var i = 0; i < hs.length; i++) {
+        var h = hs[i], n = h.hadithnumber;
+        var sNo = (h.reference && h.reference.book) || 0;
+        var eh = enM[n] || null, g = gradeOf(book, eh);
+        rows.push({
+          n: n, s: sNo,
+          ur: h.text || '',
+          ar: (arM[n] && arM[n].text) || '',
+          en: (eh && eh.text) || '',
+          g: g ? g.t : '', gc: g ? g.c : ''
+        });
+      }
+      return idbPut(book, { savedAt: Date.now(), rows: rows }).then(function () {
+        rowsCache[book] = rows;
+        S.dl[book] = Date.now(); save();
+        delete dlBusy[book];
+        setDlUI(book, dlStateHTML(book));
+        updateCardBits();
+        toast(BOOKS[book].en + ' offline ready \u2014 ab search bhi chalegi');
+      });
+    }).catch(function () {
+      delete dlBusy[book];
+      setDlUI(book, dlStateHTML(book));
+      toast('Download ruk gaya \u2014 net check kar ke dobara koshish karein');
+    });
+  }
+  function removeBook(book) {
+    idbDel(book).catch(function () {}).then(function () {
+      delete S.dl[book]; delete rowsCache[book]; save();
+      setDlUI(book, dlStateHTML(book));
+      updateCardBits();
+      toast(BOOKS[book].en + ' ka offline data hata diya');
+    });
+  }
+
+  /* ================= icons ================= */
+  var ICO = {
+    back: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6"/></svg>',
+    fwd: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6 6 6-6 6"/></svg>',
+    search: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+    cloud: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10m0 0 3.5-3.5M12 14 8.5 10.5"/><path d="M5 18h14"/></svg>',
+    check: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
+    save: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7 4h10v16l-5-3.5L7 20Z"/></svg>',
+    copy: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>',
+    close: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+    star: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 4 2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 9.7l5.4-.8Z"/></svg>'
+  };
+
+  /* ================= modal shell ================= */
+  var hkModal = q('#hkModal');
+  var V = { view: 'books', book: null, si: 0, shown: 0, focus: 0, query: '' };
+  var lastFocus = null;
+
+  function hkOpenModal() {
+    if (!hkModal.hidden) return;
+    lastFocus = document.activeElement;
+    hkModal.innerHTML = '<div class="modal__box hk-box"><div id="hkPane" class="hk-pane"></div></div>';
+    hkModal.hidden = false;
+    hkModal.onclick = function (e) { if (e.target === hkModal) hkClose(); };
+    document.addEventListener('keydown', hkKey);
+    var pane = q('#hkPane');
+    pane.addEventListener('click', paneClick);
+    pane.addEventListener('keydown', paneKeydown);
+    pane.addEventListener('input', paneInput);
+  }
+  function hkClose() {
+    if (hkModal.hidden) return;
+    document.removeEventListener('keydown', hkKey);
+    hkModal.hidden = true; hkModal.innerHTML = '';
+    if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+  }
+  function hkKey(e) {
+    if (hkModal.hidden) return;
+    if (e.key === 'Escape') { e.preventDefault(); hkClose(); }
+  }
+  function pane() { return q('#hkPane'); }
+  function applyLangClasses() {
+    var p = pane(); if (!p) return;
+    p.classList.toggle('l-ar', S.langs.ar);
+    p.classList.toggle('l-ur', S.langs.ur);
+    p.classList.toggle('l-en', S.langs.en);
+  }
+
+  function headHTML(opts) {
+    return '<div class="hk-head">' +
+      (opts.back ? '<button class="hk-back" type="button" data-nav="' + opts.back + '" aria-label="Back">' + ICO.back + '</button>' : '') +
+      '<div class="hk-head__t"><div class="hk-head__ur"><bdi>' + opts.ur + '</bdi></div>' +
+      (opts.sub ? '<div class="hk-head__sub">' + opts.sub + '</div>' : '') + '</div>' +
+      (opts.right || '') +
+      '<button class="modal__close" type="button" data-nav="close" aria-label="Close">' + ICO.close + '</button>' +
+      '</div>';
+  }
+
+  /* ================= books pane ================= */
+  function showBooks() {
+    V.view = 'books'; V.book = null;
+    var dlCount = 0, b;
+    for (b in S.dl) if (S.dl[b]) dlCount++;
+    var h = headHTML({ ur: '\u062D\u062F\u06CC\u062B \u06A9\u064F\u062A\u0628', sub: 'Hadith Library \u00B7 7 kitabain' + (dlCount ? ' \u00B7 ' + dlCount + ' offline' : '') });
+    h += '<div class="hk-search"><span class="hk-search__ic">' + ICO.search + '</span>' +
+      '<input id="hkQ" type="search" placeholder="Talash: lafz ya hadith #\u2026" autocomplete="off" enterkeyhint="search"></div>';
+    h += '<div class="hk-quick">' +
+      '<button class="chip" type="button" data-nav="marks">' + ICO.star + ' Saved \u00B7 ' + S.marks.length + '</button>' +
+      (S.last && BOOKS[S.last.b] ? '<button class="chip chip--hk" type="button" data-resume="1"><bdi>' + BOOKS[S.last.b].ur + '</bdi> \u00B7 \u062D\u062F\u06CC\u062B ' + S.last.n + ' \u00B7 jari rakhein</button>' : '') +
+      '</div>';
+    h += '<div class="hk-list">';
+    for (var i = 0; i < ORDER.length; i++) {
+      b = ORDER[i];
+      var B = BOOKS[b];
+      h += '<div class="hk-row" role="button" tabindex="0" data-book="' + b + '">' +
+        '<span class="hk-dlcell" id="hk-dl-' + b + '">' + dlStateHTML(b) + '</span>' +
+        '<span class="hk-row__meta"><span class="hk-row__en">' + esc(B.en) + '</span>' +
+        '<span class="hk-row__cnt">' + esc(B.who) + ' \u00B7 ' + B.secs.length + ' kitab \u00B7 ' + fmt(maxN(b)) + '</span></span>' +
+        '<bdi class="hk-row__ur">' + B.ur + '</bdi>' +
+        '</div>';
+    }
+    h += '</div><p class="hk-cap">Kitab kholne ke liye net chahiye \u00B7 parhe hue abwab offline reh jate hain \u00B7 <b>download</b> se poori kitab offline + word-search ready ho jati hai.</p>';
+    pane().innerHTML = h;
+  }
+
+  /* ================= chapters pane ================= */
+  function showChapters(book) {
+    V.view = 'chapters'; V.book = book;
+    var B = BOOKS[book];
+    var right = S.dl[book] ? '<span class="chip chip--hk hk-offchip">Offline</span>' : '';
+    var h = headHTML({ back: 'books', ur: B.ur, sub: esc(B.en) + ' \u00B7 ' + B.secs.length + ' abwab \u00B7 ' + fmt(maxN(book)) + ' ahadith', right: right });
+    if (S.last && S.last.b === book) {
+      var lsi = secIndexByHadith(book, S.last.n);
+      if (lsi > -1) {
+        h += '<button class="hk-resume" type="button" data-sec="' + lsi + '" data-focus="' + S.last.n + '">' +
+          '<span class="hk-resume__l"><small>JARI RAKHEIN</small><bdi>' + esc(B.secs[lsi][1]) + ' \u00B7 \u062D\u062F\u06CC\u062B ' + S.last.n + '</bdi></span>' + ICO.fwd + '</button>';
+      }
+    }
+    h += '<div class="hk-list">';
+    for (var i = 0; i < B.secs.length; i++) {
+      var s = B.secs[i];
+      h += '<div class="hk-row" role="button" tabindex="0" data-sec="' + i + '">' +
+        '<span class="hk-num">' + s[0] + '</span>' +
+        '<span class="hk-row__meta"><span class="hk-row__en">' + esc(s[1]) + '</span>' +
+        '<span class="hk-row__cnt">Hadith ' + s[2] + '\u2013' + s[3] + '</span></span>' +
+        '</div>';
+    }
+    h += '</div>';
+    pane().innerHTML = h;
+  }
+
+  /* ================= reader pane ================= */
+  function readerShell(book, si) {
+    var B = BOOKS[book], sec = secOf(book, si);
+    var h = headHTML({ back: 'chapters', ur: B.ur, sub: esc(sec[1]) + ' \u00B7 kitab ' + sec[0] + ' / ' + B.secs[B.secs.length - 1][0] });
+    h += '<div class="hk-langs">' +
+      '<button class="hk-lang' + (S.langs.ar ? ' is-on' : '') + '" type="button" data-lang="ar">\u0639\u0631\u0628\u06CC</button>' +
+      '<button class="hk-lang' + (S.langs.ur ? ' is-on' : '') + '" type="button" data-lang="ur">\u0627\u0631\u062F\u0648</button>' +
+      '<button class="hk-lang' + (S.langs.en ? ' is-on' : '') + '" type="button" data-lang="en">English</button>' +
+      '</div>' +
+      '<div id="hkItems"></div>' +
+      '<div class="hk-pager">' +
+      '<button class="btn" type="button" data-step="-1"' + (si === 0 ? ' disabled' : '') + '>' + ICO.back + ' Pichla</button>' +
+      '<div class="hk-jump"><span>#</span><input id="hkJump" inputmode="numeric" placeholder="hadith # (1\u2013' + fmt(maxN(book)) + ')"></div>' +
+      '<button class="btn" type="button" data-step="1"' + (si === BOOKS[book].secs.length - 1 ? ' disabled' : '') + '>Agla ' + ICO.fwd + '</button>' +
+      '</div>';
+    return h;
+  }
+  function itemHTML(r, book) {
+    var m = isMarked(book, r.n);
+    return '<article class="hk-item" data-n="' + r.n + '">' +
+      '<div class="hk-item__top"><span class="hk-badge"><bdi>\u062D\u062F\u06CC\u062B ' + r.n + '</bdi></span>' +
+      (r.g ? '<span class="hk-grade g-' + r.gc + '"><i></i>' + esc(r.g) + '</span>' : '') + '</div>' +
+      (r.ar ? '<div class="hk-ar"><bdi>' + esc(r.ar) + '</bdi></div>' : '') +
+      '<div class="hk-div"><i></i><b></b><i></i></div>' +
+      '<div class="hk-ur"><bdi>' + esc(r.ur) + '</bdi></div>' +
+      (r.en ? '<div class="hk-en">' + esc(r.en) + '</div>' : '') +
+      '<div class="hk-ref"><span>' + esc(BOOKS[book].en) + ' \u00B7 ' + r.n + '</span><span>Kitab ' + r.s + '</span></div>' +
+      '<div class="hk-acts">' +
+      '<button class="hk-act' + (m ? ' is-on' : '') + '" type="button" data-mark="' + r.n + '">' + ICO.save + '<span>' + (m ? 'Saved' : 'Save') + '</span></button>' +
+      '<button class="hk-act" type="button" data-copy="' + r.n + '">' + ICO.copy + '<span>Copy</span></button>' +
+      '<button class="hk-act" type="button" data-share="' + r.n + '">\uD83D\uDCE4<span>WhatsApp</span></button>' +
+      '</div></article>';
+  }
+  var CHUNK = 40;
+  function renderItems(rows, book, reset) {
+    var box = q('#hkItems'); if (!box) return;
+    if (reset) { box.innerHTML = ''; V.shown = 0; }
+    var end = Math.min(rows.length, V.shown + CHUNK);
+    if (V.focus) {
+      for (var f = 0; f < rows.length; f++) if (rows[f].n === V.focus) { end = Math.max(end, f + 6); break; }
+    }
+    var h = '';
+    for (var i = V.shown; i < end; i++) h += itemHTML(rows[i], book);
+    V.shown = end;
+    var more = q('#hkMore'); if (more) more.remove();
+    box.insertAdjacentHTML('beforeend', h);
+    if (V.shown < rows.length) {
+      box.insertAdjacentHTML('beforeend', '<button class="btn hk-more" id="hkMore" type="button" data-more="1">Aur dikhayein (' + (rows.length - V.shown) + ' baqi)</button>');
+    }
+    if (V.focus) {
+      var elF = box.querySelector('[data-n="' + V.focus + '"]');
+      if (elF) {
+        elF.classList.add('is-hot');
+        elF.scrollIntoView({ block: 'start', behavior: 'auto' });
+        setTimeout(function () { elF.classList.remove('is-hot'); }, 2400);
+      }
+      V.focus = 0;
+    }
+  }
+  function showReader(book, si, focusN) {
+    V.view = 'reader'; V.book = book; V.si = si; V.focus = focusN || 0; V.shown = 0;
+    pane().innerHTML = readerShell(book, si);
+    applyLangClasses();
+    var box = q('#hkItems');
+    box.innerHTML = '<div class="hk-skel"></div><div class="hk-skel"></div><div class="hk-skel"></div>';
+    var myToken = ++showReader._t;
+    loadSection(book, si).then(function (rows) {
+      if (myToken !== showReader._t || V.view !== 'reader') return;
+      V.rows = rows;
+      if (!rows.length) {
+        box.innerHTML = '<div class="hk-empty">Is bab mein data nahi mila.</div>';
+        return;
+      }
+      renderItems(rows, book, true);
+      var sec = secOf(book, si);
+      S.last = { b: book, s: sec[0], n: focusN || rows[0].n }; save(); updateCardBits();
+    }).catch(function () {
+      if (myToken !== showReader._t || V.view !== 'reader') return;
+      box.innerHTML = '<div class="hk-err">Load nahi ho saka \u2014 net check karein.<br><button class="btn btn--gold" type="button" data-retry="1" style="margin-top:10px">Dobara koshish</button></div>';
+    });
+  }
+  showReader._t = 0;
+
+  /* ================= search pane ================= */
+  function showSearch(query) {
+    V.view = 'search'; V.query = query || '';
+    var dl = [];
+    for (var i = 0; i < ORDER.length; i++) if (S.dl[ORDER[i]]) dl.push(ORDER[i]);
+    var h = headHTML({ back: 'books', ur: '\u062A\u0644\u0627\u0634', sub: dl.length ? dl.length + ' offline kitabon mein word-search' : 'Pehle kitab download karein' });
+    h += '<div class="hk-search"><span class="hk-search__ic">' + ICO.search + '</span>' +
+      '<input id="hkQ2" type="search" placeholder="Urdu, Arabic ya English lafz\u2026" autocomplete="off" enterkeyhint="search" value="' + esc(V.query) + '"></div>' +
+      '<div id="hkResults"></div>';
+    pane().innerHTML = h;
+    var inp = q('#hkQ2');
+    if (inp) { inp.focus(); try { inp.setSelectionRange(inp.value.length, inp.value.length); } catch (e) {} }
+    runSearch();
+  }
+  var searchTimer = null, searchToken = 0;
+  function queueSearch() {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(runSearch, 220);
+  }
+  function snippet(text, qRaw) {
+    var idx = text.indexOf(qRaw);
+    if (idx < 0) idx = norm(text).indexOf(norm(qRaw));
+    if (idx < 0) return esc(text.slice(0, 110)) + '\u2026';
+    var a = Math.max(0, idx - 34), bEnd = Math.min(text.length, idx + qRaw.length + 60);
+    return (a > 0 ? '\u2026' : '') + esc(text.slice(a, idx)) + '<mark>' + esc(text.slice(idx, idx + qRaw.length)) + '</mark>' + esc(text.slice(idx + qRaw.length, bEnd)) + (bEnd < text.length ? '\u2026' : '');
+  }
+  function runSearch() {
+    var box = q('#hkResults'); if (!box || V.view !== 'search') return;
+    var inp = q('#hkQ2'); var qRaw = (inp ? inp.value : '').trim();
+    V.query = qRaw;
+    var tok = ++searchToken;
+    var dlBooks = [];
+    for (var i = 0; i < ORDER.length; i++) if (S.dl[ORDER[i]]) dlBooks.push(ORDER[i]);
+
+    if (/^\d{1,5}$/.test(qRaw)) {
+      var n = +qRaw, hN = '<div class="hk-reshead">Hadith # ' + n + '</div>';
+      for (var j = 0; j < ORDER.length; j++) {
+        var b = ORDER[j];
+        if (n >= 1 && n <= maxN(b)) {
+          hN += '<div class="hk-row" role="button" tabindex="0" data-goto="' + b + ':' + n + '">' +
+            '<span class="hk-num">#</span><span class="hk-row__meta"><span class="hk-row__en">' + esc(BOOKS[b].en) + ' \u00B7 ' + n + '</span>' +
+            '<span class="hk-row__cnt">kholein</span></span><bdi class="hk-row__ur">' + BOOKS[b].ur + '</bdi></div>';
+        }
+      }
+      box.innerHTML = hN;
+      return;
+    }
+    if (!dlBooks.length) {
+      var hE = '<div class="hk-empty">Word-search ke liye pehle kam az kam ek kitab download karein:</div><div class="hk-list">';
+      for (var k = 0; k < ORDER.length; k++) {
+        hE += '<div class="hk-row"><span class="hk-dlcell" id="hk-dl-' + ORDER[k] + '">' + dlStateHTML(ORDER[k]) + '</span>' +
+          '<span class="hk-row__meta"><span class="hk-row__en">' + esc(BOOKS[ORDER[k]].en) + '</span>' +
+          '<span class="hk-row__cnt">' + fmt(maxN(ORDER[k])) + ' ahadith</span></span>' +
+          '<bdi class="hk-row__ur">' + BOOKS[ORDER[k]].ur + '</bdi></div>';
+      }
+      box.innerHTML = hE + '</div>';
+      return;
+    }
+    if (norm(qRaw).length < 2) {
+      box.innerHTML = '<div class="hk-empty">Kam az kam 2 harf likhein \u2014 Urdu, Arabic (harakat optional) ya English.</div>';
+      return;
+    }
+    box.innerHTML = '<div class="hk-skel hk-skel--sm"></div><div class="hk-skel hk-skel--sm"></div>';
+    var qN = norm(qRaw), results = [], MAXR = 60;
+    var chain = Promise.resolve();
+    dlBooks.forEach(function (b2) {
+      chain = chain.then(function () {
+        if (tok !== searchToken || results.length >= MAXR) return;
+        return getRows(b2).then(function (rows) {
+          for (var r = 0; r < rows.length && results.length < MAXR; r++) {
+            var row = rows[r], f = '';
+            if (norm(row.ur).indexOf(qN) > -1) f = 'ur';
+            else if (row.ar && norm(row.ar).indexOf(qN) > -1) f = 'ar';
+            else if (row.en && row.en.toLowerCase().indexOf(qRaw.toLowerCase()) > -1) f = 'en';
+            if (f) results.push({ b: b2, r: row, f: f });
+          }
+        }).catch(function () {});
+      });
+    });
+    chain.then(function () {
+      if (tok !== searchToken || V.view !== 'search') return;
+      if (!results.length) {
+        box.innerHTML = '<div class="hk-empty">\u201C' + esc(qRaw) + '\u201D in ' + dlBooks.length + ' kitabon mein nahi mila.</div>';
+        return;
+      }
+      var h = '<div class="hk-reshead">' + results.length + (results.length >= MAXR ? '+' : '') + ' natijay</div>';
+      for (var x = 0; x < results.length; x++) {
+        var it = results[x], src = it.f === 'ar' ? it.r.ar : (it.f === 'en' ? it.r.en : it.r.ur);
+        var isRtl = it.f !== 'en';
+        h += '<div class="hk-res" role="button" tabindex="0" data-goto="' + it.b + ':' + it.r.n + '">' +
+          '<div class="hk-res__top"><bdi>' + BOOKS[it.b].ur + '</bdi><span>\u062D\u062F\u06CC\u062B ' + it.r.n + (it.r.g ? ' \u00B7 ' + esc(it.r.g) : '') + '</span></div>' +
+          '<div class="hk-res__snip' + (isRtl ? ' is-rtl' : '') + '"><bdi>' + snippet(src, qRaw) + '</bdi></div></div>';
+      }
+      box.innerHTML = h;
+    });
+  }
+
+  /* ================= saved pane ================= */
+  function showMarks() {
+    V.view = 'marks';
+    var h = headHTML({ back: 'books', ur: '\u0645\u062D\u0641\u0648\u0638 \u0627\u062D\u0627\u062F\u06CC\u062B', sub: 'Saved \u00B7 ' + S.marks.length });
+    if (!S.marks.length) {
+      h += '<div class="hk-empty">Abhi kuch save nahi \u2014 hadith ke neeche <b>Save</b> dabayen to yahan aa jayegi.</div>';
+    } else {
+      h += '<div class="hk-list">';
+      for (var i = S.marks.length - 1; i >= 0; i--) {
+        var m = S.marks[i];
+        if (!BOOKS[m.b]) continue;
+        h += '<div class="hk-row" role="button" tabindex="0" data-goto="' + m.b + ':' + m.n + '">' +
+          '<span class="hk-num">' + m.n + '</span>' +
+          '<span class="hk-row__meta"><span class="hk-row__en">' + esc(BOOKS[m.b].en) + '</span>' +
+          '<span class="hk-row__cnt hk-row__cnt--ur"><bdi>' + esc(m.t || '') + '</bdi></span></span>' +
+          '<button class="hk-stbtn" type="button" data-unmark="' + m.b + ':' + m.n + '" aria-label="Remove">' + ICO.close + '</button>' +
+          '</div>';
+      }
+      h += '</div>';
+    }
+    pane().innerHTML = h;
+  }
+
+  /* ================= events ================= */
+  function gotoRef(book, n) {
+    var si = secIndexByHadith(book, n);
+    if (si < 0) { toast('Hadith # range se bahar hai'); return; }
+    showReader(book, si, n);
+  }
+  function rowFor(book, n) {
+    var rows = V.rows || [];
+    for (var i = 0; i < rows.length; i++) if (rows[i].n === n) return rows[i];
+    return null;
+  }
+  function refUr(book, n) { return '(' + BOOKS[book].ur + ': ' + n + ')'; }
+
+  function paneClick(e) {
+    var t;
+    if ((t = e.target.closest('[data-nav]'))) {
+      var nav = t.dataset.nav;
+      if (nav === 'close') hkClose();
+      else if (nav === 'books') showBooks();
+      else if (nav === 'chapters') showChapters(V.book);
+      else if (nav === 'marks') showMarks();
+      return;
+    }
+    if ((t = e.target.closest('[data-dl]'))) { downloadBook(t.dataset.dl); return; }
+    if ((t = e.target.closest('[data-undl]'))) {
+      if (confirm(BOOKS[t.dataset.undl].en + ' ka offline data delete karein?')) removeBook(t.dataset.undl);
+      return;
+    }
+    if ((t = e.target.closest('[data-resume]'))) {
+      if (S.last && BOOKS[S.last.b]) gotoRef(S.last.b, S.last.n);
+      return;
+    }
+    if ((t = e.target.closest('[data-goto]'))) {
+      var g = t.dataset.goto.split(':');
+      gotoRef(g[0], +g[1]);
+      return;
+    }
+    if ((t = e.target.closest('[data-unmark]'))) {
+      var um = t.dataset.unmark.split(':'), ub = um[0], un = +um[1];
+      S.marks = S.marks.filter(function (m) { return !(m.b === ub && m.n === un); });
+      save(); showMarks(); return;
+    }
+    if ((t = e.target.closest('.hk-row[data-book]'))) { showChapters(t.dataset.book); return; }
+    if ((t = e.target.closest('[data-sec]'))) {
+      showReader(V.book, +t.dataset.sec, t.dataset.focus ? +t.dataset.focus : 0);
+      return;
+    }
+    if ((t = e.target.closest('[data-step]'))) {
+      var ns = V.si + (+t.dataset.step);
+      if (ns >= 0 && ns < BOOKS[V.book].secs.length) showReader(V.book, ns);
+      return;
+    }
+    if ((t = e.target.closest('[data-more]'))) { renderItems(V.rows || [], V.book, false); return; }
+    if ((t = e.target.closest('[data-retry]'))) { showReader(V.book, V.si, V.focus); return; }
+    if ((t = e.target.closest('[data-lang]'))) {
+      var L = t.dataset.lang, on = !S.langs[L];
+      if (!on && ((L === 'ar' && !S.langs.ur && !S.langs.en) || (L === 'ur' && !S.langs.ar && !S.langs.en) || (L === 'en' && !S.langs.ar && !S.langs.ur))) {
+        toast('Kam az kam ek zuban on rahegi'); return;
+      }
+      S.langs[L] = on; save();
+      t.classList.toggle('is-on', on);
+      applyLangClasses();
+      if (L === 'en' && on && V.view === 'reader' && V.rows && V.rows.length && V.rows[0].en === undefined) {
+        showReader(V.book, V.si);
+      }
+      return;
+    }
+    if ((t = e.target.closest('[data-mark]'))) {
+      var n1 = +t.dataset.mark, r1 = rowFor(V.book, n1);
+      if (isMarked(V.book, n1)) {
+        S.marks = S.marks.filter(function (m) { return !(m.b === V.book && m.n === n1); });
+        t.classList.remove('is-on'); t.querySelector('span').textContent = 'Save';
+        toast('Saved se hata diya');
+      } else {
+        S.marks.push({ b: V.book, s: V.si, n: n1, t: r1 ? String(r1.ur).slice(0, 64) : '' });
+        t.classList.add('is-on'); t.querySelector('span').textContent = 'Saved';
+        toast('Hadith save ho gayi');
+      }
+      save(); return;
+    }
+    if ((t = e.target.closest('[data-copy]'))) {
+      var n2 = +t.dataset.copy, r2 = rowFor(V.book, n2);
+      if (!r2) return;
+      var txt = (r2.ar ? r2.ar + '\n\n' : '') + r2.ur + '\n' + refUr(V.book, n2);
+      try { navigator.clipboard.writeText(txt).then(function () { toast('Hadith copy ho gayi'); }); } catch (e2) {}
+      return;
+    }
+    if ((t = e.target.closest('[data-share]'))) {
+      var n3 = +t.dataset.share, r3 = rowFor(V.book, n3);
+      if (!r3) return;
+      shareText(r3.ur + '\n' + refUr(V.book, n3));
+      return;
+    }
+  }
+  function paneKeydown(e) {
+    if (e.key === 'Enter') {
+      var t = e.target;
+      if (t.id === 'hkJump') {
+        var n = parseInt(t.value, 10);
+        if (n) gotoRef(V.book, n);
+        return;
+      }
+      if (t.classList && t.classList.contains('hk-row')) { t.click(); return; }
+      if (t.classList && t.classList.contains('hk-res')) { t.click(); return; }
+      if (t.id === 'hkQ') { showSearch(t.value); return; }
+    }
+  }
+  function paneInput(e) {
+    if (e.target.id === 'hkQ') {
+      if (e.target.value.trim().length) showSearch(e.target.value);
+      return;
+    }
+    if (e.target.id === 'hkQ2') queueSearch();
+  }
+
+  /* ================= card bits ================= */
+  function updateCardBits() {
+    var c = q('#hkCount');
+    if (c) {
+      var dlc = 0; for (var b in S.dl) if (S.dl[b]) dlc++;
+      c.textContent = dlc ? dlc + ' offline' : '7 kitabain';
+    }
+    var cont = q('#hkContinue');
+    if (cont) {
+      if (S.last && BOOKS[S.last.b]) {
+        cont.innerHTML = '<button class="hk-cont" type="button"><span class="hk-cont__l"><small>JARI RAKHEIN</small>' +
+          '<bdi>' + BOOKS[S.last.b].ur + ' \u00B7 \u062D\u062F\u06CC\u062B ' + S.last.n + '</bdi></span>' + ICO.fwd + '</button>';
+        cont.querySelector('.hk-cont').onclick = function () {
+          hkOpenModal(); gotoRef(S.last.b, S.last.n);
+        };
+      } else cont.innerHTML = '';
+    }
+  }
+
+  function openLibrary() { hkOpenModal(); showBooks(); }
+  q('#hkOpen').addEventListener('click', openLibrary);
+  var o2 = q('#hkOpen2'); if (o2) o2.addEventListener('click', openLibrary);
+  updateCardBits();
 })();
 </script>
 <script>
