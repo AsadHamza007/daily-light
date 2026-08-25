@@ -1,0 +1,14 @@
+{
+  "appId": "com.codelps.dailylight",
+  "appName": "Daily Light",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon",
+      "iconColor": "#D8B66C"
+    }
+  }
+}

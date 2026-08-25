@@ -1,0 +1,21 @@
+{
+  "name": "daily-light-native",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Native Android wrapper for the Daily Light app, with real prayer-time alarms.",
+  "scripts": {
+    "copy:web": "node copy-web.js",
+    "sync": "cap sync android",
+    "open": "cap open android",
+    "add:android": "cap add android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/app": "^6.0.2",
+    "@capacitor/core": "^6.2.0",
+    "@capacitor/local-notifications": "^6.1.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0"
+  }
+}

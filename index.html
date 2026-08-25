@@ -4808,7 +4808,7 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
   var S;
   try { S = JSON.parse(localStorage.getItem(LSK) || 'null'); } catch (e) { S = null; }
   if (!S || typeof S !== 'object') S = { lat: null, lng: null, city: '', method: 'karachi', asr: 'hanafi', alarm: false, sound: true };
-  function save() { try { localStorage.setItem(LSK, JSON.stringify(S)); } catch (e) {} }
+  function save() { try { localStorage.setItem(LSK, JSON.stringify(S)); } catch (e) {} if (window.DL_syncNativeAlarms) window.DL_syncNativeAlarms(); }
 
   var tEl = q('#toast'), tTimer = null;
   function toast(msg) {
@@ -5101,6 +5101,24 @@ lzcXulERKRhVparqQ9ZW0AhaMfe2bJOoBVvJK54cRFLdT8RjoaGSsgFV002hbiQ7I1lWMHb+HEacpNJd
   }
   catchUp();
   checkAlarms();
+
+  /* Expose the day's prayer schedule so the native (Android) app can set real
+     OS alarms that fire even when the app is closed. Harmless on the web. */
+  window.DL_getPrayerSchedule = function (days) {
+    if (!hasLoc()) return null;
+    days = days || 3;
+    var out = [], now = Date.now();
+    for (var d = 0; d < days; d++) {
+      var day = new Date();
+      day.setDate(day.getDate() + d); day.setHours(0, 0, 0, 0);
+      var t = timesFor(day);
+      for (var i = 0; i < ALARM_IDS.length; i++) {
+        var id = ALARM_IDS[i], tm = t[id];
+        if (tm && tm.getTime() > now + 30000) out.push({ id: id, name: label(id), ts: tm.getTime() });
+      }
+    }
+    return { enabled: !!S.alarm, sound: !!S.sound, items: out };
+  };
 })();
 </script>
 <script>
@@ -6247,5 +6265,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+<script src="native-alarm.js"></script>
 </body>
 </html>

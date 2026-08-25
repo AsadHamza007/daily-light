@@ -1,5 +1,5 @@
-const CACHE = 'daily-light-v9';
-const ASSETS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
+const CACHE = 'daily-light-v10';
+const ASSETS = ['./', './index.html', './native-alarm.js', './manifest.json', './icon-192.png', './icon-512.png'];
 const HADITH_CDN = [
   'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/',
   'https://raw.githubusercontent.com/fawazahmed0/hadith-api/1/'
